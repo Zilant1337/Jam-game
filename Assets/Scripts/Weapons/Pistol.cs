@@ -6,6 +6,7 @@ public class Pistol : Weapon
     {
         if (ammoCountInMag > 0&& cooldownTimer ==0)
         {
+            // Выстрел с помощью кастинга лучей
             muzzleFlashParticleSystem.Play();
             RaycastHit hit;
             if (Physics.Raycast(transform.parent.position, transform.position - transform.parent.position, out hit, float.MaxValue, hitLayerMask))

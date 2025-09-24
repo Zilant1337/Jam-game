@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        // Функция, отвечающая за получение урона и смерть, если здоровье закончилось
         if(hp - damage > 0)
         {
             hp -= damage;

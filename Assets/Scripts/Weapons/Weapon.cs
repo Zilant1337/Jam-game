@@ -31,6 +31,7 @@ public abstract class Weapon : MonoBehaviour
     }
     protected void Update()
     {
+        // Таймер для ограничения темпа стрельбы
         if (cooldownTimer!=0)
         {
             cooldownTimer-= Time.deltaTime;
@@ -44,6 +45,7 @@ public abstract class Weapon : MonoBehaviour
     public abstract void Shoot();
     public void Reload()
     {
+        // Перезарядка. Если патронов в запасе недостаточно для того чтобы наполнить магазин, то в магазин добавляется сколько есть
         if (magSize - ammoCountInMag < ammoCount)
         {
             ammoCountInMag = magSize;
@@ -57,6 +59,7 @@ public abstract class Weapon : MonoBehaviour
     }
     public void Discard()
     {
+        // Выброс оружия
         transform.parent = worldWeaponParent.transform;
     }
     public void PickUp(CharacterScript character)

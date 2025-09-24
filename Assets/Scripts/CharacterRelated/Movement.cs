@@ -32,11 +32,14 @@ public class Movement : MonoBehaviour
     }
     void Move()
     {
+        // »спользуетс€ инпут система Unity дл€ получени€ направлени€ движени€
         Vector2 movementDirection = CharacterScript.inputSystem.Player.Move.ReadValue<Vector2>();
+        // ≈сли игрок не смотрит отдельно в какую то сторону и перемещаетс€, персонаж поворачиваетс€ по направлению движени€
         if (CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>() == Vector2.zero && movementDirection != Vector2.zero)
         {
             transform.LookAt(new Vector3(transform.position.x + movementDirection.x, transform.position.y, transform.position.z + movementDirection.y));
         }
+        // ≈сли игрок нажал на кнопку рывка, то он перемещаетс€ в одно направление пока не закончитс€ рывок
         if (isDodging)
         {
             transform.position += new Vector3(previousDirection.x, 0, previousDirection.y) * dodgeSpeed * Time.deltaTime;
@@ -47,6 +50,7 @@ public class Movement : MonoBehaviour
                 dodgedDistance = 0;
             }
         }
+        // ”скор€ем персонажа и начинаем перемещать его в направлении движени€
         else
         {
             if (movementDirection != Vector2.zero)
@@ -58,6 +62,7 @@ public class Movement : MonoBehaviour
     }
     public void Dodge(InputAction.CallbackContext context)
     {
+        // «апускаем рывок если игрок нажал на кнопку рывка, провер€ем количество выносливости и, если еЄ достаточно, запускаем рывок
         if(context.performed)
         { 
             if (staminaScript.CurrentStamina >= dodgeStaminaCost)
