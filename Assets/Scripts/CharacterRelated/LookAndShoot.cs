@@ -8,6 +8,8 @@ public class LookAndShoot : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
     [SerializeField]
+    AmmoCounter ammoCounterScript;
+    [SerializeField]
     private GameObject weaponsParent;
     [SerializeField]
     protected Weapon currentWeapon;
@@ -15,7 +17,7 @@ public class LookAndShoot : MonoBehaviour
     protected Weapon secondaryWeapon;
     void Start()
     {
-        
+        ammoCounterScript.UpdateAmmoCounterFull(currentWeapon.AmmoCountInMag,currentWeapon.AmmoCount,currentWeapon.WeaponName,currentWeapon.PreviewImage);
     }
     void Update()
     {
@@ -45,6 +47,13 @@ public class LookAndShoot : MonoBehaviour
         if (context.performed)
         {
             currentWeapon.Shoot();
+        }
+    }
+    public void Reload(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            currentWeapon.Reload();
         }
     }
 }

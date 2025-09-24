@@ -4,7 +4,7 @@ public class Pistol : Weapon
 {
     public override void Shoot()
     {
-        if (ammoCountInMag > 0&& cooldownTimer ==0)
+        if (ammoCountInMag > 0 && cooldownTimer ==0 && reloadTimer == 0)
         {
             // Выстрел с помощью кастинга лучей
             muzzleFlashParticleSystem.Play();
@@ -13,6 +13,8 @@ public class Pistol : Weapon
             {
                 hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
             }
+            ammoCountInMag--;
+            AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag,ammoCount);
             cooldownTimer = timeBetweenShots;
         }
     }

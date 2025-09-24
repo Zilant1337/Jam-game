@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
+    [SerializeField]
+    protected string weaponName;
+    [SerializeField]
+    protected Sprite previewImage;
     [SerializeField]
     protected ParticleSystem muzzleFlashParticleSystem;
     [SerializeField]
@@ -22,22 +27,41 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     protected float timeBetweenShots;
     protected float cooldownTimer;
+    [SerializeField]
+    protected float reloadTime;
+    protected float reloadTimer;
+
+    public int AmmoCountInMag { get => ammoCountInMag;}
+    public int AmmoCount { get => ammoCount;}
+    public string WeaponName { get => weaponName;}
+    public Sprite PreviewImage { get => previewImage;}
 
     protected void Start()
     {
         ammoCount = MAX_AMMO;
         ammoCountInMag = magSize;
         cooldownTimer = 0;
+        reloadTimer = 0;
     }
     protected void Update()
     {
         // Таймер для ограничения темпа стрельбы
         if (cooldownTimer!=0)
         {
-            cooldownTimer-= Time.deltaTime;
+            cooldownTimer -= Time.deltaTime;
             if (cooldownTimer < 0)
             {
                 cooldownTimer = 0;
+            }
+        }
+        if (reloadTimer != 0)
+        {
+            reloadTimer -= Time.deltaTime;
+            if (reloadTimer <= 0)
+            {
+                FillAmmo();
+                AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag,ammoCount);
+                reloadTimer = 0;
             }
         }
     }
@@ -45,11 +69,14 @@ public abstract class Weapon : MonoBehaviour
     public abstract void Shoot();
     public void Reload()
     {
-        // Перезарядка. Если патронов в запасе недостаточно для того чтобы наполнить магазин, то в магазин добавляется сколько есть
+        reloadTimer = reloadTime;
+    }
+    private void FillAmmo()
+    {
         if (magSize - ammoCountInMag < ammoCount)
         {
-            ammoCountInMag = magSize;
             ammoCount -= magSize - ammoCountInMag;
+            ammoCountInMag = magSize;
         }
         else
         {
