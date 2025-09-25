@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     protected GameObject worldWeaponParent;
     [SerializeField]
+    protected Transform tracerEmmiterPoint;
+    [SerializeField]
     protected bool isInteractable;
     [SerializeField]
     protected int MAX_AMMO;
@@ -30,6 +33,12 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     protected float reloadTime;
     protected float reloadTimer;
+    [SerializeField]
+    protected float shotSpread;
+    [SerializeField]
+    protected TrailRenderer bulletTracerRenderer;
+    [SerializeField]
+    protected float tracerTravelTime;
 
     public int AmmoCountInMag { get => ammoCountInMag;}
     public int AmmoCount { get => ammoCount;}
@@ -92,5 +101,40 @@ public abstract class Weapon : MonoBehaviour
     public void PickUp(CharacterScript character)
     {
 
+    }
+    protected Vector3 GetShotDirection()
+    {
+        // Добавляем случайный разброс при стрельбе
+        Vector3 direction = tracerEmmiterPoint.forward;
+        Debug.DrawRay(tracerEmmiterPoint.position,direction,Color.red,5);
+        Quaternion rotation = Quaternion.AngleAxis(Random.Range(-shotSpread, shotSpread), Vector3.up);
+        direction = rotation * direction;
+        Debug.DrawRay(tracerEmmiterPoint.position, direction, Color.black, 5);
+        return direction;
+    }
+    protected IEnumerator SpawnBulletTrail(TrailRenderer trailRenderer, Vector3 direction)
+    {
+        float timer = 0;
+        Vector3 startPosition = trailRenderer.transform.position;
+        Vector3 endPosition = direction * 100;
+        while (timer < tracerTravelTime)
+        {
+            trailRenderer.transform.position = Vector3.Lerp(startPosition,endPosition,timer);
+            timer+=Time.deltaTime/trailRenderer.time;
+            yield return null;
+        }
+        Destroy(trailRenderer.gameObject,trailRenderer.time);
+    }
+    protected IEnumerator SpawnBulletTrail(TrailRenderer trailRenderer, RaycastHit hit)
+    {
+        float timer = 0;
+        Vector3 startPosition = trailRenderer.transform.position;
+        while (timer < tracerTravelTime)
+        {
+            trailRenderer.transform.position = Vector3.Lerp(startPosition, hit.point, timer*100);
+            timer += Time.deltaTime / trailRenderer.time;
+            yield return null;
+        }
+        Destroy(trailRenderer.gameObject, trailRenderer.time);
     }
 }

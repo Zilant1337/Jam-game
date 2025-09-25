@@ -12,6 +12,10 @@ public class LookAndShoot : MonoBehaviour
     [SerializeField]
     private GameObject weaponsParent;
     [SerializeField]
+    private Transform currentWeaponLocation;
+    [SerializeField] 
+    private Transform secondaryWeaponLocation;
+    [SerializeField]
     protected Weapon currentWeapon;
     [SerializeField]
     protected Weapon secondaryWeapon;
