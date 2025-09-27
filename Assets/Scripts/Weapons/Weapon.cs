@@ -69,10 +69,12 @@ public abstract class Weapon : MonoBehaviour
         // Таймер для ограничения стрельбы при перезарядки
         if (reloadTimer != 0)
         {
+            ReloadBar.onReload.Invoke(reloadTimer/reloadTime);
             reloadTimer -= Time.deltaTime;
             if (reloadTimer <= 0)
             {
                 FillAmmo();
+                ReloadBar.onReloadEnd.Invoke();
                 AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag,ammoCount);
                 reloadTimer = 0;
             }
@@ -83,6 +85,7 @@ public abstract class Weapon : MonoBehaviour
     // Запускаем таймер для перезарядки
     public void Reload()
     {
+        ReloadBar.onReloadStart.Invoke();
         reloadTimer = reloadTime;
     }
     // Заполнение магазина и отъём восполненного из общего пула патронов для оружия
