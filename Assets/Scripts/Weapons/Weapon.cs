@@ -20,6 +20,8 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     protected bool isInteractable;
     [SerializeField]
+    protected bool isAutomatic;
+    [SerializeField]
     protected int MAX_AMMO;
     protected int ammoCount;
     [SerializeField]
@@ -44,6 +46,7 @@ public abstract class Weapon : MonoBehaviour
     public int AmmoCount { get => ammoCount;}
     public string WeaponName { get => weaponName;}
     public Sprite PreviewImage { get => previewImage;}
+    public bool IsAutomatic { get => isAutomatic;}
 
     protected void Start()
     {
@@ -63,6 +66,7 @@ public abstract class Weapon : MonoBehaviour
                 cooldownTimer = 0;
             }
         }
+        // Таймер для ограничения стрельбы при перезарядки
         if (reloadTimer != 0)
         {
             reloadTimer -= Time.deltaTime;
@@ -74,12 +78,14 @@ public abstract class Weapon : MonoBehaviour
             }
         }
     }
-
+    // Реализация выстрела у каждого оружия разная
     public abstract void Shoot();
+    // Запускаем таймер для перезарядки
     public void Reload()
     {
         reloadTimer = reloadTime;
     }
+    // Заполнение магазина и отъём восполненного из общего пула патронов для оружия
     private void FillAmmo()
     {
         if (magSize - ammoCountInMag < ammoCount)
@@ -110,13 +116,14 @@ public abstract class Weapon : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(Random.Range(-shotSpread, shotSpread), Vector3.up);
         direction = rotation * direction;
         Debug.DrawRay(tracerEmmiterPoint.position, direction, Color.black, 5);
-        return direction;
+        return direction.normalized;
     }
+    // Процедуры запуска трейсера от выстрела
     protected IEnumerator SpawnBulletTrail(TrailRenderer trailRenderer, Vector3 direction)
     {
         float timer = 0;
         Vector3 startPosition = trailRenderer.transform.position;
-        Vector3 endPosition = direction * 100;
+        Vector3 endPosition = startPosition + direction * 100;
         while (timer < tracerTravelTime)
         {
             trailRenderer.transform.position = Vector3.Lerp(startPosition,endPosition,timer);

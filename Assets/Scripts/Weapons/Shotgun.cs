@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shotgun : Weapon
 {
@@ -8,9 +8,10 @@ public class Shotgun : Weapon
     {
         if (ammoCountInMag > 0 && cooldownTimer == 0 && reloadTimer == 0)
         {
-            // ������� � ������� �������� �����
+            // Запуск визуального эффекта вспышки при выстреле
             muzzleFlashParticleSystem.Play();
-            for(int i = 0;i<peletsPerShot;i++)
+            // Несколько выстрелов за раз
+            for (int i = 0;i<peletsPerShot;i++)
             {
                 TrailRenderer trailRenderer = Instantiate(bulletTracerRenderer, tracerEmmiterPoint.position, Quaternion.identity);
                 Vector3 shotDirection = GetShotDirection();

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-public class Pistol : Weapon
+public class SMG : Weapon
 {
     public override void Shoot()
     {
         // Выстрел через кастинг лучей
-        if (ammoCountInMag > 0 && cooldownTimer ==0 && reloadTimer == 0)
+        if (ammoCountInMag > 0 && cooldownTimer == 0 && reloadTimer == 0)
         {
             // Запуск визуального эффекта вспышки при выстреле
             muzzleFlashParticleSystem.Play();
@@ -14,7 +14,7 @@ public class Pistol : Weapon
 
             // Инициализация трейсера для видимости куда ушёл выстрел
             TrailRenderer trailRenderer = Instantiate(bulletTracerRenderer, tracerEmmiterPoint.position, Quaternion.identity);
-            
+
             if (Physics.Raycast(transform.position, shotDirection, out hit, float.MaxValue, hitLayerMask))
             {
                 // Пуск трейсера
@@ -25,12 +25,12 @@ public class Pistol : Weapon
             else
             {
                 // Пуск трейсера
-                StartCoroutine(SpawnBulletTrail(trailRenderer,shotDirection));
+                StartCoroutine(SpawnBulletTrail(trailRenderer, shotDirection));
             }
             // Отнимаем количество патронов в магазине
             ammoCountInMag--;
             // Вызываем событие обновления интерфейса
-            AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag,ammoCount);
+            AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag, ammoCount);
             // Запуск таймера для ограничения скорострельности
             cooldownTimer = timeBetweenShots;
         }
