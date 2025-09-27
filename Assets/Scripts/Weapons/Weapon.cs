@@ -69,7 +69,7 @@ public abstract class Weapon : MonoBehaviour
         // Таймер для ограничения стрельбы при перезарядки
         if (reloadTimer != 0)
         {
-            ReloadBar.onReload.Invoke(reloadTimer/reloadTime);
+            ReloadBar.onReload.Invoke(1-reloadTimer/reloadTime);
             reloadTimer -= Time.deltaTime;
             if (reloadTimer <= 0)
             {
