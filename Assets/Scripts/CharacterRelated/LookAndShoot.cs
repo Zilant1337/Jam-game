@@ -37,17 +37,12 @@ public class LookAndShoot : MonoBehaviour
         // Если ввод направления есть, повернуть персонажа в ту сторону, куда игрок вводит
         if (lookDirection != Vector2.zero)
         {
-            Cursor.visible = true ;
             Vector3 aimPoint = new Vector3(transform.position.x + lookDirection.x * cursorDistance, transform.position.y, transform.position.z + lookDirection.y * cursorDistance);
-            // Перемещение курсора на определённое расстояние от персонажа
-            Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(aimPoint));
+            // Поворот персонажа в направлении курсора
             transform.LookAt(aimPoint);
         }
-        // Отключение курсора при отсутствии ввода для взгляда
-        if(lookDirection == Vector2.zero)
-        {
-            Cursor.visible = false;
-        }
+
+        
         if (keepShooting)
         {
             Fire();
