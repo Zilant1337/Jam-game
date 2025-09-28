@@ -7,9 +7,9 @@ public class DebugScript : MonoBehaviour
     Transform Cube;
     private void Update()
     {
-        Vector3 MousePosition = Mouse.current.position.ReadValue();
-        MousePosition.z = Camera.main.nearClipPlane;
-        MousePosition = Camera.main.ScreenToWorldPoint(MousePosition);
-        Cube.position = new Vector3(MousePosition.x, transform.position.y, MousePosition.z); 
+        Vector2 MousePosition = CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>();
+        MousePosition = new Vector2(CursorManager.instance.MiddleOfCanvasTransform.position.x, CursorManager.instance.MiddleOfCanvasTransform.position.y) - MousePosition;
+        MousePosition = MousePosition.normalized;
+        Debug.Log(MousePosition);
     }
 }

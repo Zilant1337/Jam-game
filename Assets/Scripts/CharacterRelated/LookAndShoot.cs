@@ -28,21 +28,23 @@ public class LookAndShoot : MonoBehaviour
     }
     void Update()
     {
-        /*Vector3 MousePosition = Mouse.current.position.ReadValue();
-        MousePosition.z = Camera.main.nearClipPlane;
-        MousePosition = Camera.main.ScreenToWorldPoint(MousePosition);
-        transform.LookAt(new Vector3(MousePosition.x, transform.position.y, MousePosition.z));*/
-
-        Vector2 lookDirection = CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>().normalized;
-        // Если ввод направления есть, повернуть персонажа в ту сторону, куда игрок вводит
-        if (lookDirection != Vector2.zero)
+        Vector3 aimPoint;
+        Vector2 lookDirection = CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>();
+        if (CursorManager.KeyboardActive)
         {
-            Vector3 aimPoint = new Vector3(transform.position.x + lookDirection.x * cursorDistance, transform.position.y, transform.position.z + lookDirection.y * cursorDistance);
+            lookDirection = new Vector2(CursorManager.instance.MiddleOfCanvasTransform.position.x, CursorManager.instance.MiddleOfCanvasTransform.position.y)-lookDirection;
+            lookDirection = -1*lookDirection.normalized;   
+        }
+        else
+        {
+            lookDirection = lookDirection.normalized;
+        }
+        aimPoint = new Vector3(transform.position.x + lookDirection.x * cursorDistance, transform.position.y, transform.position.z + lookDirection.y * cursorDistance);
+        if (lookDirection != Vector2.zero)
+        {            
             // Поворот персонажа в направлении курсора
             transform.LookAt(aimPoint);
         }
-
-        
         if (keepShooting)
         {
             Fire();

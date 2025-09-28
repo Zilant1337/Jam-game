@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class CursorManager : MonoBehaviour
 {
+    public static CursorManager instance;
+
     [SerializeField]
     private float cursorDistance;
     [SerializeField]
@@ -14,13 +16,25 @@ public class CursorManager : MonoBehaviour
     [SerializeField]
     Transform virtualCursorTransform;
     Mouse realMouse;
-    bool keyboardActive;
+    static bool keyboardActive;
+
+    public static bool KeyboardActive { get => keyboardActive; }
+    public Transform MiddleOfCanvasTransform { get => middleOfCanvasTransform; }
 
     private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogError("Can't have more than one cursor manager");
+            Destroy(gameObject);
+        }
         realMouse = Mouse.current;
         virtualCursorTransform.gameObject.SetActive(false);
+        OnControlSchemeChange();
     }
     private void Update()
     {
@@ -30,7 +44,7 @@ public class CursorManager : MonoBehaviour
             if (lookDirection != Vector2.zero)
             {
                 virtualCursorTransform.gameObject.SetActive(true);
-                Vector3 aimPoint = new Vector2(middleOfCanvasTransform.position.x + lookDirection.x * cursorDistance, middleOfCanvasTransform.position.y+lookDirection.y*cursorDistance);
+                Vector2 aimPoint = new Vector2(middleOfCanvasTransform.position.x + lookDirection.x * cursorDistance, middleOfCanvasTransform.position.y+lookDirection.y*cursorDistance);
                 virtualCursorTransform.position = aimPoint;
             }
             // Отключение курсора при отсутствии ввода для взгляда
@@ -40,7 +54,6 @@ public class CursorManager : MonoBehaviour
                 Cursor.visible = false;
             }
         }
-        
     }
     void Start()
     {
