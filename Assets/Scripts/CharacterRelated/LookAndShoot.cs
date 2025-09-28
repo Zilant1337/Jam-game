@@ -81,18 +81,22 @@ public class LookAndShoot : MonoBehaviour
     public void SwitchWeapons(InputAction.CallbackContext context)
     {
         if (context.performed)
-        { 
-            // Меняем основное и дополнительное оружия местами
-            currentWeapon.transform.position = secondaryWeaponLocation.position;
-            currentWeapon.transform.rotation = secondaryWeaponLocation.rotation;
-            secondaryWeapon.transform.position = currentWeaponLocation.position;
-            secondaryWeapon.transform.rotation= currentWeaponLocation.rotation;
-            // Переназначаем основное и запасное оружие в коде
-            Weapon temp = currentWeapon;
-            currentWeapon = secondaryWeapon;
-            secondaryWeapon = temp;
-            // Вызываем событие, меняющее элемент интерфейса
-            AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag, currentWeapon.AmmoCount, currentWeapon.WeaponName, currentWeapon.PreviewImage);
+        {
+            if (currentWeapon.ReloadTimer == 0) 
+            {
+                // Меняем основное и дополнительное оружия местами
+                currentWeapon.transform.position = secondaryWeaponLocation.position;
+                currentWeapon.transform.rotation = secondaryWeaponLocation.rotation;
+                secondaryWeapon.transform.position = currentWeaponLocation.position;
+                secondaryWeapon.transform.rotation = currentWeaponLocation.rotation;
+                // Переназначаем основное и запасное оружие в коде
+                Weapon temp = currentWeapon;
+                currentWeapon = secondaryWeapon;
+                secondaryWeapon = temp;
+                // Вызываем событие, меняющее элемент интерфейса
+                AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag, currentWeapon.AmmoCount, currentWeapon.WeaponName, currentWeapon.PreviewImage);
+            }
+            
         }
     }
 }

@@ -47,13 +47,19 @@ public abstract class Weapon : MonoBehaviour
     public string WeaponName { get => weaponName;}
     public Sprite PreviewImage { get => previewImage;}
     public bool IsAutomatic { get => isAutomatic;}
+    public float ReloadTimer { get => reloadTimer; }
 
-    protected void Start()
+    protected void Awake()
     {
         ammoCount = MAX_AMMO;
         ammoCountInMag = magSize;
         cooldownTimer = 0;
         reloadTimer = 0;
+    }
+
+    protected void Start()
+    {
+        
     }
     protected void Update()
     {
@@ -85,8 +91,11 @@ public abstract class Weapon : MonoBehaviour
     // Запускаем таймер для перезарядки
     public void Reload()
     {
-        ReloadBar.onReloadStart.Invoke();
-        reloadTimer = reloadTime;
+        if (ammoCountInMag != magSize)
+        {
+            ReloadBar.onReloadStart.Invoke();
+            reloadTimer = reloadTime;
+        }
     }
     // Заполнение магазина и отъём восполненного из общего пула патронов для оружия
     private void FillAmmo()

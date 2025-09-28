@@ -15,7 +15,7 @@ public class CursorManager : MonoBehaviour
     Transform middleOfCanvasTransform;
     [SerializeField]
     Transform virtualCursorTransform;
-    Mouse realMouse;
+
     static bool keyboardActive;
 
     public static bool KeyboardActive { get => keyboardActive; }
@@ -32,26 +32,27 @@ public class CursorManager : MonoBehaviour
             Debug.LogError("Can't have more than one cursor manager");
             Destroy(gameObject);
         }
-        realMouse = Mouse.current;
         virtualCursorTransform.gameObject.SetActive(false);
-        OnControlSchemeChange();
     }
     private void Update()
     {
         if (!keyboardActive)
         {
+            Gamepad gamepad = Gamepad.current;
             Vector2 lookDirection = CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>().normalized;
+            Debug.Log($"Controller moves the reticle! Look direction: {lookDirection}. Controller direction: {gamepad.rightStick.ReadValue()}");
             if (lookDirection != Vector2.zero)
             {
-                virtualCursorTransform.gameObject.SetActive(true);
+                if(virtualCursorTransform.gameObject.activeSelf==false)
+                    virtualCursorTransform.gameObject.SetActive(true);
                 Vector2 aimPoint = new Vector2(middleOfCanvasTransform.position.x + lookDirection.x * cursorDistance, middleOfCanvasTransform.position.y+lookDirection.y*cursorDistance);
+                
                 virtualCursorTransform.position = aimPoint;
             }
             // Отключение курсора при отсутствии ввода для взгляда
             if (lookDirection == Vector2.zero)
             {
                 virtualCursorTransform.gameObject.SetActive(false);
-                Cursor.visible = false;
             }
         }
     }
@@ -65,15 +66,17 @@ public class CursorManager : MonoBehaviour
     {
         if(playerInput.currentControlScheme == "Keyboard&Mouse")
         {
-            keyboardActive = true;
             Cursor.visible = true;
             virtualCursorTransform.gameObject.SetActive(false);
+            keyboardActive = true;
         }
         else
-        {
-            keyboardActive = false;  
+        {    
             Cursor.visible = false;
             virtualCursorTransform.gameObject.SetActive(true);
+            keyboardActive = false;
+            CharacterScript.inputSystem.Player.Look.Reset();
         }
+        Debug.Log($"Keyboard active: {keyboardActive}");
     } 
 }

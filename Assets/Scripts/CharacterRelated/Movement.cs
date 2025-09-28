@@ -65,7 +65,7 @@ public class Movement : MonoBehaviour
         // «апускаем рывок если игрок нажал на кнопку рывка, провер€ем количество выносливости и, если еЄ достаточно, запускаем рывок
         if(context.performed)
         { 
-            if (staminaScript.CurrentStamina >= dodgeStaminaCost)
+            if (staminaScript.CurrentStamina >= dodgeStaminaCost && !isDodging)
             {
                 staminaScript.RemoveStamina(dodgeStaminaCost);
                 isDodging = true;
