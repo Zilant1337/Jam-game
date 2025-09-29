@@ -48,6 +48,7 @@ public class Movement : MonoBehaviour
             {
                 isDodging = false;
                 dodgedDistance = 0;
+                staminaScript.regenResume.Invoke();
             }
         }
         // Ускоряем персонажа и начинаем перемещать его в направлении движения
@@ -67,7 +68,8 @@ public class Movement : MonoBehaviour
         { 
             if (staminaScript.CurrentStamina >= dodgeStaminaCost && !isDodging)
             {
-                staminaScript.RemoveStamina(dodgeStaminaCost);
+                staminaScript.removeStamina.Invoke(dodgeStaminaCost);
+                staminaScript.regenPause.Invoke();
                 isDodging = true;
                 previousDirection = previousDirection / previousDirection.magnitude;
             }

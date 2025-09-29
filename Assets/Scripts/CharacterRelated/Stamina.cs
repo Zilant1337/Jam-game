@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Stamina : MonoBehaviour
 {
@@ -7,9 +8,14 @@ public class Stamina : MonoBehaviour
     [SerializeField]
     protected float staminaRegenRate;
     private float currentStamina = 0;
+    protected bool regenStamina;
 
     [SerializeField]
     protected StaminaBar staminaBarScript;
+
+    public UnityEvent regenPause;
+    public UnityEvent regenResume;
+    public UnityEvent<float> removeStamina;
 
     public float CurrentStamina { get => currentStamina;}
     public bool IsStaminaFull => currentStamina == MAX_STAMINA?true:false;
@@ -18,19 +24,28 @@ public class Stamina : MonoBehaviour
 
     void Start()
     {
+        regenPause= new UnityEvent();
+        regenResume= new UnityEvent();
+        removeStamina = new UnityEvent<float>();
+
+        regenPause.AddListener(StopStaminaRegen);
+        regenResume.AddListener(StartStaminaRegen);
+        removeStamina.AddListener(RemoveStamina);
+
         currentStamina = MAX_STAMINA;
+        regenStamina = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentStamina < MAX_STAMINA)
+        if (currentStamina < MAX_STAMINA && regenStamina)
         {
             AddStamina(Time.deltaTime*staminaRegenRate);
         }
         staminaBarScript.UpdateStaminaBar(currentStamina / MAX_STAMINA);
     }
-    public void RemoveStamina(float staminaToRemove)
+    private void RemoveStamina(float staminaToRemove)
     {
         Debug.Log($"Removed {staminaToRemove} stamina!");
         currentStamina -= staminaToRemove;
@@ -39,13 +54,21 @@ public class Stamina : MonoBehaviour
             currentStamina = 0;
         }
     }
-    public void AddStamina(float staminaToAdd)
+    private void AddStamina(float staminaToAdd)
     {
         currentStamina += staminaToAdd;
         if (currentStamina >MAX_STAMINA)
         {
             currentStamina = MAX_STAMINA;
         }
+    }
+    private void StartStaminaRegen()
+    {
+        regenStamina = true;
+    }
+    private void StopStaminaRegen()
+    {
+        regenStamina = false;
     }
     public void ResetStamina()
     {

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8053266054616390891}
-  - component: {fileID: 8066824327837067957}
+  - component: {fileID: 174140209877124910}
   m_Layer: 0
   m_Name: SMG
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 7366787338922766376}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8066824327837067957
+--- !u!114 &174140209877124910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1571520931384081754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02035c91271e50439889841f24d47bb, type: 3}
+  m_Script: {fileID: 11500000, guid: b7b3564b3b808bd4b97ca143f61345ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: SMG
@@ -61,8 +61,8 @@ MonoBehaviour:
   magSize: 30
   damagePerBullet: 20
   timeBetweenShots: 0.1
-  reloadTime: 0.5
-  shotSpread: 2
+  reloadTime: 2
+  shotSpread: 5
   bulletTracerRenderer: {fileID: 4022733744170998590, guid: 828639cd52849f84cb88c3c8c10f0ee3, type: 3}
   tracerTravelTime: 1
 --- !u!1 &8929099436526639197

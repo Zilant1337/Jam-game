@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2430307315245044157
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1121447796356172110}
@@ -55,16 +55,17 @@ MonoBehaviour:
     m_Bits: 64
   worldWeaponParent: {fileID: 0}
   tracerEmmiterPoint: {fileID: 1433198531791503780}
-  isInteractable: 0
-  isAutomatic: 0
   MAX_AMMO: 100
   magSize: 15
   damagePerBullet: 25
   timeBetweenShots: 0.2
   reloadTime: 0.5
-  shotSpread: 0
+  shotSpread: 2
   bulletTracerRenderer: {fileID: 4022733744170998590, guid: 828639cd52849f84cb88c3c8c10f0ee3, type: 3}
   tracerTravelTime: 1
+  isInteractable: 0
+  isAutomatic: 0
+  piercing: 0
 --- !u!1 &6070658859089033765
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,15 +107,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d49a2c85b95a59d4ab60a7c0a9cf5212, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d49a2c85b95a59d4ab60a7c0a9cf5212, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d49a2c85b95a59d4ab60a7c0a9cf5212, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d49a2c85b95a59d4ab60a7c0a9cf5212, type: 3}
       propertyPath: m_LocalPosition.x

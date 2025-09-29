@@ -17,10 +17,7 @@ public abstract class Weapon : MonoBehaviour
     protected GameObject worldWeaponParent;
     [SerializeField]
     protected Transform tracerEmmiterPoint;
-    [SerializeField]
-    protected bool isInteractable;
-    [SerializeField]
-    protected bool isAutomatic;
+    
     [SerializeField]
     protected int MAX_AMMO;
     protected int ammoCount;
@@ -41,6 +38,10 @@ public abstract class Weapon : MonoBehaviour
     protected TrailRenderer bulletTracerRenderer;
     [SerializeField]
     protected float tracerTravelTime;
+    [SerializeField]
+    protected bool isInteractable;
+    [SerializeField]
+    protected bool isAutomatic;
 
     public int AmmoCountInMag { get => ammoCountInMag;}
     public int AmmoCount { get => ammoCount;}
