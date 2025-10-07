@@ -73,7 +73,7 @@ public abstract class Weapon : MonoBehaviour
                 cooldownTimer = 0;
             }
         }
-        // Таймер для ограничения стрельбы при перезарядки
+        // Таймер для ограничения стрельбы и смены оружия при перезарядки
         if (reloadTimer != 0)
         {
             ReloadBar.onReload.Invoke(1-reloadTimer/reloadTime);

@@ -19,6 +19,7 @@ public class HitscanGun : Weapon
 
             // Инициализация трейсера для видимости куда ушёл выстрел
             TrailRenderer trailRenderer = Instantiate(bulletTracerRenderer, tracerEmmiterPoint.position, Quaternion.identity);
+            // Если выстрел должен быть пробивающим, то наносим урон всем, кто попался в луч
             if (piercing)
             {
                 List<RaycastHit> hits = new List<RaycastHit>();
@@ -29,12 +30,13 @@ public class HitscanGun : Weapon
                     hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
                 }
             }
+            // Если нет, наносим урон только тому, в кого попал первым
             else
             {
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, shotDirection, out hit, float.MaxValue, hitLayerMask))
                 {
-                    // Пуск трейсера
+                    // Пуск трейсера до того, в кого попали
                     StartCoroutine(SpawnBulletTrail(trailRenderer, hit));
                     // Получение урона тем, в кого попала пуля
                     hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);

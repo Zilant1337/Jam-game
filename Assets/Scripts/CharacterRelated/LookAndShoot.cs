@@ -30,8 +30,10 @@ public class LookAndShoot : MonoBehaviour
     {
         Vector3 aimPoint;
         Vector2 lookDirection = CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>();
+
         if (CursorManager.KeyboardActive)
         {
+            // Альтернативный расчёт направления взгляда когда схема управления - клавиатура и мышь
             lookDirection = new Vector2(CursorManager.instance.MiddleOfCanvasTransform.position.x, CursorManager.instance.MiddleOfCanvasTransform.position.y)-lookDirection;
             lookDirection = -1*lookDirection.normalized;   
         }
@@ -56,6 +58,7 @@ public class LookAndShoot : MonoBehaviour
         if (context.performed)
         {
             Fire();
+            // Если оружие предполагается автоматическим, продолжаем стрелять пока игрок не отпустит кнопку стрельбы
             if (currentWeapon.IsAutomatic)
             {
                 keepShooting = true;
