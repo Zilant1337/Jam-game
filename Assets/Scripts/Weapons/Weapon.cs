@@ -17,7 +17,9 @@ public abstract class Weapon : MonoBehaviour
     protected GameObject worldWeaponParent;
     [SerializeField]
     protected Transform tracerEmmiterPoint;
-    
+
+    [SerializeField]
+    protected int price;
     [SerializeField]
     protected int MAX_AMMO;
     protected int ammoCount;
@@ -43,6 +45,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     protected bool isAutomatic;
 
+    public int Price { get => price; }
     public int AmmoCountInMag { get => ammoCountInMag;}
     public int AmmoCount { get => ammoCount;}
     public string WeaponName { get => weaponName;}

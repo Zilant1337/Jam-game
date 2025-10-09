@@ -52,19 +52,21 @@ MonoBehaviour:
   muzzleFlashParticleSystem: {fileID: 6690518758286908508}
   hitLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   worldWeaponParent: {fileID: 0}
   tracerEmmiterPoint: {fileID: 7366787338922766376}
-  isInteractable: 0
-  isAutomatic: 1
+  price: 300
   MAX_AMMO: 120
   magSize: 30
   damagePerBullet: 20
-  timeBetweenShots: 0.1
+  timeBetweenShots: 0.05
   reloadTime: 2
   shotSpread: 5
   bulletTracerRenderer: {fileID: 4022733744170998590, guid: 828639cd52849f84cb88c3c8c10f0ee3, type: 3}
   tracerTravelTime: 1
+  isInteractable: 0
+  isAutomatic: 1
+  piercing: 0
 --- !u!1 &8929099436526639197
 GameObject:
   m_ObjectHideFlags: 0

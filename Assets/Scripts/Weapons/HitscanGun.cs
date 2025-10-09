@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,13 +23,28 @@ public class HitscanGun : Weapon
             // Если выстрел должен быть пробивающим, то наносим урон всем, кто попался в луч
             if (piercing)
             {
+                bool shouldFlyThrough = true;
                 List<RaycastHit> hits = new List<RaycastHit>();
-                hits = Physics.RaycastAll(transform.position, shotDirection, float.MaxValue, hitLayerMask)?.ToList();
-                StartCoroutine(SpawnBulletTrail(trailRenderer, shotDirection));
+                // Сортируем попадания пробивающего рейкаста по расстоянию
+                var hitsArray = Physics.RaycastAll(transform.position, shotDirection, float.MaxValue, hitLayerMask);
+                Array.Sort(hitsArray, (x, y) => x.distance.CompareTo(y.distance));
+                hits = hitsArray?.ToList();
+                // Проходимся по всем объектам в которые попал пробивающий рейкаст
                 foreach (RaycastHit hit in hits)
                 {
-                    hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
+                    // Если объект - припятствие, то дальнейшие объекты не должны проверяться
+                    if (hit.transform.gameObject.layer == 7)
+                    {
+                        shouldFlyThrough = false;
+                        StartCoroutine(SpawnBulletTrail(trailRenderer, hit));
+                        break;
+                    }
+                    // Если у объекта есть здоровье, он должен получить урон
+                    if (hit.transform.GetComponent<Health>())
+                        hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
                 }
+                if (shouldFlyThrough)
+                    StartCoroutine(SpawnBulletTrail(trailRenderer, shotDirection));
             }
             // Если нет, наносим урон только тому, в кого попал первым
             else
@@ -39,7 +55,8 @@ public class HitscanGun : Weapon
                     // Пуск трейсера до того, в кого попали
                     StartCoroutine(SpawnBulletTrail(trailRenderer, hit));
                     // Получение урона тем, в кого попала пуля
-                    hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
+                    if (hit.transform.GetComponent<Health>())
+                        hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
                 }
                 else
                 {

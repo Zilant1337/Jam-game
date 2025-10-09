@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
 
     private bool isDodging=false;
     private float dodgedDistance = 0;
-    private Vector2 previousDirection = Vector2.zero;
+    private Vector2 previousDirection = Vector2.up;
     private Vector3 previousPosition = Vector3.zero;
     void Start()
     {
@@ -51,7 +51,8 @@ public class Movement : MonoBehaviour
         // Если игрок нажал на кнопку рывка, то он перемещается в одно направление пока не закончится рывок
         if (isDodging)
         {
-            characterController.Move(new Vector3(previousDirection.x, 0, previousDirection.y) * dodgeSpeed);
+            // Перемещение с помощью Character Controller
+            characterController.Move(new Vector3(previousDirection.x, 0, previousDirection.y) * dodgeSpeed * Time.deltaTime);
             dodgedDistance += Vector3.Distance(this.transform.position, previousPosition);
             if (dodgedDistance >= dodgeDistance)
             {
@@ -67,7 +68,8 @@ public class Movement : MonoBehaviour
                 previousDirection = movementDirection;
             if (moveSpeed < MAX_MOVE_SPEED)
                 moveSpeed += acceleration;
-            characterController.Move(new Vector3(movementDirection.x,0,movementDirection.y)*moveSpeed);
+            // Перемещение с помощью Character Controller
+            characterController.Move(new Vector3(movementDirection.x,0,movementDirection.y)*moveSpeed * Time.deltaTime);
         }
         previousPosition = this.transform.position;
     }
