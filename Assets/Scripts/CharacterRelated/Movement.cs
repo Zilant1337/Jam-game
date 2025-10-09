@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     [SerializeField]
+    protected Rigidbody characterRigidBody;
+    [SerializeField]
+    protected CharacterController characterController;
+    [SerializeField]
     protected float MAX_MOVE_SPEED;
     protected float moveSpeed = 0;
     [SerializeField]
@@ -22,6 +26,7 @@ public class Movement : MonoBehaviour
     private bool isDodging=false;
     private float dodgedDistance = 0;
     private Vector2 previousDirection = Vector2.zero;
+    private Vector3 previousPosition = Vector3.zero;
     void Start()
     {
         
@@ -29,6 +34,10 @@ public class Movement : MonoBehaviour
     void Update()
     {
         Move();
+    }
+    private void FixedUpdate()
+    {
+        
     }
     void Move()
     {
@@ -42,8 +51,8 @@ public class Movement : MonoBehaviour
         // ≈сли игрок нажал на кнопку рывка, то он перемещаетс€ в одно направление пока не закончитс€ рывок
         if (isDodging)
         {
-            transform.position += new Vector3(previousDirection.x, 0, previousDirection.y) * dodgeSpeed * Time.deltaTime;
-            dodgedDistance += new Vector3(previousDirection.x, 0, previousDirection.y).magnitude * dodgeSpeed * Time.deltaTime;
+            characterController.Move(new Vector3(previousDirection.x, 0, previousDirection.y) * dodgeSpeed);
+            dodgedDistance += Vector3.Distance(this.transform.position, previousPosition);
             if (dodgedDistance >= dodgeDistance)
             {
                 isDodging = false;
@@ -58,8 +67,9 @@ public class Movement : MonoBehaviour
                 previousDirection = movementDirection;
             if (moveSpeed < MAX_MOVE_SPEED)
                 moveSpeed += acceleration;
-            transform.position += new Vector3(movementDirection.x, 0, movementDirection.y) * moveSpeed * Time.deltaTime;
+            characterController.Move(new Vector3(movementDirection.x,0,movementDirection.y)*moveSpeed);
         }
+        previousPosition = this.transform.position;
     }
     public void Dodge(InputAction.CallbackContext context)
     {
