@@ -28,20 +28,29 @@ public class HitscanGun : Weapon
                 // Сортируем попадания пробивающего рейкаста по расстоянию
                 var hitsArray = Physics.RaycastAll(transform.position, shotDirection, float.MaxValue, hitLayerMask);
                 Array.Sort(hitsArray, (x, y) => x.distance.CompareTo(y.distance));
+                
                 hits = hitsArray?.ToList();
+
+                List<GameObject> hitObjects = new List<GameObject>();
+
                 // Проходимся по всем объектам в которые попал пробивающий рейкаст
                 foreach (RaycastHit hit in hits)
                 {
-                    // Если объект - припятствие, то дальнейшие объекты не должны проверяться
-                    if (hit.transform.gameObject.layer == 7)
+                    // Проверяем не попадали ли мы уже в этот объект
+                    if(!hitObjects.Find(x => x==hit.transform.gameObject))
                     {
-                        shouldFlyThrough = false;
-                        StartCoroutine(SpawnBulletTrail(trailRenderer, hit));
-                        break;
+                        // Если у объекта есть здоровье, он должен получить урон
+                        if (hit.transform.GetComponent<Health>())
+                            hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
+                        // Если объект - припятствие, то дальнейшие объекты не должны проверяться
+                        if (hit.transform.gameObject.layer == 7)
+                        {
+                            shouldFlyThrough = false;
+                            StartCoroutine(SpawnBulletTrail(trailRenderer, hit));
+                            break;
+                        }
+                        hitObjects.Add(hit.transform.gameObject);
                     }
-                    // Если у объекта есть здоровье, он должен получить урон
-                    if (hit.transform.GetComponent<Health>())
-                        hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
                 }
                 if (shouldFlyThrough)
                     StartCoroutine(SpawnBulletTrail(trailRenderer, shotDirection));
