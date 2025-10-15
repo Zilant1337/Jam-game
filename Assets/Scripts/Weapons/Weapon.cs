@@ -21,7 +21,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     protected int price;
     [SerializeField]
-    protected int MAX_AMMO;
+    protected int m_MAX_AMMO;
     protected int ammoCount;
     [SerializeField]
     protected int magSize;
@@ -46,12 +46,14 @@ public abstract class Weapon : MonoBehaviour
     protected bool isAutomatic;
 
     public int Price { get => price; }
-    public int AmmoCountInMag { get => ammoCountInMag; set => ammoCount = value; }
+    public int AmmoCountInMag { get => ammoCountInMag; set => ammoCountInMag = value; }
     public int AmmoCount { get => ammoCount; set => ammoCount = value; }
     public string WeaponName { get => weaponName;}
     public Sprite PreviewImage { get => previewImage;}
     public bool IsAutomatic { get => isAutomatic;}
     public float ReloadTimer { get => reloadTimer; }
+    public int MAX_AMMO { get => m_MAX_AMMO; }
+    public int MagSize { get => magSize; }
 
     protected void Awake()
     {
@@ -95,7 +97,7 @@ public abstract class Weapon : MonoBehaviour
     // Запускаем таймер для перезарядки
     public void Reload()
     {
-        if (ammoCountInMag != magSize)
+        if (ammoCountInMag != magSize && ammoCount!=0)
         {
             ReloadBar.onReloadStart.Invoke();
             reloadTimer = reloadTime;

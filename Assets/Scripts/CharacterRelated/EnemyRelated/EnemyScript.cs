@@ -7,7 +7,10 @@ public class EnemyScript : CharacterScript
     private EnemyManager.EnemyType enemyType;
 
     public EnemyManager.EnemyType EnemyType { get => enemyType; }
-
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         

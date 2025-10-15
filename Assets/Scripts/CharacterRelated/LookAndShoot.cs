@@ -99,16 +99,17 @@ public class LookAndShoot : MonoBehaviour
         if (currentWeapon.WeaponName == newWeapon.WeaponName)
         {
             Debug.Log($"Already got {newWeapon.WeaponName} as current weapon, refilling");
-            currentWeapon.AmmoCount = newWeapon.AmmoCount;
-            currentWeapon.AmmoCountInMag = newWeapon.AmmoCountInMag;
+            currentWeapon.AmmoCount = currentWeapon.MAX_AMMO;
+            currentWeapon.AmmoCountInMag = currentWeapon.MagSize;
+            Debug.Log($"Refilled ammo in mag to {currentWeapon.AmmoCountInMag} and total ammo to {currentWeapon.AmmoCount}");
             AmmoCounter.ammoCountChanged.Invoke(currentWeapon.AmmoCountInMag,currentWeapon.AmmoCount);
             return;
         }
         if (secondaryWeapon.WeaponName == newWeapon.WeaponName)
         {
             Debug.Log($"Already got {newWeapon.WeaponName} as secondary weapon, refilling");
-            secondaryWeapon.AmmoCount = newWeapon.AmmoCount;
-            secondaryWeapon.AmmoCountInMag = newWeapon.AmmoCountInMag;
+            secondaryWeapon.AmmoCount = secondaryWeapon.MAX_AMMO;
+            secondaryWeapon.AmmoCountInMag = secondaryWeapon.MagSize;
             return;
         }
         Debug.Log($"Replacing current weapon with {newWeapon.WeaponName}");

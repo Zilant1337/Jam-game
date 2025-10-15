@@ -40,7 +40,6 @@ public class CursorManager : MonoBehaviour
         {
             Gamepad gamepad = Gamepad.current;
             Vector2 lookDirection = CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>().normalized;
-            Debug.Log($"Controller moves the reticle! Look direction: {lookDirection}. Controller direction: {gamepad.rightStick.ReadValue()}");
             if (lookDirection != Vector2.zero)
             {
                 if(virtualCursorTransform.gameObject.activeSelf==false)
