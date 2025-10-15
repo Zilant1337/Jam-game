@@ -15,6 +15,8 @@ public abstract class Interactable : MonoBehaviour
     [SerializeField]
     protected Interactions interaction;
 
+    public bool ActivateOnTrigger { get => activateOnTrigger; }
+
     public void OnTriggerEnter(Collider other)
     {
         if (activateOnTrigger)
@@ -31,5 +33,4 @@ public abstract class Interactable : MonoBehaviour
         isInteractable = false;
     }
     public abstract void InteractAction();
-
 }

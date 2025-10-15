@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class LookAndShoot : MonoBehaviour
 {
+    public static LookAndShoot instance;
+
     [SerializeField]
     private float cursorDistance;
     [SerializeField]
@@ -21,6 +23,16 @@ public class LookAndShoot : MonoBehaviour
     protected Weapon secondaryWeapon;
 
     private bool keepShooting;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("Can't have more than one LookAndShoot");
+            Destroy(this);
+            return;
+        }
+        instance = this;
+    }
     void Start()
     {
         keepShooting = false;
@@ -80,6 +92,33 @@ public class LookAndShoot : MonoBehaviour
         {
             currentWeapon.Reload();
         }
+    }
+    public void GetNewWeapon(Weapon newWeapon)
+    {
+        Debug.Log($"Getting {newWeapon.WeaponName}");
+        if (currentWeapon.WeaponName == newWeapon.WeaponName)
+        {
+            Debug.Log($"Already got {newWeapon.WeaponName} as current weapon, refilling");
+            currentWeapon.AmmoCount = newWeapon.AmmoCount;
+            currentWeapon.AmmoCountInMag = newWeapon.AmmoCountInMag;
+            AmmoCounter.ammoCountChanged.Invoke(currentWeapon.AmmoCountInMag,currentWeapon.AmmoCount);
+            return;
+        }
+        if (secondaryWeapon.WeaponName == newWeapon.WeaponName)
+        {
+            Debug.Log($"Already got {newWeapon.WeaponName} as secondary weapon, refilling");
+            secondaryWeapon.AmmoCount = newWeapon.AmmoCount;
+            secondaryWeapon.AmmoCountInMag = newWeapon.AmmoCountInMag;
+            return;
+        }
+        Debug.Log($"Replacing current weapon with {newWeapon.WeaponName}");
+        newWeapon.transform.parent = weaponsParent.transform;
+        newWeapon.transform.position = currentWeaponLocation.position;
+        newWeapon.transform.rotation= currentWeaponLocation.rotation;
+        Destroy(currentWeapon.gameObject);
+        currentWeapon = newWeapon;
+        AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag, currentWeapon.AmmoCount, currentWeapon.WeaponName, currentWeapon.PreviewImage);
+        
     }
     public void SwitchWeapons(InputAction.CallbackContext context)
     {

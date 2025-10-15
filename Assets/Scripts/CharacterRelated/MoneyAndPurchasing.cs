@@ -20,7 +20,7 @@ public class MoneyAndPurchasing : MonoBehaviour
             return;
         }
         instance = this;
-        moneyUI.text = money.ToString();
+        MoneyUI.instance.onMoneyChange.Invoke(money);
     }
 
     public void AddMoney (int moneyToAdd)
@@ -30,19 +30,19 @@ public class MoneyAndPurchasing : MonoBehaviour
             if(money!=MAX_MONEY)
             {
                 money = MAX_MONEY;
-                moneyUI.text = money.ToString();
+                MoneyUI.instance.onMoneyChange.Invoke(money);
             }
             return;
         }
         money += moneyToAdd;
-        moneyUI.text = money.ToString();
+        MoneyUI.instance.onMoneyChange.Invoke(money);
     }
     public bool RemoveMoney(int moneyToRemove)
     {
-        if (moneyToRemove > money)
+        if (moneyToRemove <= money)
         {
             money -= moneyToRemove;
-            moneyUI.text = money.ToString();
+            MoneyUI.instance.onMoneyChange.Invoke(money);
             return true;
         }
         return false;

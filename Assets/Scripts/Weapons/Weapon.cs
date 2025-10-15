@@ -46,8 +46,8 @@ public abstract class Weapon : MonoBehaviour
     protected bool isAutomatic;
 
     public int Price { get => price; }
-    public int AmmoCountInMag { get => ammoCountInMag;}
-    public int AmmoCount { get => ammoCount;}
+    public int AmmoCountInMag { get => ammoCountInMag; set => ammoCount = value; }
+    public int AmmoCount { get => ammoCount; set => ammoCount = value; }
     public string WeaponName { get => weaponName;}
     public Sprite PreviewImage { get => previewImage;}
     public bool IsAutomatic { get => isAutomatic;}

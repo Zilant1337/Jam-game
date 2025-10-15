@@ -5,17 +5,27 @@ using UnityEngine.InputSystem;
 public class CharacterScript : MonoBehaviour
 {
     [SerializeField]
-    protected Health healthScript;
+    private Health healthScript;
     [SerializeField]
-    protected Movement movementScript;
+    private Movement movementScript;
     [SerializeField]
-    protected Melee meleeScript;
+    private Melee meleeScript;
     [SerializeField]
-    protected LookAndShoot lookAndShootScript;
+    private LookAndShoot lookAndShootScript;
     [SerializeField]
-    protected MoneyAndPurchasing moneyAndPurchasing;
+    private MoneyAndPurchasing moneyAndPurchasing;
+    [SerializeField]
+    private Interact interact;
 
     public static InputSystem_Actions inputSystem;
+
+    protected Health HealthScript { get => healthScript; }
+    protected Movement MovementScript { get => movementScript; }
+    protected Melee MeleeScript { get => meleeScript; }
+    protected LookAndShoot LookAndShootScript { get => lookAndShootScript; }
+    protected MoneyAndPurchasing MoneyAndPurchasing { get => moneyAndPurchasing; }
+    protected Interact Interact { get => interact; }
+
     private void Awake()
     {
         inputSystem = new InputSystem_Actions();
