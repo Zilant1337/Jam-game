@@ -12,6 +12,8 @@ public class CharacterScript : MonoBehaviour
     protected Melee meleeScript;
     [SerializeField]
     protected LookAndShoot lookAndShootScript;
+    [SerializeField]
+    protected MoneyAndPurchasing moneyAndPurchasing;
 
     public static InputSystem_Actions inputSystem;
     private void Awake()

@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 6508689458838671227}
   - component: {fileID: 2696148777525945266}
   - component: {fileID: 290708972977294056}
-  - component: {fileID: 4316238554066676965}
+  - component: {fileID: 2269706634812255648}
   - component: {fileID: 8558500486991917347}
   - component: {fileID: 1199831630519428151}
   m_Layer: 6
@@ -220,11 +220,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e206ad6643b0643a1cf622124c5026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthScript: {fileID: 4316238554066676965}
+  healthScript: {fileID: 2269706634812255648}
   movementScript: {fileID: 0}
   meleeScript: {fileID: 8558500486991917347}
   lookAndShootScript: {fileID: 0}
---- !u!114 &4316238554066676965
+  moneyAndPurchasing: {fileID: 0}
+  enemyType: 0
+--- !u!114 &2269706634812255648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,7 +235,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3391271638416811662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff596c668ddf2346a54ad8b65dcb285, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dfe781ef78ddf44ea2ad8569988c54b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MAX_HP: 100

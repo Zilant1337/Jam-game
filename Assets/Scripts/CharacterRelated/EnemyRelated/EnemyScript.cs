@@ -3,6 +3,11 @@ using UnityEngine;
 public class EnemyScript : CharacterScript
 
 {
+    [SerializeField]
+    private EnemyManager.EnemyType enemyType;
+
+    public EnemyManager.EnemyType EnemyType { get => enemyType; }
+
     void Start()
     {
         

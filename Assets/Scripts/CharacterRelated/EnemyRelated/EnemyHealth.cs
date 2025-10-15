@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+public class EnemyHealth : Health
+{
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        healthBarScript.UpdateHealthBar(hp / MAX_HP);
+    }
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        EnemyManager.instance.onEnemyDeath.Invoke(this.GetComponent<EnemyScript>().EnemyType);
+    }
+}
+
+

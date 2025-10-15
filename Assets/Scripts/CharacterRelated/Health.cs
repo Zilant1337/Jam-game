@@ -1,4 +1,5 @@
 using System;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -21,7 +22,7 @@ public class Health : MonoBehaviour
     {
         
     }
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         // Функция, отвечающая за получение урона и смерть, если здоровье закончилось
         if(hp - damage > 0)
@@ -30,8 +31,11 @@ public class Health : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            OnDeath();
         }
-        healthBarScript.UpdateHealthBar(hp / MAX_HP);
+    }
+    protected virtual void OnDeath()
+    {
+        Destroy(this.gameObject);
     }
 }
