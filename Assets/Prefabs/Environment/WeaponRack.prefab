@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4028815169293048243}
-  - component: {fileID: 5024439833236446821}
+  - component: {fileID: 853769607547531724}
   m_Layer: 5
   m_Name: WeaponRackUI
   m_TagString: Untagged
@@ -310,7 +310,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5024439833236446821
+--- !u!114 &853769607547531724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,10 +319,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1409197978851236657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d31e6fdc36c4fa641aff452e1fb36fdb, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c9a3971b67a35a47bffe6a2d7d7dc77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRackText: {fileID: 2828355475538561518}
+  paidInteractableText: {fileID: 2828355475538561518}
 --- !u!1 &2557378636727535863
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,8 +478,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateOnTrigger: 0
   interaction: 0
+  price: 0
+  paidInteractableUI: {fileID: 853769607547531724}
   weaponPrefabTransform: {fileID: 2733513669338813645, guid: 835584a217a584b4394da8c1e9b4ad52, type: 3}
-  weaponRackUI: {fileID: 5024439833236446821}
   weaponPositionTransform: {fileID: 4625084623946346388}
   weaponRespawnTime: 5
 --- !u!1 &7481673036041325540

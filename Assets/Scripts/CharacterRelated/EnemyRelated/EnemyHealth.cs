@@ -14,8 +14,12 @@ public class EnemyHealth : Health
     }
     protected override void OnDeath()
     {
-        Destroy(this.gameObject);
-        EnemyManager.instance.onEnemyDeath.Invoke(this.GetComponent<EnemyScript>().EnemyType,this.transform);
+        if(!isDead)
+        {
+            isDead = true;
+            Destroy(this.gameObject);
+            EnemyManager.instance.onEnemyDeath.Invoke(this.GetComponent<EnemyScript>().EnemyType, this.transform);
+        }
     }
 }
 

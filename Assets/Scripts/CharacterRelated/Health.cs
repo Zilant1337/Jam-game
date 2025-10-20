@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     protected float hp;
     [SerializeField]
     protected HealthBar healthBarScript;
+    protected bool isDead = false;
 
     void Start()
     {
@@ -31,11 +32,16 @@ public class Health : MonoBehaviour
         }
         else
         {
+            hp = 0;
             OnDeath();
         }
     }
     protected virtual void OnDeath()
     {
-        Destroy(this.gameObject);
+        if(!isDead)
+        {
+            isDead = true;
+            Destroy(this.gameObject);
+        }
     }
 }

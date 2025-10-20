@@ -1,36 +1,29 @@
 using UnityEngine;
 
-public class WeaponRack : Interactable
+public class WeaponRack : PaidInteractable
 {
     [SerializeField]
     Transform weaponPrefabTransform;
     Weapon weapon;
-    [SerializeField]
-    WeaponRackUI weaponRackUI;
     [SerializeField]
     Transform weaponPositionTransform;
     [SerializeField]
     float weaponRespawnTime;
     float weaponRespawnTimer;
     bool weaponSpawned;
-    public override void InteractAction()
+
+    protected override void PaidAction()
     {
-        if (MoneyAndPurchasing.instance.RemoveMoney(weapon.Price))
-        {
-            Debug.Log($"Removed {weapon.Price}");
-            LookAndShoot.instance.GetNewWeapon(weapon);
-            weaponSpawned = false;
-        }
-        else
-        {
-            Debug.Log($"Not enough money!");
-        }
+        LookAndShoot.instance.GetNewWeapon(weapon);
+        weaponSpawned = false;
     }
 
     void Start()
     {
         weaponRespawnTimer = 0;
         SpawnWeapon();
+        if (price == 0)
+            price = weapon.Price;
     }
 
     // Update is called once per frame
@@ -51,7 +44,7 @@ public class WeaponRack : Interactable
         Transform weaponTransform = Instantiate(weaponPrefabTransform, weaponPositionTransform.position, weaponPositionTransform.rotation, this.transform);
         weapon = weaponTransform.GetComponent<Weapon>();
         weaponSpawned = true;
-        weaponRackUI.UpdateWeaponRackText(weapon);
+        paidInteractableUI.UpdatePaidInteractableText(weapon.WeaponName,weapon.Price.ToString());
     }
     public override string ToString()
     {
