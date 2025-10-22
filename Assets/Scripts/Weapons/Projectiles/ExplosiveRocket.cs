@@ -8,7 +8,7 @@ public class ExplosiveRocket : Rocket
     private void OnTriggerEnter(Collider other)
     {
         Health health = other.GetComponent<Health>();
-        if (health != null)
+        if (health != null && !healthsToDamage.Contains(health))
         {
             healthsToDamage.Add(health);
         }
