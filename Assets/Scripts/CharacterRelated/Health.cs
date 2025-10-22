@@ -15,7 +15,8 @@ public class Health : MonoBehaviour
     void Start()
     {
         hp = MAX_HP;
-        healthBarScript.UpdateHealthBar(hp / MAX_HP);
+        if (healthBarScript != null)
+            healthBarScript.UpdateHealthBar(hp / MAX_HP);
     }
 
     // Update is called once per frame
@@ -29,10 +30,14 @@ public class Health : MonoBehaviour
         if(hp - damage > 0)
         {
             hp -= damage;
+            if (healthBarScript != null)
+                healthBarScript.UpdateHealthBar(hp / MAX_HP);
         }
         else
         {
             hp = 0;
+            if (healthBarScript != null)
+                healthBarScript.UpdateHealthBar(hp / MAX_HP);
             OnDeath();
         }
     }

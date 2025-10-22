@@ -4308,6 +4308,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 251305316}
     m_Modifications:
     - target: {fileID: -541412216844005164, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+      propertyPath: MAX_HP
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: -541412216844005164, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: healthBarScript
       value: 
       objectReference: {fileID: 456249566}
