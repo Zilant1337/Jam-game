@@ -42,11 +42,11 @@ public class Rocket : Projectile
         if(selfDestructTimer>= timeToSelfDestruct)
         {
             Destroy(gameObject);
+            return;
         }
         if (currentSpeed < maxProjectileSpeed)
         {
-            float speedDifference = maxProjectileSpeed - currentSpeed;
-            projectileRigidbody.AddRelativeForce(acceleration>speedDifference?Vector3.forward * speedDifference* Time.fixedDeltaTime: Vector3.forward * acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
+            projectileRigidbody.AddRelativeForce(Vector3.forward * acceleration, ForceMode.Acceleration);
             Debug.Log($"Adding {acceleration} force, Projectile speed = {currentSpeed}");
         }
         
