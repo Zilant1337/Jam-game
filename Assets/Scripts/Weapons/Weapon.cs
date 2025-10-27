@@ -130,10 +130,8 @@ public abstract class Weapon : MonoBehaviour
     {
         // Добавляем случайный разброс при стрельбе
         Vector3 direction = tracerEmmiterPoint.forward;
-        Debug.DrawRay(tracerEmmiterPoint.position,direction,Color.red,5);
         Quaternion rotation = Quaternion.AngleAxis(Random.Range(-shotSpread, shotSpread), Vector3.up);
         direction = rotation * direction;
-        Debug.DrawRay(tracerEmmiterPoint.position, direction, Color.black, 5);
         return direction.normalized;
     }
     // Процедуры запуска трейсера от выстрела

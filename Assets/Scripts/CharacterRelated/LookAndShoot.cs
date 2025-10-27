@@ -105,27 +105,37 @@ public class LookAndShoot : MonoBehaviour
             AmmoCounter.ammoCountChanged.Invoke(currentWeapon.AmmoCountInMag,currentWeapon.AmmoCount);
             return;
         }
-        if (secondaryWeapon.WeaponName == newWeapon.WeaponName)
-        {
-            Debug.Log($"Already got {newWeapon.WeaponName} as secondary weapon, refilling");
-            secondaryWeapon.AmmoCount = secondaryWeapon.MAX_AMMO;
-            secondaryWeapon.AmmoCountInMag = secondaryWeapon.MagSize;
-            return;
-        }
-        Debug.Log($"Replacing current weapon with {newWeapon.WeaponName}");
-        newWeapon.transform.parent = weaponsParent.transform;
-        newWeapon.transform.position = currentWeaponLocation.position;
-        newWeapon.transform.rotation= currentWeaponLocation.rotation;
-        Destroy(currentWeapon.gameObject);
-        currentWeapon = newWeapon;
-        AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag, currentWeapon.AmmoCount, currentWeapon.WeaponName, currentWeapon.PreviewImage);
         
+        if(secondaryWeapon!=null){
+            if (secondaryWeapon.WeaponName == newWeapon.WeaponName)
+            {
+                Debug.Log($"Already got {newWeapon.WeaponName} as secondary weapon, refilling");
+                secondaryWeapon.AmmoCount = secondaryWeapon.MAX_AMMO;
+                secondaryWeapon.AmmoCountInMag = secondaryWeapon.MagSize;
+                return;
+            }
+            Debug.Log($"Replacing current weapon with {newWeapon.WeaponName}");
+            newWeapon.transform.parent = weaponsParent.transform;
+            newWeapon.transform.position = currentWeaponLocation.position;
+            newWeapon.transform.rotation = currentWeaponLocation.rotation;
+            Destroy(currentWeapon.gameObject);
+            currentWeapon = newWeapon;
+            AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag, currentWeapon.AmmoCount, currentWeapon.WeaponName, currentWeapon.PreviewImage);
+        }
+        else
+        {
+            Debug.Log($"Adding {newWeapon.WeaponName} as a secondary weapon");
+            newWeapon.transform.parent = weaponsParent.transform;
+            newWeapon.transform.position = secondaryWeaponLocation.position;
+            newWeapon.transform.rotation = secondaryWeaponLocation.rotation;
+            secondaryWeapon = newWeapon;
+        }
     }
     public void SwitchWeapons(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            if (currentWeapon.ReloadTimer == 0) 
+            if (currentWeapon.ReloadTimer == 0 && secondaryWeapon!=null) 
             {
                 // Меняем основное и дополнительное оружия местами
                 currentWeapon.transform.position = secondaryWeaponLocation.position;

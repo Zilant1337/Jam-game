@@ -24,18 +24,23 @@ public class ExplosiveRocket : Rocket
     }
     protected override List<Health> GetHealthsToDamage(Collision collision)
     {
+        Health health = collision.gameObject.GetComponent<Health>();
+        if (health != null)
+        {
+            healthsToDamage.Add(health);
+        }
         return healthsToDamage;
     }
     void Start()
     {
         selfDestructTimer = 0;
-        isAccellerating = true;
         canDamage = true;
         healthsToDamage = new List<Health>();
+        isMoving = true;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }

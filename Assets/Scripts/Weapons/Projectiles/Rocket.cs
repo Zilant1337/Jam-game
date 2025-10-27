@@ -4,8 +4,9 @@ using System.Linq;
 public class Rocket : Projectile
 {
     [SerializeField]
-    protected float projectileSpeed;
+    protected float maxProjectileSpeed;
     [SerializeField]
+    protected float startingSpeed;
     protected float currentSpeed;
     [SerializeField]
     protected float acceleration;
@@ -18,30 +19,41 @@ public class Rocket : Projectile
     [SerializeField]
     protected float timeToSelfDestruct;
     protected float selfDestructTimer;
-    protected bool isAccellerating;
     protected bool canDamage;
+    protected bool isUpToStartingSpeed;
+    protected bool isMoving;
 
     protected override void Move()
     {
+        if (!isMoving)
+        {
+            projectileRigidbody.linearVelocity = Vector3.zero;
+            return;
+        }
+        currentSpeed = projectileRigidbody.linearVelocity.magnitude;
+        if (!isUpToStartingSpeed)
+        {
+            projectileRigidbody.AddRelativeForce(Vector3.forward * startingSpeed, ForceMode.VelocityChange);
+            Debug.Log($"Added {Vector3.forward * startingSpeed} of speed to projectile to get it going. Actual velocity = {projectileRigidbody.linearVelocity}");
+            isUpToStartingSpeed = true;
+            return;
+        }
         selfDestructTimer += Time.deltaTime;
         if(selfDestructTimer>= timeToSelfDestruct)
         {
             Destroy(gameObject);
         }
-        if (isAccellerating)
+        if (currentSpeed < maxProjectileSpeed)
         {
-            currentSpeed += acceleration * Time.deltaTime;
+            float speedDifference = maxProjectileSpeed - currentSpeed;
+            projectileRigidbody.AddRelativeForce(acceleration>speedDifference?Vector3.forward * speedDifference* Time.fixedDeltaTime: Vector3.forward * acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
+            Debug.Log($"Adding {acceleration} force, Projectile speed = {currentSpeed}");
         }
-        if (currentSpeed > projectileSpeed)
-        {
-            currentSpeed = projectileSpeed;
-            isAccellerating = false;
-        }
-        Debug.Log($"Adding {currentSpeed} force");
-        projectileRigidbody.AddRelativeForce(Vector3.forward*currentSpeed*1000*Time.deltaTime,ForceMode.Acceleration);
+        
     }
     protected void OnCollisionEnter(Collision collision)
     {
+        isMoving = false;
         Explode(collision);
     }
     protected virtual void Explode(Collision collision)
@@ -72,12 +84,13 @@ public class Rocket : Projectile
     void Start()
     {
         selfDestructTimer = 0;
-        isAccellerating = true;
         canDamage = true;
+        isUpToStartingSpeed = false;
+        isMoving = true;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }

@@ -12,7 +12,7 @@ public class ProjectileGun : Weapon
 
             Vector3 shotDirection = GetShotDirection();
 
-            Instantiate(projectilePrefabTransform,tracerEmmiterPoint.position,tracerEmmiterPoint.rotation);
+            Instantiate(projectilePrefabTransform,tracerEmmiterPoint.position,Quaternion.LookRotation(shotDirection,Vector3.up));
 
             // Отнимаем количество патронов в магазине
             ammoCountInMag--;
