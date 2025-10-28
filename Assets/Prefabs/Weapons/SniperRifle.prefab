@@ -101,6 +101,7 @@ MonoBehaviour:
   isAutomatic: 0
   reloadAudioSource: {fileID: 8132128522099514901}
   shootAudioSource: {fileID: -551212196967545214}
+  shootSoundPitchRange: 0.5
   piercing: 1
 --- !u!82 &8132128522099514901
 AudioSource:

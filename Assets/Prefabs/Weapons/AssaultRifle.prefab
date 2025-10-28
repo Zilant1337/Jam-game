@@ -70,6 +70,7 @@ MonoBehaviour:
   isAutomatic: 1
   reloadAudioSource: {fileID: 3660803756493005730}
   shootAudioSource: {fileID: 5804543373647723081}
+  shootSoundPitchRange: 0.5
   projectilePrefabTransform: {fileID: 6029059439039337058, guid: 9e186cadd428e7146b85361a5e17990c, type: 3}
 --- !u!82 &3660803756493005730
 AudioSource:

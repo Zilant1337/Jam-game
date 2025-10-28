@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HitscanGun : Weapon
@@ -13,7 +12,10 @@ public class HitscanGun : Weapon
         // Выстрел через кастинг лучей
         if (ammoCountInMag > 0 && cooldownTimer ==0 && reloadTimer == 0)
         {
+            float resetPitch = shootAudioSource.pitch;
+            shootAudioSource.pitch += UnityEngine.Random.Range(-shootSoundPitchRange, shootSoundPitchRange);
             shootAudioSource.PlayOneShot(shootAudioSource.clip);
+            shootAudioSource.pitch = resetPitch;
             // Запуск визуального эффекта вспышки при выстреле
             muzzleFlashParticleSystem.Play();
             

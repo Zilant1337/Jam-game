@@ -49,6 +49,8 @@ public abstract class Weapon : MonoBehaviour
     protected AudioSource reloadAudioSource;
     [SerializeField]
     protected AudioSource shootAudioSource;
+    [SerializeField]
+    protected float shootSoundPitchRange;
 
     public int Price { get => price; }
     public int AmmoCountInMag { get => ammoCountInMag; set => ammoCountInMag = value; }

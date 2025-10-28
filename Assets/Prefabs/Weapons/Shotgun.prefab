@@ -133,6 +133,7 @@ MonoBehaviour:
   isAutomatic: 0
   reloadAudioSource: {fileID: 3049107289312732740}
   shootAudioSource: {fileID: -1711545510282721612}
+  shootSoundPitchRange: 0.5
   peletsPerShot: 7
 --- !u!82 &3049107289312732740
 AudioSource:

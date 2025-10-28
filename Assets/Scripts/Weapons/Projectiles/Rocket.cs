@@ -19,6 +19,15 @@ public class Rocket : Projectile
     [SerializeField]
     protected float timeToSelfDestruct;
     protected float selfDestructTimer;
+
+    [SerializeField]
+    protected AudioSource moveSound;
+    [SerializeField]
+    protected AudioSource explodeSound;
+    [SerializeField]
+    protected float explodeSoundPitchRange;
+
+
     protected bool canDamage;
     protected bool isUpToStartingSpeed;
     protected bool isMoving;
@@ -60,6 +69,12 @@ public class Rocket : Projectile
     {
         rocketExplosionParticleSystem.transform.SetParent(null);
         rocketExplosionParticleSystem.Play();
+        if(explodeSound!=null)
+        {
+            explodeSound.transform.SetParent(null);
+            explodeSound.pitch += Random.Range(-explodeSoundPitchRange,explodeSoundPitchRange);
+            explodeSound.PlayOneShot(explodeSound.clip);
+        }
         explosionProjectileDestroyer.DestroyProjectileSystem();
         List<Health> healthsToDamage = GetHealthsToDamage(collision);
         if(canDamage)

@@ -8,7 +8,10 @@ public class Shotgun : Weapon
     {
         if (ammoCountInMag > 0 && cooldownTimer == 0 && reloadTimer == 0)
         {
+            float resetPitch = shootAudioSource.pitch;
+            shootAudioSource.pitch += UnityEngine.Random.Range(-shootSoundPitchRange, shootSoundPitchRange);
             shootAudioSource.PlayOneShot(shootAudioSource.clip);
+            shootAudioSource.pitch = resetPitch;
             // Запуск визуального эффекта вспышки при выстреле
             muzzleFlashParticleSystem.Play();
             // Несколько выстрелов за раз

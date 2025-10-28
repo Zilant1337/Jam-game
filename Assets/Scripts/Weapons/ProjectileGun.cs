@@ -8,7 +8,10 @@ public class ProjectileGun : Weapon
     {
         if (ammoCountInMag > 0 && cooldownTimer == 0 && reloadTimer == 0)
         {
+            float resetPitch = shootAudioSource.pitch;
+            shootAudioSource.pitch += UnityEngine.Random.Range(-shootSoundPitchRange, shootSoundPitchRange);
             shootAudioSource.PlayOneShot(shootAudioSource.clip);
+            shootAudioSource.pitch = resetPitch;
             muzzleFlashParticleSystem.Play();
 
             Vector3 shotDirection = GetShotDirection();
