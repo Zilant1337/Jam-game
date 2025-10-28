@@ -8,6 +8,7 @@ public class ProjectileGun : Weapon
     {
         if (ammoCountInMag > 0 && cooldownTimer == 0 && reloadTimer == 0)
         {
+            shootAudioSource.PlayOneShot(shootAudioSource.clip);
             muzzleFlashParticleSystem.Play();
 
             Vector3 shotDirection = GetShotDirection();

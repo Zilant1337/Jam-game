@@ -13,6 +13,7 @@ public class HitscanGun : Weapon
         // Выстрел через кастинг лучей
         if (ammoCountInMag > 0 && cooldownTimer ==0 && reloadTimer == 0)
         {
+            shootAudioSource.PlayOneShot(shootAudioSource.clip);
             // Запуск визуального эффекта вспышки при выстреле
             muzzleFlashParticleSystem.Play();
             

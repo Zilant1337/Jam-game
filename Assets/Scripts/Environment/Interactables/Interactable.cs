@@ -1,5 +1,3 @@
-using System;
-using UnityEditor.Compilation;
 using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour

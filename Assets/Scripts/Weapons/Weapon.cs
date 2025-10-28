@@ -45,6 +45,11 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField]
     protected bool isAutomatic;
 
+    [SerializeField]
+    protected AudioSource reloadAudioSource;
+    [SerializeField]
+    protected AudioSource shootAudioSource;
+
     public int Price { get => price; }
     public int AmmoCountInMag { get => ammoCountInMag; set => ammoCountInMag = value; }
     public int AmmoCount { get => ammoCount; set => ammoCount = value; }
@@ -101,6 +106,7 @@ public abstract class Weapon : MonoBehaviour
         {
             ReloadBar.onReloadStart.Invoke();
             reloadTimer = reloadTime;
+            reloadAudioSource.Play();
         }
     }
     // Заполнение магазина и отъём восполненного из общего пула патронов для оружия

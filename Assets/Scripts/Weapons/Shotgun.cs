@@ -8,6 +8,7 @@ public class Shotgun : Weapon
     {
         if (ammoCountInMag > 0 && cooldownTimer == 0 && reloadTimer == 0)
         {
+            shootAudioSource.PlayOneShot(shootAudioSource.clip);
             // Запуск визуального эффекта вспышки при выстреле
             muzzleFlashParticleSystem.Play();
             // Несколько выстрелов за раз
