@@ -1,17 +1,21 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 [Serializable]
-public class BulletPattern : MonoBehaviour
+public abstract class BulletPattern : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    protected List<float> volleyAngles;
+    [SerializeField]
+    protected List<float> volleyTimings;
 
-    // Update is called once per frame
-    void Update()
+    protected int releaseCounter;
+    protected float timer;
+
+    public abstract void ShootNextVolley();
+
+    protected void Start()
     {
-        
+        releaseCounter = 0;
     }
 }
