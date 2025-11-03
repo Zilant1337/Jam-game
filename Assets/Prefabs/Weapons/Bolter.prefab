@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc7dd754c1cb4142a26b614d5626b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Bolter
+  gunName: Bolter
   previewImage: {fileID: 21300000, guid: c0b38889f593d0042ab2b77aa13a7eb4, type: 3}
   muzzleFlashParticleSystem: {fileID: 7717050278392757383}
   hitLayerMask:
@@ -99,6 +99,7 @@ MonoBehaviour:
   tracerTravelTime: 0
   isInteractable: 0
   isAutomatic: 1
+  hasInfiniteAmmo: 0
   reloadAudioSource: {fileID: 3532546659932825166}
   shootAudioSource: {fileID: 2091054334274693714}
   shootSoundPitchRange: 0.5

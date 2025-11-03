@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-public class Shotgun : Weapon
+public class Shotgun : Gun
 {
     [SerializeField]
     int peletsPerShot;
     public override void Shoot()
     {
-        if (ammoCountInMag > 0 && cooldownTimer == 0 && reloadTimer == 0)
+        if ((ammoCountInMag > 0 || hasInfiniteAmmo) && cooldownTimer == 0 && reloadTimer == 0)
         {
             float resetPitch = shootAudioSource.pitch;
             shootAudioSource.pitch += UnityEngine.Random.Range(-shootSoundPitchRange, shootSoundPitchRange);

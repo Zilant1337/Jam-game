@@ -571,6 +571,7 @@ MonoBehaviour:
   moveSound: {fileID: 0}
   explodeSound: {fileID: 1581841746154871291}
   explodeSoundPitchRange: 0.5
+  dealDamageOnImpact: 1
 --- !u!135 &6471317561606762957
 SphereCollider:
   m_ObjectHideFlags: 0

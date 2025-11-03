@@ -4,7 +4,7 @@ public class WeaponRack : PaidInteractable
 {
     [SerializeField]
     Transform weaponPrefabTransform;
-    Weapon weapon;
+    Gun weapon;
     [SerializeField]
     Transform weaponPositionTransform;
     [SerializeField]
@@ -42,9 +42,9 @@ public class WeaponRack : PaidInteractable
     void SpawnWeapon()
     {
         Transform weaponTransform = Instantiate(weaponPrefabTransform, weaponPositionTransform.position, weaponPositionTransform.rotation, this.transform);
-        weapon = weaponTransform.GetComponent<Weapon>();
+        weapon = weaponTransform.GetComponent<Gun>();
         weaponSpawned = true;
-        paidInteractableUI.UpdatePaidInteractableText(weapon.WeaponName,weapon.Price.ToString());
+        paidInteractableUI.UpdatePaidInteractableText(weapon.GunName,weapon.Price.ToString());
     }
     public override string ToString()
     {

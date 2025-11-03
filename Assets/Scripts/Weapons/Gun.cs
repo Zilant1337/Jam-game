@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public abstract class Weapon : MonoBehaviour
+public abstract class Gun : MonoBehaviour
 {
     [SerializeField]
-    protected string weaponName;
+    protected string gunName;
     [SerializeField]
     protected Sprite previewImage;
     [SerializeField]
@@ -44,6 +44,10 @@ public abstract class Weapon : MonoBehaviour
     protected bool isInteractable;
     [SerializeField]
     protected bool isAutomatic;
+    [SerializeField]
+    protected bool hasInfiniteAmmo;
+
+
 
     [SerializeField]
     protected AudioSource reloadAudioSource;
@@ -55,12 +59,13 @@ public abstract class Weapon : MonoBehaviour
     public int Price { get => price; }
     public int AmmoCountInMag { get => ammoCountInMag; set => ammoCountInMag = value; }
     public int AmmoCount { get => ammoCount; set => ammoCount = value; }
-    public string WeaponName { get => weaponName;}
+    public string GunName { get => gunName;}
     public Sprite PreviewImage { get => previewImage;}
     public bool IsAutomatic { get => isAutomatic;}
     public float ReloadTimer { get => reloadTimer; }
     public int MAX_AMMO { get => m_MAX_AMMO; }
     public int MagSize { get => magSize; }
+    public bool HasInfiniteAmmo { get => hasInfiniteAmmo; }
 
     protected void Awake()
     {
@@ -104,10 +109,11 @@ public abstract class Weapon : MonoBehaviour
     // Запускаем таймер для перезарядки
     public void Reload()
     {
-        if (ammoCountInMag != magSize && ammoCount!=0)
+        if (ammoCountInMag != magSize && ammoCount!=0&&!hasInfiniteAmmo)
         {
             ReloadBar.onReloadStart.Invoke();
             reloadTimer = reloadTime;
+            // При перезарядке запускается звук
             reloadAudioSource.Play();
         }
     }

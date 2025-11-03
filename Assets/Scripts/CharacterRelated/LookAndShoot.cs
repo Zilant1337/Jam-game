@@ -18,9 +18,9 @@ public class LookAndShoot : MonoBehaviour
     [SerializeField] 
     private Transform secondaryWeaponLocation;
     [SerializeField]
-    protected Weapon currentWeapon;
+    protected Gun currentWeapon;
     [SerializeField]
-    protected Weapon secondaryWeapon;
+    protected Gun secondaryWeapon;
 
     private bool keepShooting;
     private void Awake()
@@ -36,7 +36,10 @@ public class LookAndShoot : MonoBehaviour
     void Start()
     {
         keepShooting = false;
-        AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag, currentWeapon.AmmoCount, currentWeapon.WeaponName, currentWeapon.PreviewImage);
+        if (currentWeapon.HasInfiniteAmmo)
+            AmmoCounter.weaponChanged.Invoke("\u221E", "\u221E", currentWeapon.GunName, currentWeapon.PreviewImage);
+        else
+            AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag.ToString(), currentWeapon.AmmoCount.ToString(), currentWeapon.GunName, currentWeapon.PreviewImage);
     }
     void Update()
     {
@@ -93,12 +96,12 @@ public class LookAndShoot : MonoBehaviour
             currentWeapon.Reload();
         }
     }
-    public void GetNewWeapon(Weapon newWeapon)
+    public void GetNewWeapon(Gun newWeapon)
     {
-        Debug.Log($"Getting {newWeapon.WeaponName}");
-        if (currentWeapon.WeaponName == newWeapon.WeaponName)
+        Debug.Log($"Getting {newWeapon.GunName}");
+        if (currentWeapon.GunName == newWeapon.GunName)
         {
-            Debug.Log($"Already got {newWeapon.WeaponName} as current weapon, refilling");
+            Debug.Log($"Already got {newWeapon.GunName} as current weapon, refilling");
             currentWeapon.AmmoCount = currentWeapon.MAX_AMMO;
             currentWeapon.AmmoCountInMag = currentWeapon.MagSize;
             Debug.Log($"Refilled ammo in mag to {currentWeapon.AmmoCountInMag} and total ammo to {currentWeapon.AmmoCount}");
@@ -107,24 +110,27 @@ public class LookAndShoot : MonoBehaviour
         }
         
         if(secondaryWeapon!=null){
-            if (secondaryWeapon.WeaponName == newWeapon.WeaponName)
+            if (secondaryWeapon.GunName == newWeapon.GunName)
             {
-                Debug.Log($"Already got {newWeapon.WeaponName} as secondary weapon, refilling");
+                Debug.Log($"Already got {newWeapon.GunName} as secondary weapon, refilling");
                 secondaryWeapon.AmmoCount = secondaryWeapon.MAX_AMMO;
                 secondaryWeapon.AmmoCountInMag = secondaryWeapon.MagSize;
                 return;
             }
-            Debug.Log($"Replacing current weapon with {newWeapon.WeaponName}");
+            Debug.Log($"Replacing current weapon with {newWeapon.GunName}");
             newWeapon.transform.parent = weaponsParent.transform;
             newWeapon.transform.position = currentWeaponLocation.position;
             newWeapon.transform.rotation = currentWeaponLocation.rotation;
             Destroy(currentWeapon.gameObject);
             currentWeapon = newWeapon;
-            AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag, currentWeapon.AmmoCount, currentWeapon.WeaponName, currentWeapon.PreviewImage);
+            if (currentWeapon.HasInfiniteAmmo)
+                AmmoCounter.weaponChanged.Invoke("\u221E", "\u221E", currentWeapon.GunName, currentWeapon.PreviewImage);
+            else
+                AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag.ToString(), currentWeapon.AmmoCount.ToString(), currentWeapon.GunName, currentWeapon.PreviewImage);
         }
         else
         {
-            Debug.Log($"Adding {newWeapon.WeaponName} as a secondary weapon");
+            Debug.Log($"Adding {newWeapon.GunName} as a secondary weapon");
             newWeapon.transform.parent = weaponsParent.transform;
             newWeapon.transform.position = secondaryWeaponLocation.position;
             newWeapon.transform.rotation = secondaryWeaponLocation.rotation;
@@ -143,11 +149,14 @@ public class LookAndShoot : MonoBehaviour
                 secondaryWeapon.transform.position = currentWeaponLocation.position;
                 secondaryWeapon.transform.rotation = currentWeaponLocation.rotation;
                 // Переназначаем основное и запасное оружие в коде
-                Weapon temp = currentWeapon;
+                Gun temp = currentWeapon;
                 currentWeapon = secondaryWeapon;
                 secondaryWeapon = temp;
                 // Вызываем событие, меняющее элемент интерфейса
-                AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag, currentWeapon.AmmoCount, currentWeapon.WeaponName, currentWeapon.PreviewImage);
+                if (currentWeapon.HasInfiniteAmmo)
+                    AmmoCounter.weaponChanged.Invoke("\u221E", "\u221E", currentWeapon.GunName, currentWeapon.PreviewImage);
+                else
+                    AmmoCounter.weaponChanged.Invoke(currentWeapon.AmmoCountInMag.ToString(), currentWeapon.AmmoCount.ToString(), currentWeapon.GunName, currentWeapon.PreviewImage);
             }
             
         }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class HitscanGun : Weapon
+public class HitscanGun : Gun
 {
     [SerializeField]
     protected bool piercing;
     public override void Shoot()
     {
         // Выстрел через кастинг лучей
-        if (ammoCountInMag > 0 && cooldownTimer ==0 && reloadTimer == 0)
+        if ((ammoCountInMag > 0 || hasInfiniteAmmo) && cooldownTimer ==0 && reloadTimer == 0)
         {
             float resetPitch = shootAudioSource.pitch;
             shootAudioSource.pitch += UnityEngine.Random.Range(-shootSoundPitchRange, shootSoundPitchRange);

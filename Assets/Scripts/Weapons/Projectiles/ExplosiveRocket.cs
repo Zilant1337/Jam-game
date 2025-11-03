@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ExplosiveRocket : Rocket
 {
+    [SerializeField]
+    protected bool dealDamageOnImpact;
     protected List<Health> healthsToDamage;
     private void OnTriggerEnter(Collider other)
     {
@@ -25,7 +27,7 @@ public class ExplosiveRocket : Rocket
     protected override List<Health> GetHealthsToDamage(Collision collision)
     {
         Health health = collision.gameObject.GetComponent<Health>();
-        if (health != null)
+        if (health != null && dealDamageOnImpact)
         {
             healthsToDamage.Add(health);
         }
