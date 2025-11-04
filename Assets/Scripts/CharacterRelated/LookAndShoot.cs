@@ -99,7 +99,7 @@ public class LookAndShoot : MonoBehaviour
     public void GetNewWeapon(Gun newWeapon)
     {
         Debug.Log($"Getting {newWeapon.GunName}");
-        if (currentWeapon.GunName == newWeapon.GunName)
+        if (currentWeapon.GunName == newWeapon.GunName && !currentWeapon.HasInfiniteAmmo)
         {
             Debug.Log($"Already got {newWeapon.GunName} as current weapon, refilling");
             currentWeapon.AmmoCount = currentWeapon.MAX_AMMO;
@@ -110,7 +110,7 @@ public class LookAndShoot : MonoBehaviour
         }
         
         if(secondaryWeapon!=null){
-            if (secondaryWeapon.GunName == newWeapon.GunName)
+            if (secondaryWeapon.GunName == newWeapon.GunName && !secondaryWeapon.HasInfiniteAmmo)
             {
                 Debug.Log($"Already got {newWeapon.GunName} as secondary weapon, refilling");
                 secondaryWeapon.AmmoCount = secondaryWeapon.MAX_AMMO;

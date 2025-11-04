@@ -31,7 +31,8 @@ public class Shotgun : Gun
                 }
             }
             ammoCountInMag--;
-            AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag, ammoCount);
+            if(!hasInfiniteAmmo)
+                AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag, ammoCount);
             cooldownTimer = timeBetweenShots;
         }
     }

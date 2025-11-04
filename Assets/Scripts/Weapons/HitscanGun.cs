@@ -80,7 +80,8 @@ public class HitscanGun : Gun
             // Отнимаем количество патронов в магазине
             ammoCountInMag--;
             // Вызываем событие обновления интерфейса
-            AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag,ammoCount);
+            if(!hasInfiniteAmmo)
+                AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag,ammoCount);
             // Запуск таймера для ограничения скорострельности
             cooldownTimer = timeBetweenShots;
         }

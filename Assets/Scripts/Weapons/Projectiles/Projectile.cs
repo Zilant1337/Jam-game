@@ -6,15 +6,27 @@ public abstract class Projectile : MonoBehaviour
     protected Rigidbody projectileRigidbody;
     [SerializeField]
     protected float damage;
+    [SerializeField]
+    protected float timeToSelfDestruct;
+    protected float selfDestructTimer;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }
     protected abstract void Move();
+    protected void ProgressSelfDestructTimer()
+    {
+        selfDestructTimer += Time.deltaTime;
+        if (selfDestructTimer >= timeToSelfDestruct)
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
 }

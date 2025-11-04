@@ -16,9 +16,7 @@ public class Rocket : Projectile
     protected ParticleSystem rocketExplosionParticleSystem;
     [SerializeField]
     protected ProjectileSystemDestroyer explosionProjectileDestroyer;
-    [SerializeField]
-    protected float timeToSelfDestruct;
-    protected float selfDestructTimer;
+
 
     [SerializeField]
     protected AudioSource moveSound;
@@ -47,12 +45,7 @@ public class Rocket : Projectile
             isUpToStartingSpeed = true;
             return;
         }
-        selfDestructTimer += Time.deltaTime;
-        if(selfDestructTimer>= timeToSelfDestruct)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        ProgressSelfDestructTimer();
         if (currentSpeed < maxProjectileSpeed)
         {
             projectileRigidbody.AddRelativeForce(Vector3.forward * acceleration, ForceMode.Acceleration);
