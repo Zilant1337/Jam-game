@@ -517,7 +517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -75, y: 74.099976}
+  m_AnchoredPosition: {x: -75, y: 74.1001}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &104856817
@@ -1987,7 +1987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 156.82825, y: 74.1}
+  m_AnchoredPosition: {x: 156.82812, y: 74.1001}
   m_SizeDelta: {x: 314, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &821865129
@@ -4665,20 +4665,88 @@ PrefabInstance:
     m_TransformParent: {fileID: 1530118583}
     m_Modifications:
     - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: volleyDelay.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: projectileSpawnDistance
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: volleyAngles.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyDelay.Array.data[1]'
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyDelay.Array.data[3]'
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[0]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[1]'
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[2]'
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[3]'
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[4]'
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: volleyDelay.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: projectileSpawnDistance
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: volleyAngles.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: 'volleyDelay.Array.data[1]'
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: 'volleyDelay.Array.data[2]'
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyDelay.Array.data[3]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyDelay.Array.data[4]'
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[1]'
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[2]'
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[3]'
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[4]'
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2398742862859173898, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4703,6 +4771,42 @@ PrefabInstance:
     - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: m_MAX_AMMO
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: isAutomatic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: hasInfiniteAmmo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: patternOrder.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: patternDelays.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'patternOrder.Array.data[2]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'patternOrder.Array.data[3]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'patternDelays.Array.data[1]'
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'patternDelays.Array.data[2]'
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'patternDelays.Array.data[3]'
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5802401702211880581, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: m_LocalPosition.y

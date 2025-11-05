@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 284267813506918174}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,14 +46,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volleyAngles:
   - -15
-  - 0
   - 15
+  - -7
+  - 7
+  - 0
   volleyDelay:
   - 0
   - 0
+  - 0.05
   - 0
+  - 0.05
   projectilePrefabTransform: {fileID: 6850517664999434254, guid: 67a498a9e8ddac044a1d80c31502db59, type: 3}
-  projectileSpawnDistance: 0.2
+  projectileSpawnDistance: 1
 --- !u!1 &4201263515693730542
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,9 +117,9 @@ MonoBehaviour:
     m_Bits: 192
   worldWeaponParent: {fileID: 0}
   tracerEmmiterPoint: {fileID: 2409863813131092471}
-  price: 0
-  m_MAX_AMMO: 0
-  magSize: 0
+  price: 5000
+  m_MAX_AMMO: 50
+  magSize: 10
   damagePerBullet: 0
   timeBetweenShots: 0
   reloadTime: 2
@@ -123,18 +127,20 @@ MonoBehaviour:
   bulletTracerRenderer: {fileID: 0}
   tracerTravelTime: 0
   isInteractable: 0
-  isAutomatic: 0
-  hasInfiniteAmmo: 0
+  isAutomatic: 1
+  hasInfiniteAmmo: 1
   reloadAudioSource: {fileID: 5324673187346839945}
   shootAudioSource: {fileID: 7176681459916801899}
   shootSoundPitchRange: 0.5
   bulletPatterns:
   - {fileID: 2084025328501994922}
   - {fileID: 196359166167578116}
-  patternOrder: 0000000001000000
+  patternOrder: 00000000010000000100000000000000
   patternDelays:
   - 0.5
-  - 1
+  - 0.5
+  - 0.5
+  - 0.5
 --- !u!82 &5324673187346839945
 AudioSource:
   m_ObjectHideFlags: 0
@@ -355,7 +361,7 @@ Transform:
   m_GameObject: {fileID: 4796077023454650974}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -374,13 +380,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volleyAngles:
+  - 0
   - -7
   - 7
+  - -15
+  - 15
   volleyDelay:
   - 0
+  - 0.05
+  - 0
+  - 0.05
   - 0
   projectilePrefabTransform: {fileID: 6850517664999434254, guid: 67a498a9e8ddac044a1d80c31502db59, type: 3}
-  projectileSpawnDistance: 0.2
+  projectileSpawnDistance: 1
 --- !u!1 &6348999586459620365
 GameObject:
   m_ObjectHideFlags: 0

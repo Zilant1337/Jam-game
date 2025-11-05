@@ -26,10 +26,12 @@ public class PatternGun : Gun
 
             muzzleFlashParticleSystem.Play();
 
-            bulletPatterns[patternCounter].Shoot();
+            bulletPatterns[patternOrder[patternCounter]].Shoot();
 
             ammoCountInMag--;
-            patternCounter = (patternCounter+1)%bulletPatterns.Count;
+            if (!hasInfiniteAmmo)
+                AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag, ammoCount);
+            patternCounter = (patternCounter+1)%patternOrder.Count;
             cooldownTimer = patternDelays[patternCounter];
         }
     }
