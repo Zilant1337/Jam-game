@@ -4672,6 +4672,14 @@ PrefabInstance:
       propertyPath: projectileSpawnDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyDelay.Array.data[1]'
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyDelay.Array.data[2]'
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2398742862859173898, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.15

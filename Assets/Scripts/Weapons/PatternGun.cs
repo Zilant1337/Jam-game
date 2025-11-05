@@ -28,6 +28,7 @@ public class PatternGun : Gun
 
             bulletPatterns[patternCounter].Shoot();
 
+            ammoCountInMag--;
             patternCounter = (patternCounter+1)%bulletPatterns.Count;
             cooldownTimer = patternDelays[patternCounter];
         }
