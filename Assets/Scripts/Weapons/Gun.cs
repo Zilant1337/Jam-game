@@ -74,11 +74,6 @@ public abstract class Gun : MonoBehaviour
         cooldownTimer = 0;
         reloadTimer = 0;
     }
-
-    protected void Start()
-    {
-        
-    }
     protected void Update()
     {
         // Таймер для ограничения темпа стрельбы

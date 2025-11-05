@@ -24,6 +24,7 @@ public abstract class BulletPattern : MonoBehaviour
 
     protected void Start()
     {
+        isShooting = false;
         volleyCounter = 0;
         timer = volleyDelay[volleyCounter];
     }
@@ -40,7 +41,10 @@ public abstract class BulletPattern : MonoBehaviour
             if (timer == 0)
             {
                 if (volleyCounter < volleyAngles.Count)
+                {
                     ShootNextVolley();
+                    timer = volleyDelay[volleyCounter];
+                }
                 else
                 {
                     volleyCounter = 0;
