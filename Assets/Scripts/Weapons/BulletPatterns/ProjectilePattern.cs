@@ -1,23 +1,18 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ProjectilePattern : BulletPattern
 {
     [SerializeField]
     protected Transform projectilePrefabTransform;
-    public override void ShootNextVolley()
+    protected override void ShootNextVolley()
     {
-        throw new System.NotImplementedException();
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Vector3 direction = transform.forward;
+        Quaternion rotation = Quaternion.AngleAxis(volleyAngles[volleyCounter], Vector3.up);
+        direction = rotation * direction;
+        direction = direction.normalized;
+        Instantiate(projectilePrefabTransform, transform.position, Quaternion.LookRotation(direction, Vector3.up));
+        volleyCounter++;
+        timer = volleyDelay[volleyCounter];
     }
 }
