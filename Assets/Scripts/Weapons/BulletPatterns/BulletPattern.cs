@@ -4,8 +4,10 @@ using UnityEngine;
 [Serializable]
 public abstract class BulletPattern : MonoBehaviour
 {
+    // Углы, под которыми выпускаются снаряды
     [SerializeField]
     protected List<float> volleyAngles;
+    // Задержка перед выпуском следующего снаряда
     [SerializeField]
     protected List<float> volleyDelay;
 
@@ -40,6 +42,7 @@ public abstract class BulletPattern : MonoBehaviour
             }
             if (timer == 0)
             {
+                // Пока не закончился отстрел паттерна, производим выстрелы
                 if (volleyCounter < volleyAngles.Count)
                 {
                     ShootNextVolley();

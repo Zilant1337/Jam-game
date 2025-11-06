@@ -56,7 +56,7 @@ MonoBehaviour:
   - 0.05
   - 0
   - 0.05
-  projectilePrefabTransform: {fileID: 6850517664999434254, guid: 67a498a9e8ddac044a1d80c31502db59, type: 3}
+  projectilePrefabTransform: {fileID: 6029059439039337058, guid: 9e186cadd428e7146b85361a5e17990c, type: 3}
   projectileSpawnDistance: 1
 --- !u!1 &4201263515693730542
 GameObject:
@@ -94,7 +94,9 @@ Transform:
   - {fileID: 4633615046361269128}
   - {fileID: 2409863813131092471}
   - {fileID: 5802401702211880581}
+  - {fileID: 2832861284161104243}
   - {fileID: 2398742862859173898}
+  - {fileID: 7489973290215176324}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5713664684377070719
@@ -134,8 +136,10 @@ MonoBehaviour:
   shootSoundPitchRange: 0.5
   bulletPatterns:
   - {fileID: 2084025328501994922}
+  - {fileID: 2284462835290631641}
   - {fileID: 196359166167578116}
-  patternOrder: 00000000010000000100000000000000
+  - {fileID: 8778940405757901922}
+  patternOrder: 00000000010000000200000003000000
   patternDelays:
   - 0.5
   - 0.5
@@ -335,6 +339,64 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4333017990329803636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2832861284161104243}
+  - component: {fileID: 2284462835290631641}
+  m_Layer: 0
+  m_Name: ForkPattern
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2832861284161104243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4333017990329803636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8000214131494152400}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2284462835290631641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4333017990329803636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c677ce940ff67e4e92ed7c22f466f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volleyAngles:
+  - 0
+  - -7
+  - 7
+  - -15
+  - 15
+  volleyDelay:
+  - 0
+  - 0.05
+  - 0
+  - 0.05
+  - 0
+  projectilePrefabTransform: {fileID: 6029059439039337058, guid: 9e186cadd428e7146b85361a5e17990c, type: 3}
+  projectileSpawnDistance: 1
 --- !u!1 &4796077023454650974
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +408,7 @@ GameObject:
   - component: {fileID: 2398742862859173898}
   - component: {fileID: 196359166167578116}
   m_Layer: 0
-  m_Name: ForkPattern
+  m_Name: WedgePattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,17 +442,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volleyAngles:
-  - 0
-  - -7
-  - 7
   - -15
+  - -7
+  - 0
+  - 7
   - 15
   volleyDelay:
   - 0
   - 0.05
-  - 0
   - 0.05
-  - 0
+  - 0.05
+  - 0.05
   projectilePrefabTransform: {fileID: 6850517664999434254, guid: 67a498a9e8ddac044a1d80c31502db59, type: 3}
   projectileSpawnDistance: 1
 --- !u!1 &6348999586459620365
@@ -424,6 +486,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8000214131494152400}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9053093382673176577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7489973290215176324}
+  - component: {fileID: 8778940405757901922}
+  m_Layer: 0
+  m_Name: WedgePattern2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7489973290215176324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9053093382673176577}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8000214131494152400}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8778940405757901922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9053093382673176577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c677ce940ff67e4e92ed7c22f466f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volleyAngles:
+  - 15
+  - 7
+  - 0
+  - -7
+  - -15
+  volleyDelay:
+  - 0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  projectilePrefabTransform: {fileID: 6850517664999434254, guid: 67a498a9e8ddac044a1d80c31502db59, type: 3}
+  projectileSpawnDistance: 1
 --- !u!1001 &4633615046361143566
 PrefabInstance:
   m_ObjectHideFlags: 0

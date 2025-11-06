@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PatternGun : Gun
 {
+    // Список паттернов, которые можно применять в определённом порядке
     [SerializeField]
     List<BulletPattern> bulletPatterns;
+    // Порядок паттернов
     [SerializeField]
     List<int> patternOrder;
+    // Задержки после отстрела каждого паттерна
     [SerializeField]
     List<float> patternDelays;
     protected int patternCounter;
