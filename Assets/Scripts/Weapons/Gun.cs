@@ -74,10 +74,16 @@ public abstract class Gun : MonoBehaviour
         cooldownTimer = 0;
         reloadTimer = 0;
     }
-    protected void Update()
+    protected virtual void Update()
     {
         // Таймер для ограничения темпа стрельбы
-        if (cooldownTimer!=0)
+        ProgressCooldown();
+        // Таймер для ограничения стрельбы и смены оружия при перезарядки
+        ProgressReloadTimer();
+    }
+    protected virtual void ProgressCooldown()
+    {
+        if (cooldownTimer != 0)
         {
             cooldownTimer -= Time.deltaTime;
             if (cooldownTimer < 0)
@@ -85,16 +91,18 @@ public abstract class Gun : MonoBehaviour
                 cooldownTimer = 0;
             }
         }
-        // Таймер для ограничения стрельбы и смены оружия при перезарядки
+    }
+    protected virtual void ProgressReloadTimer()
+    {
         if (reloadTimer != 0)
         {
-            ReloadBar.onReload.Invoke(1-reloadTimer/reloadTime);
+            ReloadBar.onReload.Invoke(1 - reloadTimer / reloadTime);
             reloadTimer -= Time.deltaTime;
             if (reloadTimer <= 0)
             {
                 FillAmmo();
                 ReloadBar.onReloadEnd.Invoke();
-                AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag,ammoCount);
+                AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag, ammoCount);
                 reloadTimer = 0;
             }
         }
@@ -131,10 +139,7 @@ public abstract class Gun : MonoBehaviour
         // Выброс оружия
         transform.parent = worldWeaponParent.transform;
     }
-    public void PickUp(CharacterScript character)
-    {
-
-    }
+    
     protected Vector3 GetShotDirection()
     {
         // Добавляем случайный разброс при стрельбе

@@ -7,10 +7,29 @@ public class ExplosiveRocket : Rocket
     [SerializeField]
     protected bool dealDamageOnImpact;
     protected List<Health> healthsToDamage;
+    protected override void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"{other.gameObject.name} entered {this.name} collider/trigger");
+        Health health = other.GetComponent<Health>();
+        if (health != null)
+        {
+            AddHealthToDamage(health);
+        }
+    }
+    protected void OnTriggerExit(Collider other)
+    {
+        Debug.Log($"{other.gameObject.name} exited {this.name} collider/trigger");
+        Health health = other.GetComponent<Health>();
+        if (health != null)
+        {
+            RemoveHealthToDamage(health);
+        }
+
+    }
     protected override List<Health> GetHealthsToDamage(Collider collision)
     {
         Health health = collision.gameObject.GetComponent<Health>();
-        if (health != null && dealDamageOnImpact)
+        if (health != null && dealDamageOnImpact && ToDamage(health))
         {
             healthsToDamage.Add(health);
         }
@@ -27,6 +46,7 @@ public class ExplosiveRocket : Rocket
     {
         if (!healthsToDamage.Contains(health))
         {
+            Debug.Log($"{health.gameObject.name} added to healths to damage!");
             healthsToDamage.Add(health);
         }
     }
@@ -34,6 +54,7 @@ public class ExplosiveRocket : Rocket
     {
         if (healthsToDamage.Contains(health))
         {
+            Debug.Log($"{health.gameObject.name} exited the explosion range");
             healthsToDamage.Remove(health);
         }
     }

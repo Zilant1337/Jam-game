@@ -55,7 +55,11 @@ public class Rocket : Projectile
         }
         
     }
-    protected void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
+    {
+        OnCollision(other);
+    }
+    public virtual void OnCollision(Collider other)
     {
         bool explode = false;
         foreach (string tag in tagsToHit)
@@ -85,7 +89,6 @@ public class Rocket : Projectile
             return;
         }
     }
-
     protected virtual void Explode(Collider collision)
     {
         rocketExplosionParticleSystem.transform.SetParent(null);
@@ -102,6 +105,30 @@ public class Rocket : Projectile
             DealDamage(healthsToDamage);
         Destroy(this.gameObject);
     }
+    protected bool ToDamage(Health other)
+    {
+        bool toDamage = false;
+        foreach (string tag in tagsToHit)
+        {
+            if (other.gameObject.CompareTag(tag))
+            {
+                toDamage = true;
+                break;
+            }
+        }
+        if (toDamage)
+        {
+            foreach (string tag2 in tagsToIgnore)
+            {
+                if (other.gameObject.CompareTag(tag2))
+                {
+                    toDamage = false;
+                    break;
+                }
+            }
+        }
+        return toDamage;
+    }
     protected virtual List<Health> GetHealthsToDamage(Collider collision)
     {
         Health enemyHealth = collision.gameObject.GetComponent<Health>();
@@ -112,8 +139,10 @@ public class Rocket : Projectile
         canDamage = false;
         foreach (Health health in healthList)
         {
+
             if (health != null)
-                health.TakeDamage(damage);
+                if(ToDamage(health))
+                    health.TakeDamage(damage);
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created

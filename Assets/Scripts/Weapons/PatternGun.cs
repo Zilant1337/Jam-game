@@ -14,9 +14,11 @@ public class PatternGun : Gun
     [SerializeField]
     List<float> patternDelays;
     protected int patternCounter;
+    protected bool finishedShooting;
     private void Start()
     {
         patternCounter = 0;
+        finishedShooting = true;
     }
     public override void Shoot()
     {
@@ -31,11 +33,23 @@ public class PatternGun : Gun
 
             bulletPatterns[patternOrder[patternCounter]].Shoot();
 
+            finishedShooting = false;
             ammoCountInMag--;
             if (!hasInfiniteAmmo)
                 AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag, ammoCount);
             patternCounter = (patternCounter+1)%patternOrder.Count;
             cooldownTimer = patternDelays[patternCounter];
         }
+    }
+    protected override void ProgressCooldown()
+    {
+        if (finishedShooting)
+        {
+            base.ProgressCooldown();
+        }
+    }
+    public void FinishPattern()
+    {
+        finishedShooting = true;
     }
 }

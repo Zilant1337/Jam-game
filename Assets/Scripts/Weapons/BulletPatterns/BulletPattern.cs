@@ -4,6 +4,8 @@ using UnityEngine;
 [Serializable]
 public abstract class BulletPattern : MonoBehaviour
 {
+    [SerializeField]
+    protected PatternGun gun;
     // ”глы, под которыми выпускаютс€ снар€ды
     [SerializeField]
     protected List<float> volleyAngles;
@@ -53,6 +55,7 @@ public abstract class BulletPattern : MonoBehaviour
                     volleyCounter = 0;
                     timer = volleyDelay[volleyCounter];
                     isShooting = false;
+                    gun.FinishPattern();
                 }
             }
         }

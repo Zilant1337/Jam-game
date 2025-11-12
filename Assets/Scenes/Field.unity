@@ -4739,9 +4739,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1530118583}
     m_Modifications:
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1619042733}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: projectileSpawnDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: projectilePrefabTransform
+      value: 
+      objectReference: {fileID: 6850517664999434254, guid: 67a498a9e8ddac044a1d80c31502db59, type: 3}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1619042733}
     - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: projectileSpawnDistance
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: projectilePrefabTransform
@@ -4847,6 +4863,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8778940405757901922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1619042733}
+    - target: {fileID: 8778940405757901922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: projectileSpawnDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778940405757901922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: projectilePrefabTransform
+      value: 
+      objectReference: {fileID: 6850517664999434254, guid: 67a498a9e8ddac044a1d80c31502db59, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4333017990329803636, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
@@ -4908,6 +4936,10 @@ PrefabInstance:
     - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
       propertyPath: m_TagString
       value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 5045841454410524299, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
+      propertyPath: m_TagString
+      value: WorldTrigger
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5024439833236446821, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
