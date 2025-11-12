@@ -7,24 +7,7 @@ public class ExplosiveRocket : Rocket
     [SerializeField]
     protected bool dealDamageOnImpact;
     protected List<Health> healthsToDamage;
-    private void OnTriggerEnter(Collider other)
-    {
-        Health health = other.GetComponent<Health>();
-        if (health != null && !healthsToDamage.Contains(health))
-        {
-            healthsToDamage.Add(health);
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        Health health = other.GetComponent<Health>();
-        if (health != null)
-        {
-            healthsToDamage.Remove(health);
-        }
-        
-    }
-    protected override List<Health> GetHealthsToDamage(Collision collision)
+    protected override List<Health> GetHealthsToDamage(Collider collision)
     {
         Health health = collision.gameObject.GetComponent<Health>();
         if (health != null && dealDamageOnImpact)
@@ -40,7 +23,20 @@ public class ExplosiveRocket : Rocket
         healthsToDamage = new List<Health>();
         isMoving = true;
     }
-
+    public void AddHealthToDamage(Health health)
+    {
+        if (!healthsToDamage.Contains(health))
+        {
+            healthsToDamage.Add(health);
+        }
+    }
+    public void RemoveHealthToDamage(Health health)
+    {
+        if (healthsToDamage.Contains(health))
+        {
+            healthsToDamage.Remove(health);
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {

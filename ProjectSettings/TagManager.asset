@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - EnemyProjectile
+  - PlayerProjectile
+  - Environment
+  - Enemy
+  - WorldTrigger
   layers:
   - Default
   - TransparentFX

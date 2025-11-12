@@ -334,6 +334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ARBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
+      propertyPath: m_TagString
+      value: PlayerProjectile
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5754084199372789682, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
     - {fileID: -7511558181221131132, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
@@ -411,7 +415,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -431,10 +435,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileRigidbody: {fileID: 8329907825776164176}
   damage: 25
+  timeToSelfDestruct: 2
   maxProjectileSpeed: 100
   startingSpeed: 100
   acceleration: 0
   rocketParticleSystem: {fileID: 0}
   rocketExplosionParticleSystem: {fileID: 2954392231082682859}
   explosionProjectileDestroyer: {fileID: 6690677661421039536}
-  timeToSelfDestruct: 2
+  tagsToHit:
+  - Enemy
+  - Environment
+  tagsToIgnore:
+  - PlayerProjectile
+  - EnemyProjectile
+  - Player
+  - WorldTrigger
+  moveSound: {fileID: 0}
+  explodeSound: {fileID: 0}
+  explodeSoundPitchRange: 0

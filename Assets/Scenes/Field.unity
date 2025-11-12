@@ -729,6 +729,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paidInteractableText: {fileID: 907913679}
+--- !u!114 &286336588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 196359166167578116, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+  m_PrefabInstance: {fileID: 5509296870119539287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c677ce940ff67e4e92ed7c22f466f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,6 +1448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponRack (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 4625084623946346388, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1600,6 +1615,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a65774ad753d0b944b03aab2bb9c2605, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1693,6 +1712,10 @@ PrefabInstance:
     - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
       propertyPath: m_Name
       value: WeaponRack (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 4625084623946346388, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2057,6 +2080,10 @@ PrefabInstance:
     - target: {fileID: 1281389950370720497, guid: cb048e7e5be857646a8a0468436ed43d, type: 3}
       propertyPath: m_Name
       value: DoorOpener (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281389950370720497, guid: cb048e7e5be857646a8a0468436ed43d, type: 3}
+      propertyPath: m_TagString
+      value: WorldTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 1329323598925847000, guid: cb048e7e5be857646a8a0468436ed43d, type: 3}
       propertyPath: door
@@ -2450,6 +2477,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f19ca912385fb4d40896b55d8dc19633, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2586,6 +2617,10 @@ PrefabInstance:
     - target: {fileID: 401747223812487304, guid: 6db2b7cc54d57ab4fb901db9285c0cb0, type: 3}
       propertyPath: m_Name
       value: Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 401747223812487304, guid: 6db2b7cc54d57ab4fb901db9285c0cb0, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 4265443262152247834, guid: 6db2b7cc54d57ab4fb901db9285c0cb0, type: 3}
       propertyPath: doorModel
@@ -3415,6 +3450,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1680421083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8778940405757901922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+  m_PrefabInstance: {fileID: 5509296870119539287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c677ce940ff67e4e92ed7c22f466f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1711780670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3474,6 +3520,10 @@ PrefabInstance:
     - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
       propertyPath: m_Name
       value: WeaponRack (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 4625084623946346388, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3561,6 +3611,10 @@ PrefabInstance:
     - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
       propertyPath: m_Name
       value: WeaponRack (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 4625084623946346388, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4303,6 +4357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponRack (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 4625084623946346388, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4377,6 +4435,10 @@ PrefabInstance:
     - target: {fileID: 2200692747286983833, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: m_Name
       value: DefaultGuy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2200692747286983833, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5163535368507075104, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: money
@@ -4571,6 +4633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1842790881610608277, guid: 70664a5cd5d31f24995cab49bfe782c9, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 2426512161437282130, guid: 70664a5cd5d31f24995cab49bfe782c9, type: 3}
       propertyPath: spawnOffset
       value: 10
@@ -4596,6 +4662,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 401747223812487304, guid: 6db2b7cc54d57ab4fb901db9285c0cb0, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     - target: {fileID: 2798860084344867165, guid: 6db2b7cc54d57ab4fb901db9285c0cb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.078
@@ -4603,6 +4673,10 @@ PrefabInstance:
     - target: {fileID: 2798860084344867165, guid: 6db2b7cc54d57ab4fb901db9285c0cb0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.147
+      objectReference: {fileID: 0}
+    - target: {fileID: 3286603835523797991, guid: 6db2b7cc54d57ab4fb901db9285c0cb0, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     - target: {fileID: 6367702033879444707, guid: 6db2b7cc54d57ab4fb901db9285c0cb0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4666,9 +4740,41 @@ PrefabInstance:
     m_TransformParent: {fileID: 1530118583}
     m_Modifications:
     - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: projectileSpawnDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: projectilePrefabTransform
       value: 
-      objectReference: {fileID: 6029059439039337058, guid: 9e186cadd428e7146b85361a5e17990c, type: 3}
+      objectReference: {fileID: 4110984721843814333, guid: 8cb1734adf22e334d9fcf2a545d43d81, type: 3}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyDelay.Array.data[2]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyDelay.Array.data[3]'
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyDelay.Array.data[4]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[1]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[2]'
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[3]'
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084025328501994922, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'volleyAngles.Array.data[4]'
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2284462835290631641, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: projectilePrefabTransform
       value: 
@@ -4677,6 +4783,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotgunBolter
       objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: patternOrder.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: patternDelays.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: bulletPatterns.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'patternDelays.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'bulletPatterns.Array.data[1]'
+      value: 
+      objectReference: {fileID: 286336588}
+    - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
+      propertyPath: 'bulletPatterns.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1680421083}
     - target: {fileID: 8000214131494152400, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4718,7 +4848,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4333017990329803636, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
@@ -4774,6 +4905,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponRack
       objectReference: {fileID: 0}
+    - target: {fileID: 2557378636727535863, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
+      propertyPath: m_TagString
+      value: Environment
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5024439833236446821, guid: 3b5482aeaea33ae4a87e9ad5b1566d6c, type: 3}
     m_RemovedGameObjects: []
@@ -4799,6 +4934,10 @@ PrefabInstance:
     - target: {fileID: 1281389950370720497, guid: cb048e7e5be857646a8a0468436ed43d, type: 3}
       propertyPath: m_Name
       value: DoorOpener
+      objectReference: {fileID: 0}
+    - target: {fileID: 1281389950370720497, guid: cb048e7e5be857646a8a0468436ed43d, type: 3}
+      propertyPath: m_TagString
+      value: WorldTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 1329323598925847000, guid: cb048e7e5be857646a8a0468436ed43d, type: 3}
       propertyPath: door

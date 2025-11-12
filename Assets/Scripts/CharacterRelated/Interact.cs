@@ -20,7 +20,6 @@ public class Interact : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Entered {other.gameObject.name}'s trigger");
         Interactable touchedInteractable = other.GetComponent<Interactable>();
         if (touchedInteractable != null)
         {
@@ -33,7 +32,6 @@ public class Interact : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log($"Left {other.gameObject.name}'s trigger");
         Interactable touchedInteractable = other.GetComponent<Interactable>();
         if (touchedInteractable != null)
         {

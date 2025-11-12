@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 3150459226110890628}
   m_Layer: 6
   m_Name: Dummy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,6 +227,7 @@ MonoBehaviour:
   meleeScript: {fileID: 8558500486991917347}
   lookAndShootScript: {fileID: 0}
   moneyAndPurchasing: {fileID: 0}
+  interact: {fileID: 0}
   enemyType: 0
 --- !u!114 &212851189803631755
 MonoBehaviour:

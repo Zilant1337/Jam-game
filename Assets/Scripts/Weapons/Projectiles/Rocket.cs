@@ -16,6 +16,10 @@ public class Rocket : Projectile
     protected ParticleSystem rocketExplosionParticleSystem;
     [SerializeField]
     protected ProjectileSystemDestroyer explosionProjectileDestroyer;
+    [SerializeField]
+    protected List<string> tagsToHit;
+    [SerializeField]
+    protected List<string> tagsToIgnore;
 
 
     [SerializeField]
@@ -41,7 +45,6 @@ public class Rocket : Projectile
         if (!isUpToStartingSpeed)
         {
             projectileRigidbody.AddRelativeForce(Vector3.forward * startingSpeed, ForceMode.VelocityChange);
-            Debug.Log($"Added {Vector3.forward * startingSpeed} of speed to projectile to get it going. Actual velocity = {projectileRigidbody.linearVelocity}");
             isUpToStartingSpeed = true;
             return;
         }
@@ -49,16 +52,41 @@ public class Rocket : Projectile
         if (currentSpeed < maxProjectileSpeed)
         {
             projectileRigidbody.AddRelativeForce(Vector3.forward * acceleration, ForceMode.Acceleration);
-            Debug.Log($"Adding {acceleration} force, Projectile speed = {currentSpeed}");
         }
         
     }
-    protected void OnCollisionEnter(Collision collision)
+    protected void OnTriggerEnter(Collider other)
     {
-        isMoving = false;
-        Explode(collision);
+        bool explode = false;
+        foreach (string tag in tagsToHit)
+        {
+            if (other.gameObject.CompareTag(tag))
+            {
+                explode = true;
+                break;
+            }
+        }
+        if (explode)
+        {
+            foreach (string tag2 in tagsToIgnore)
+            {
+                if (other.gameObject.CompareTag(tag2))
+                {
+                    explode = false;
+                    break;
+                }
+            }
+        }
+        if (explode)
+        {
+            Debug.Log($"Collided with {other.gameObject.name}");
+            isMoving = false;
+            Explode(other);
+            return;
+        }
     }
-    protected virtual void Explode(Collision collision)
+
+    protected virtual void Explode(Collider collision)
     {
         rocketExplosionParticleSystem.transform.SetParent(null);
         rocketExplosionParticleSystem.Play();
@@ -74,7 +102,7 @@ public class Rocket : Projectile
             DealDamage(healthsToDamage);
         Destroy(this.gameObject);
     }
-    protected virtual List<Health> GetHealthsToDamage(Collision collision)
+    protected virtual List<Health> GetHealthsToDamage(Collider collision)
     {
         Health enemyHealth = collision.gameObject.GetComponent<Health>();
         return new List<Health> { enemyHealth };
