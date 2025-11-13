@@ -61,6 +61,10 @@ public class LookAndShoot : MonoBehaviour
         {            
             // Поворот персонажа в направлении курсора
             transform.LookAt(aimPoint);
+            if (CursorManager.TouchActive)
+            {
+                Fire();
+            }
         }
         if (keepShooting)
         {

@@ -6,6 +6,8 @@ public class CursorManager : MonoBehaviour
     public static CursorManager instance;
 
     [SerializeField]
+    private GameObject mobileInput;
+    [SerializeField]
     private float cursorDistance;
     [SerializeField]
     PlayerInput playerInput;
@@ -15,10 +17,16 @@ public class CursorManager : MonoBehaviour
     Transform middleOfCanvasTransform;
     [SerializeField]
     Transform virtualCursorTransform;
+    [SerializeField]
+    float touchInputDisableTime;
 
     static bool keyboardActive;
+    static bool touchActive;
+
+    protected float touchInputTimer = 0;
 
     public static bool KeyboardActive { get => keyboardActive; }
+    public static bool TouchActive { get => touchActive; }
     public Transform MiddleOfCanvasTransform { get => middleOfCanvasTransform; }
 
     private void Awake()
@@ -36,9 +44,17 @@ public class CursorManager : MonoBehaviour
     }
     private void Update()
     {
+        if (touchInputTimer > 0)
+        {
+            touchInputTimer -= Time.deltaTime;
+            if (touchInputTimer <= 0)
+            {
+                touchActive = false;
+                mobileInput.SetActive(false);
+            }
+        }
         if (!keyboardActive)
         {
-            Gamepad gamepad = Gamepad.current;
             Vector2 lookDirection = CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>().normalized;
             if (lookDirection != Vector2.zero)
             {
@@ -54,23 +70,43 @@ public class CursorManager : MonoBehaviour
                 virtualCursorTransform.gameObject.SetActive(false);
             }
         }
+        if (Touchscreen.current != null && Touchscreen.current.wasUpdatedThisFrame)
+        {
+            touchInputTimer = touchInputDisableTime;
+            touchActive = true;
+            mobileInput.SetActive(true);
+        }
     }
     void Start()
     {
         Vector2 cursorHotspot = new Vector2(cursorSprite.width / 2, cursorSprite.width / 2);
         Cursor.SetCursor(cursorSprite,cursorHotspot,CursorMode.Auto);
+        keyboardActive = true;
+        if (Touchscreen.current != null && Touchscreen.current.wasUpdatedThisFrame)
+        {
+            touchActive = true;
+            keyboardActive = false;
+            mobileInput.SetActive(true);
+        }
         OnControlSchemeChange();
     }
     public void OnControlSchemeChange()
     {
         if(playerInput.currentControlScheme == "Keyboard&Mouse")
         {
+            touchActive = false;
+            mobileInput.SetActive(false);
             Cursor.visible = true;
             virtualCursorTransform.gameObject.SetActive(false);
             keyboardActive = true;
         }
         else
-        {    
+        {
+            /*if (Gamepad.current != null)
+            {
+                touchActive = false;
+                mobileInput.SetActive(false);
+            }*/
             Cursor.visible = false;
             virtualCursorTransform.gameObject.SetActive(true);
             keyboardActive = false;
