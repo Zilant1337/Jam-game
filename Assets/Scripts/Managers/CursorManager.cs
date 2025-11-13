@@ -40,6 +40,10 @@ public class CursorManager : MonoBehaviour
             Debug.LogError("Can't have more than one cursor manager");
             Destroy(gameObject);
         }
+        if(Application.platform == RuntimePlatform.Android)
+        {
+            Application.targetFrameRate = 120;
+        }
         virtualCursorTransform.gameObject.SetActive(false);
     }
     private void Update()
