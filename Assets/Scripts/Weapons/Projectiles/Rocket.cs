@@ -61,6 +61,7 @@ public class Rocket : Projectile
     }
     public virtual void OnCollision(Collider other)
     {
+        // Производится проверка на нахождения тега объекта в списках на взрыв и игнорирование
         bool explode = false;
         foreach (string tag in tagsToHit)
         {
@@ -106,7 +107,8 @@ public class Rocket : Projectile
         Destroy(this.gameObject);
     }
     protected bool ToDamage(Health other)
-    {
+    {   
+        // Проводится проверка тегов объектов, которым должен наноситься урон
         bool toDamage = false;
         foreach (string tag in tagsToHit)
         {

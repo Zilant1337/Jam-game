@@ -74,6 +74,7 @@ public class CursorManager : MonoBehaviour
                 virtualCursorTransform.gameObject.SetActive(false);
             }
         }
+        // Включение экранного управления если был ввод на тачскрин
         if (Touchscreen.current != null && Touchscreen.current.wasUpdatedThisFrame)
         {
             touchInputTimer = touchInputDisableTime;
