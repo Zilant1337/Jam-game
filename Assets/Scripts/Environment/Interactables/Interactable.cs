@@ -2,16 +2,9 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public enum Interactions 
-    {
-       Buy,
-       Activate
-    }
     [SerializeField]
     protected bool activateOnTrigger;
     protected bool isInteractable = false;
-    [SerializeField]
-    protected Interactions interaction;
 
     public bool ActivateOnTrigger { get => activateOnTrigger; }
 
@@ -19,7 +12,7 @@ public abstract class Interactable : MonoBehaviour
     {
         if (activateOnTrigger)
         {
-            InteractAction();
+            InteractAction(other);
         }
         else
         {
@@ -30,5 +23,5 @@ public abstract class Interactable : MonoBehaviour
     {
         isInteractable = false;
     }
-    public abstract void InteractAction();
+    public abstract void InteractAction(Collider other);
 }

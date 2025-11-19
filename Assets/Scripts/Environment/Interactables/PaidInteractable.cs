@@ -8,7 +8,7 @@ public class PaidInteractable : Interactable
     protected PaidInteractableUI paidInteractableUI;
     public int Price { get => price; }
 
-    public override void InteractAction()
+    public override void InteractAction(Collider other)
     {
         if (MoneyAndPurchasing.instance.RemoveMoney(Price))
         {

@@ -41,6 +41,21 @@ public class Health : MonoBehaviour
             OnDeath();
         }
     }
+    public virtual void AddHealth(float health)
+    {
+        if (hp + health < MAX_HP)
+        {
+            hp += health;
+            if (healthBarScript != null)
+                healthBarScript.UpdateHealthBar(hp / MAX_HP);
+        }
+        else
+        {
+            hp = MAX_HP;
+            if (healthBarScript != null)
+                healthBarScript.UpdateHealthBar(hp / MAX_HP);
+        }
+    }
     protected virtual void OnDeath()
     {
         if(!isDead)
