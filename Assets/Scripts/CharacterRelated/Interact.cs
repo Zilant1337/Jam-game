@@ -23,9 +23,8 @@ public class Interact : MonoBehaviour
         Interactable touchedInteractable = other.GetComponent<Interactable>();
         if (touchedInteractable != null)
         {
-            if(!touchedInteractable.ActivateOnTrigger && interactable ==null || Vector3.Distance(this.transform.position,touchedInteractable.transform.position)< Vector3.Distance(this.transform.position, interactable.transform.position))
+            if(!touchedInteractable.ActivateOnTrigger || interactable ==null || Vector3.Distance(this.transform.position,touchedInteractable.transform.position)< Vector3.Distance(this.transform.position, interactable.transform.position))
                 interactable = touchedInteractable;
-
         }
     }
     private void OnTriggerExit(Collider other)

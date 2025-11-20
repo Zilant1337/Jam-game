@@ -146,6 +146,7 @@ public class LookAndShoot : MonoBehaviour
         if (currentGun.AmmoCount != currentGun.MAX_AMMO)
         {
             currentGun.AmmoCount += (int)(currentGun.MAX_AMMO * ammoAmount);
+            AmmoCounter.ammoCountChanged.Invoke(currentGun.AmmoCountInMag, currentGun.AmmoCount);
         }
         else
         {
