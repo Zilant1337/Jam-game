@@ -58,7 +58,7 @@ public abstract class Gun : MonoBehaviour
 
     public int Price { get => price; }
     public int AmmoCountInMag { get => ammoCountInMag; set => ammoCountInMag = value; }
-    public int AmmoCount { get => ammoCount; set => ammoCount = ammoCount>MAX_AMMO?MAX_AMMO:value; }
+    public int AmmoCount { get => ammoCount; set => ammoCount = value>MAX_AMMO?MAX_AMMO:value; }
     public string GunName { get => gunName;}
     public Sprite PreviewImage { get => previewImage;}
     public bool IsAutomatic { get => isAutomatic;}
