@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5813527174014707934}
   - component: {fileID: 3243009953313649758}
   m_Layer: 0
-  m_Name: Melee
+  m_Name: EnemyMelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,10 +71,10 @@ MonoBehaviour:
   shootAudioSource: {fileID: 5813527174014707934}
   shootSoundPitchRange: 0
   tagsToHit:
-  - Enemy
+  - Player
   - Obstacle
   tagsToIgnore:
-  - Player
+  - Enemy
 --- !u!82 &693250244259792799
 AudioSource:
   m_ObjectHideFlags: 0

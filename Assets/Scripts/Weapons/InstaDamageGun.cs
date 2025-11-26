@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class InstaDamageGun : Gun
 {
+    [SerializeField]
+    protected List<string> tagsToHit;
+    [SerializeField]
+    protected List<string> tagsToIgnore;
+
+
+
     protected List<Health> healthsToDamage = new List<Health>();
     private void OnTriggerEnter(Collider other)
     {
@@ -25,9 +32,34 @@ public class InstaDamageGun : Gun
     {
         foreach (Health health in healthList)
         {
-            if (health != null)
+            if (health != null && ToDamage(health))
                 health.TakeDamage(damagePerBullet);
         }
+    }
+    protected bool ToDamage(Health other)
+    {
+        // Проводится проверка тегов объектов, которым должен наноситься урон
+        bool toDamage = false;
+        foreach (string tag in tagsToHit)
+        {
+            if (other.gameObject.CompareTag(tag))
+            {
+                toDamage = true;
+                break;
+            }
+        }
+        if (toDamage)
+        {
+            foreach (string tag2 in tagsToIgnore)
+            {
+                if (other.gameObject.CompareTag(tag2))
+                {
+                    toDamage = false;
+                    break;
+                }
+            }
+        }
+        return toDamage;
     }
     public override void Shoot()
     {
