@@ -15,6 +15,10 @@ public class EnemyScript : CharacterScript
     private void Awake()
     {
         stateMachine = new StateMachine();
+        GuardState guardState = new GuardState(this,navMeshAgent,10);
+        stateMachine.AddAnyTransition(guardState,new FunctionPredicate(()=>true));
+        stateMachine.SetState(guardState);
+
     }
     void Start()
     {
@@ -24,6 +28,10 @@ public class EnemyScript : CharacterScript
     // Update is called once per frame
     void Update()
     {
-        
+        stateMachine.Update();
+    }
+    private void FixedUpdate()
+    {
+        stateMachine.FixedUpdate();
     }
 }

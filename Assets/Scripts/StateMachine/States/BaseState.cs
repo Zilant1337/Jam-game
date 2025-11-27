@@ -26,3 +26,4 @@ public abstract class BaseState : IState
         throw new System.NotImplementedException();
     }
 }
+

@@ -1,17 +1,23 @@
+using UnityEngine;
+using UnityEngine.AI;
+
 public class WanderState : BaseState
 {
-    public WanderState(EnemyScript enemyScript) : base(enemyScript)
+    protected NavMeshAgent agent;
+    protected float wanderRadius;
+    public WanderState(EnemyScript enemyScript, NavMeshAgent agent, float wanderRadius) : base(enemyScript)
     {
+        this.agent = agent;
+        this.wanderRadius = wanderRadius;
     }
 
     public override void FixedUpdate()
     {
-        base.FixedUpdate();
     }
 
     public override void OnEnter()
     {
-        base.OnEnter();
+        Debug.Log($"{enemyScript.gameObject.name} has entered the wander state");
     }
 
     public override void OnExit()
@@ -21,6 +27,19 @@ public class WanderState : BaseState
 
     public override void Update()
     {
-        base.Update();
+        if (HasReachedDestination())
+        {
+            var randomDirection = UnityEngine.Random.insideUnitSphere * wanderRadius;
+            randomDirection += enemyScript.transform.position;
+            NavMeshHit hit;
+            NavMesh.SamplePosition(randomDirection, out hit, wanderRadius, 1);
+            var finalPosition = hit.position;
+            agent.SetDestination(finalPosition);
+        }
+    }
+
+    protected bool HasReachedDestination()
+    {
+        return !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f);
     }
 }

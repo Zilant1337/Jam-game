@@ -14,7 +14,6 @@ public class StateMachine
         {
             ChangeState(transition.TargetState);
         }
-
         current.State?.Update();
     }
     public void FixedUpdate()
@@ -55,7 +54,7 @@ public class StateMachine
     {
         GetOrAddNode(fromState).AddTransition(GetOrAddNode(targetState).State, condition);
     }
-    public void AddAnyTransition(IState fromState, IState targetState, IPredicate condition)
+    public void AddAnyTransition(IState targetState, IPredicate condition)
     {
         anyTransitions.Add(new Transition(GetOrAddNode(targetState).State,condition));
     }

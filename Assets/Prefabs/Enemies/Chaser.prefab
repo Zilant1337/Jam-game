@@ -206,6 +206,7 @@ MonoBehaviour:
   lookAndShootScript: {fileID: 0}
   moneyAndPurchasing: {fileID: 0}
   interact: {fileID: 0}
+  navMeshAgent: {fileID: 8877496759045878321}
   enemyType: 0
 --- !u!114 &4976157982397748758
 MonoBehaviour:
@@ -336,7 +337,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
