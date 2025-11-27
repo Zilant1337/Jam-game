@@ -1,6 +1,5 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
+
 
 public class ConeDetectionStrategy : IDetectionStrategy
 {
@@ -11,8 +10,11 @@ public class ConeDetectionStrategy : IDetectionStrategy
 
     public ConeDetectionStrategy(float detectionAngle, float detectionRadius, float guaranteedDetectionRadius)
     {
+        //Угол конуса
         this.detectionAngle = detectionAngle;
+        // Радиус засечения в конусе
         this.detectionRadius = detectionRadius;
+        // Радиус гарантированного засечения
         this.guaranteedDetectionRadius = guaranteedDetectionRadius;
     }
     public bool Execute(Transform player, Transform detector, LayerMask layerMask)
@@ -25,6 +27,7 @@ public class ConeDetectionStrategy : IDetectionStrategy
         {
             obstructed = true;
         }
+        // Если игрок не входит в конус зрения, не находится достаточно близко к противнику или загорожен препятствием, говорим что игрока не видно
         if ((!(angleToPlayer < detectionAngle / 2f) || !(directionToPlayer.magnitude < detectionRadius))
             && !(directionToPlayer.magnitude < guaranteedDetectionRadius) || obstructed)
         {

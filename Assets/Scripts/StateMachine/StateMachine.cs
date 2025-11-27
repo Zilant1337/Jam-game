@@ -9,11 +9,13 @@ public class StateMachine
     HashSet<ITransition> anyTransitions = new();
     public void Update()
     {
+        // Если выполнено хоть одно условие для переключения состояния, переключаем
         var transition = GetTransition();
         if ( transition!=null)
         {
             ChangeState(transition.TargetState);
         }
+        // Выполняем действие, нужное для состояния
         current.State?.Update();
     }
     public void FixedUpdate()
@@ -25,6 +27,7 @@ public class StateMachine
         current = nodes[state.GetType()];
         current.State?.OnEnter();
     }
+    // Смена состояния с вызовом методов выхода и входа у старого и нового состояния соответственно
     private void ChangeState(IState state)
     {
         if (state == current.State) return;
@@ -70,7 +73,7 @@ public class StateMachine
 
         return node;
     }
-
+    // Класс, содержащий состояние и набор предикат для его перехода в другие состояния
     class StateNode
     {
         public StateNode(IState state)
