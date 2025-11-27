@@ -10,16 +10,22 @@ public class PlayerDetector : MonoBehaviour
     float guaranteedDetectionRadius = 5;
     [SerializeField]
     float detectionCooldown = 1;
+    [SerializeField]
+    protected LayerMask obstructionsLayerMask;
 
     float timer;
 
     public Transform Player { get; private set; }
     
     IDetectionStrategy detectionStrategy;
+    private void Awake()
+    {
+        FindPlayer();
+    }
     private void Start()
     {
         timer = 0;
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        FindPlayer();
         detectionStrategy = new ConeDetectionStrategy(detectionAngle,detectionRadius,guaranteedDetectionRadius);
     }
     private void Update()
@@ -33,9 +39,13 @@ public class PlayerDetector : MonoBehaviour
             }
         }
     }
+    public void FindPlayer()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     public bool CanDetectPlayer()
     {
-        return timer == 0 && detectionStrategy.Execute(Player,transform);
+        return timer == 0 && detectionStrategy.Execute(Player,transform, obstructionsLayerMask);
     }
     public void SetDetectionStrategy(IDetectionStrategy detectionStrategy) => this.detectionStrategy = detectionStrategy;
 

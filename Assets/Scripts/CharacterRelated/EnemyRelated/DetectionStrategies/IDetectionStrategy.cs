@@ -2,5 +2,5 @@
 
 public  interface IDetectionStrategy
 {
-    bool Execute(Transform player, Transform detector);
+    bool Execute(Transform player, Transform detector, LayerMask layerMask);
 }

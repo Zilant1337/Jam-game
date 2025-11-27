@@ -22,7 +22,6 @@ public class WanderState : BaseState
 
     public override void OnExit()
     {
-        base.OnExit();
     }
 
     public override void Update()

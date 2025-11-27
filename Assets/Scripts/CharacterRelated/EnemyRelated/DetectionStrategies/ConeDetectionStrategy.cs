@@ -1,5 +1,6 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ConeDetectionStrategy : IDetectionStrategy
 {
@@ -14,13 +15,22 @@ public class ConeDetectionStrategy : IDetectionStrategy
         this.detectionRadius = detectionRadius;
         this.guaranteedDetectionRadius = guaranteedDetectionRadius;
     }
-    public bool Execute(Transform player, Transform detector)
+    public bool Execute(Transform player, Transform detector, LayerMask layerMask)
     {
         Vector3 directionToPlayer = player.position-detector.position;
         float angleToPlayer = Vector3.Angle(directionToPlayer, detector.forward);
-        if((!(angleToPlayer<detectionAngle/2f)||!(directionToPlayer.magnitude<detectionRadius))
-            &&!(directionToPlayer.magnitude<guaranteedDetectionRadius))
+        bool obstructed = false;
+        RaycastHit hit;
+        if (Physics.Raycast(detector.position, player.position, out hit, float.MaxValue, layerMask))
+        {
+            obstructed = true;
+        }
+        if ((!(angleToPlayer < detectionAngle / 2f) || !(directionToPlayer.magnitude < detectionRadius))
+            && !(directionToPlayer.magnitude < guaranteedDetectionRadius) || obstructed)
+        {
+            Debug.Log("Can't see player");
             return false;
+        }
 
         return true;
 
