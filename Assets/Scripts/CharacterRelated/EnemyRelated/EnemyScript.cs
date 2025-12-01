@@ -9,8 +9,19 @@ public class EnemyScript : CharacterScript
     protected NavMeshAgent navMeshAgent;
     [SerializeField]
     protected PlayerDetector playerDetector;
+    
     [SerializeField]
     private EnemyManager.EnemyType enemyType;
+
+    [SerializeField]
+    float attackDistance;
+    [SerializeField]
+    float attackCooldown;
+
+    float attackTimer;
+
+    public float AttackCooldown { get => attackTimer; }
+    public float AttackTimer { get => attackTimer; set => attackTimer = value; }
 
     StateMachine stateMachine;
 
@@ -21,12 +32,19 @@ public class EnemyScript : CharacterScript
     }
     void Start()
     {
+        attackCooldown = 0;
         stateMachine = new StateMachine();
         GuardState guardState = new GuardState(this, navMeshAgent, 10);
-        Debug.Log($"Attaching player to enemy: {playerDetector.Player}");
         ChaseState chaseState = new ChaseState(this, navMeshAgent, playerDetector.Player);
+        AttackState attackState = new AttackState(this, navMeshAgent, LookAndShootScript, playerDetector.Player);
+
         stateMachine.AddTransition(guardState, chaseState, new FunctionPredicate(() => playerDetector.CanDetectPlayer()));
         stateMachine.AddTransition(chaseState, guardState, new FunctionPredicate(() => !playerDetector.CanDetectPlayer()));
+        stateMachine.AddTransition(chaseState,attackState,new FunctionPredicate(() => playerDetector.CanDetectPlayer()
+        &&Vector3.Distance(transform.position,playerDetector.Player.transform.position)<=attackDistance
+        &&attackTimer==0));
+        stateMachine.AddTransition(attackState, guardState, new FunctionPredicate(() => !playerDetector.CanDetectPlayer()));
+        stateMachine.AddTransition(attackState, chaseState, new FunctionPredicate(() => playerDetector.CanDetectPlayer()&&attackState.Attacked));
 
         stateMachine.SetState(guardState);
     }
@@ -34,6 +52,14 @@ public class EnemyScript : CharacterScript
     // Update is called once per frame
     void Update()
     {
+        if (attackTimer > 0)
+        {
+            attackTimer-= Time.deltaTime;
+            if (attackTimer <= 0)
+            {
+                attackTimer = 0;
+            }
+        }
         stateMachine.Update();
     }
     private void FixedUpdate()
