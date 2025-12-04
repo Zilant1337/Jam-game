@@ -4,7 +4,7 @@ public class Shotgun : Gun
 {
     [SerializeField]
     int peletsPerShot;
-    public override void Shoot()
+    public override bool Shoot()
     {
         if ((ammoCountInMag > 0 || hasInfiniteAmmo) && cooldownTimer == 0 && reloadTimer == 0)
         {
@@ -34,6 +34,8 @@ public class Shotgun : Gun
             if(!hasInfiniteAmmo)
                 AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag, ammoCount);
             cooldownTimer = timeBetweenShots;
+            return true;
         }
+        return false;
     }
 }

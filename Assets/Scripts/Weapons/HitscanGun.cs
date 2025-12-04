@@ -7,7 +7,7 @@ public class HitscanGun : Gun
 {
     [SerializeField]
     protected bool piercing;
-    public override void Shoot()
+    public override bool Shoot()
     {
         // Выстрел через кастинг лучей
         if ((ammoCountInMag > 0 || hasInfiniteAmmo) && cooldownTimer ==0 && reloadTimer == 0)
@@ -79,11 +79,10 @@ public class HitscanGun : Gun
             
             // Отнимаем количество патронов в магазине
             ammoCountInMag--;
-            // Вызываем событие обновления интерфейса
-            if(!hasInfiniteAmmo)
-                AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag,ammoCount);
             // Запуск таймера для ограничения скорострельности
             cooldownTimer = timeBetweenShots;
+            return true;
         }
+        return false;
     }
 }

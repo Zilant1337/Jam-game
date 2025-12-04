@@ -10,8 +10,6 @@ public class LookAndShoot : MonoBehaviour
     [SerializeField]
     private PlayerInput playerInput;
     [SerializeField]
-    AmmoCounter ammoCounterScript;
-    [SerializeField]
     private GameObject gunsParent;
     [SerializeField]
     private Transform currentGunLocation;
@@ -91,6 +89,8 @@ public class LookAndShoot : MonoBehaviour
     private void Fire()
     {
         currentGun.Shoot();
+        if (!currentGun.HasInfiniteAmmo)
+            AmmoCounter.ammoCountChanged.Invoke(currentGun.AmmoCountInMag, currentGun.AmmoCount);
     }
     // Вызов функции перезарядки у основного оружия
     public void Reload(InputAction.CallbackContext context)

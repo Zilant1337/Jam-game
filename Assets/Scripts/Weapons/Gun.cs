@@ -108,7 +108,7 @@ public abstract class Gun : MonoBehaviour
         }
     }
     // Реализация выстрела у каждого оружия разная
-    public abstract void Shoot();
+    public abstract bool Shoot();
     // Запускаем таймер для перезарядки
     public void Reload()
     {

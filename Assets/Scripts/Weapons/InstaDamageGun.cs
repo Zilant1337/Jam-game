@@ -61,7 +61,7 @@ public class InstaDamageGun : Gun
         }
         return toDamage;
     }
-    public override void Shoot()
+    public override bool Shoot()
     {
         if((ammoCountInMag > 0 || hasInfiniteAmmo) && cooldownTimer == 0 && reloadTimer == 0)
         {
@@ -74,9 +74,8 @@ public class InstaDamageGun : Gun
             cooldownTimer = timeBetweenShots;
             // Отнимаем количество патронов в магазине
             ammoCountInMag--;
-            // Вызываем событие обновления интерфейса
-            if (!hasInfiniteAmmo)
-                AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag, ammoCount);
+            return true;
         }
+        return false;
     }
 }

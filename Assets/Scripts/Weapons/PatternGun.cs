@@ -20,7 +20,7 @@ public class PatternGun : Gun
         patternCounter = 0;
         finishedShooting = true;
     }
-    public override void Shoot()
+    public override bool Shoot()
     {
         if ((ammoCountInMag > 0 || hasInfiniteAmmo) && cooldownTimer == 0 && reloadTimer == 0)
         {
@@ -35,11 +35,11 @@ public class PatternGun : Gun
 
             finishedShooting = false;
             ammoCountInMag--;
-            if (!hasInfiniteAmmo)
-                AmmoCounter.ammoCountChanged.Invoke(ammoCountInMag, ammoCount);
             patternCounter = (patternCounter+1)%patternOrder.Count;
             cooldownTimer = patternDelays[patternCounter];
+            return true;
         }
+        return false;
     }
     protected override void ProgressCooldown()
     {

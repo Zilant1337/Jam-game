@@ -3,8 +3,10 @@ using UnityEngine;
 using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(PlayerDetector))]
-public class EnemyScript : CharacterScript   
+public class EnemyScript : MonoBehaviour  
 {
+    [SerializeField]
+    protected EnemyWeaponManager weaponManager;
     [SerializeField]
     protected NavMeshAgent navMeshAgent;
     [SerializeField]
@@ -36,7 +38,7 @@ public class EnemyScript : CharacterScript
         stateMachine = new StateMachine();
         GuardState guardState = new GuardState(this, navMeshAgent, 10);
         ChaseState chaseState = new ChaseState(this, navMeshAgent, playerDetector.Player);
-        AttackState attackState = new AttackState(this, navMeshAgent, LookAndShootScript, playerDetector.Player);
+        AttackState attackState = new AttackState(this, navMeshAgent, weaponManager, playerDetector.Player);
 
         stateMachine.AddTransition(guardState, chaseState, new FunctionPredicate(() => playerDetector.CanDetectPlayer()));
         stateMachine.AddTransition(chaseState, guardState, new FunctionPredicate(() => !playerDetector.CanDetectPlayer()));
@@ -58,6 +60,7 @@ public class EnemyScript : CharacterScript
             if (attackTimer <= 0)
             {
                 attackTimer = 0;
+                Debug.Log($"{this.name} is ready to shoot again");
             }
         }
         stateMachine.Update();

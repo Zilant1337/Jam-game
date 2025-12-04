@@ -22,14 +22,13 @@ public class GuardState : WanderState
     {
         if (HasReachedDestination())
         {
-            Debug.Log($"{enemyScript.name} has reached destination, looking for new destination");
             var randomDirection = UnityEngine.Random.insideUnitSphere * wanderRadius;
             randomDirection += startingPosition;
             NavMeshHit hit;
             NavMesh.SamplePosition(randomDirection,out hit,wanderRadius,1);
             var finalPosition = hit.position;
             agent.SetDestination(finalPosition);
-            Debug.Log($"Moving to {finalPosition}");
+
         }
     }
 }

@@ -31,7 +31,6 @@ public class ConeDetectionStrategy : IDetectionStrategy
         if ((!(angleToPlayer < detectionAngle / 2f) || !(directionToPlayer.magnitude < detectionRadius))
             && !(directionToPlayer.magnitude < guaranteedDetectionRadius) || obstructed)
         {
-            Debug.Log("Can't see player");
             return false;
         }
 
