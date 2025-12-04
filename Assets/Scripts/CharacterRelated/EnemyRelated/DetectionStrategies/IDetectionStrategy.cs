@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public  interface IDetectionStrategy
+public interface IDetectionStrategy
 {
     bool Execute(Transform player, Transform detector, LayerMask layerMask);
 }

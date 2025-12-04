@@ -23,7 +23,7 @@ public class ConeDetectionStrategy : IDetectionStrategy
         float angleToPlayer = Vector3.Angle(directionToPlayer, detector.forward);
         bool obstructed = false;
         RaycastHit hit;
-        if (Physics.Raycast(detector.position, player.position, out hit, float.MaxValue, layerMask))
+        if (Physics.Linecast(detector.position + Vector3.up, player.position + Vector3.up, out hit, layerMask))
         {
             obstructed = true;
         }
