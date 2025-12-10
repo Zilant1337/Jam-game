@@ -48,7 +48,8 @@ public abstract class BulletPattern : MonoBehaviour
                 if (volleyCounter < volleyAngles.Count)
                 {
                     ShootNextVolley();
-                    timer = volleyDelay[volleyCounter];
+                    if(volleyCounter<volleyAngles.Count)
+                        timer = volleyDelay[volleyCounter];
                 }
                 else
                 {
