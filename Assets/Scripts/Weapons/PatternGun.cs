@@ -28,8 +28,8 @@ public class PatternGun : Gun
             shootAudioSource.pitch += UnityEngine.Random.Range(-shootSoundPitchRange, shootSoundPitchRange);
             shootAudioSource.PlayOneShot(shootAudioSource.clip);
             shootAudioSource.pitch = resetPitch;
-
-            muzzleFlashParticleSystem.Play();
+            if(muzzleFlashParticleSystem)
+                muzzleFlashParticleSystem.Play();
 
             bulletPatterns[patternOrder[patternCounter]].Shoot();
 

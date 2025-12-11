@@ -9,7 +9,6 @@ public class ExplosiveRocket : Rocket
     protected List<Health> healthsToDamage;
     protected override void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"{other.gameObject.name} entered {this.name} collider/trigger");
         Health health = other.GetComponent<Health>();
         if (health != null)
         {
@@ -18,7 +17,6 @@ public class ExplosiveRocket : Rocket
     }
     protected void OnTriggerExit(Collider other)
     {
-        Debug.Log($"{other.gameObject.name} exited {this.name} collider/trigger");
         Health health = other.GetComponent<Health>();
         if (health != null)
         {
@@ -59,7 +57,7 @@ public class ExplosiveRocket : Rocket
         }
     }
     // Update is called once per frame
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         Move();
     }

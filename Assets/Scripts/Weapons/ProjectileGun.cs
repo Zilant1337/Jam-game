@@ -12,7 +12,8 @@ public class ProjectileGun : Gun
             shootAudioSource.pitch += UnityEngine.Random.Range(-shootSoundPitchRange, shootSoundPitchRange);
             shootAudioSource.PlayOneShot(shootAudioSource.clip);
             shootAudioSource.pitch = resetPitch;
-            muzzleFlashParticleSystem.Play();
+            if(muzzleFlashParticleSystem)
+                muzzleFlashParticleSystem.Play();
 
             Vector3 shotDirection = GetShotDirection();
 

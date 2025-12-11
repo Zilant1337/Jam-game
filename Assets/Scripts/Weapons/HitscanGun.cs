@@ -17,7 +17,8 @@ public class HitscanGun : Gun
             shootAudioSource.PlayOneShot(shootAudioSource.clip);
             shootAudioSource.pitch = resetPitch;
             // Запуск визуального эффекта вспышки при выстреле
-            muzzleFlashParticleSystem.Play();
+            if(muzzleFlashParticleSystem)
+                muzzleFlashParticleSystem.Play();
             
             Vector3 shotDirection = GetShotDirection();
 

@@ -20,7 +20,7 @@ public abstract class Projectile : MonoBehaviour
         Move();
     }
     protected abstract void Move();
-    protected void ProgressSelfDestructTimer()
+    protected virtual void ProgressSelfDestructTimer()
     {
         selfDestructTimer += Time.deltaTime;
         if (selfDestructTimer >= timeToSelfDestruct)
