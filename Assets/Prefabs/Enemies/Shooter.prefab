@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionAngle: 60
-  detectionRadius: 10
+  detectionRadius: 20
   guaranteedDetectionRadius: 5
   detectionCooldown: 1
   obstructionsLayerMask:
