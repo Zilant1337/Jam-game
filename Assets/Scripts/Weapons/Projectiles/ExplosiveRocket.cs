@@ -33,7 +33,7 @@ public class ExplosiveRocket : Rocket
         }
         return healthsToDamage;
     }
-    void Start()
+    protected override void Start()
     {
         selfDestructTimer = 0;
         canDamage = true;

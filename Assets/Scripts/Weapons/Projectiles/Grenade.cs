@@ -5,7 +5,12 @@ public class Grenade : ExplosiveRocket
 {
     [SerializeField]
     protected Vector3 launchDirection;
-
+    protected bool isExploded;
+    protected override void Start()
+    {
+        base.Start();
+        isExploded = false;
+    }
     protected override void Move()
     {
         if (!isMoving)
@@ -23,19 +28,43 @@ public class Grenade : ExplosiveRocket
     }
     protected void Explode(Collision collision)
     {
-        rocketExplosionParticleSystem.transform.SetParent(null);
-        rocketExplosionParticleSystem.Play();
-        if (explodeSound != null)
+        if (!isExploded)
         {
-            explodeSound.transform.SetParent(null);
-            explodeSound.pitch += Random.Range(-explodeSoundPitchRange, explodeSoundPitchRange);
-            explodeSound.PlayOneShot(explodeSound.clip);
+            rocketExplosionParticleSystem.transform.SetParent(null);
+            rocketExplosionParticleSystem.Play();
+            if (explodeSound != null)
+            {
+                explodeSound.transform.SetParent(null);
+                explodeSound.pitch += Random.Range(-explodeSoundPitchRange, explodeSoundPitchRange);
+                explodeSound.PlayOneShot(explodeSound.clip);
+            }
+            explosionProjectileDestroyer.DestroyProjectileSystem();
+            List<Health> healthsToDamage = GetHealthsToDamage(collision);
+            if (canDamage)
+                DealDamage(healthsToDamage);
+            isExploded = true;
+            Destroy(this.gameObject);
         }
-        explosionProjectileDestroyer.DestroyProjectileSystem();
-        List<Health> healthsToDamage = GetHealthsToDamage(collision);
-        if (canDamage)
-            DealDamage(healthsToDamage);
-        Destroy(this.gameObject);
+    }
+    protected void Explode()
+    {
+        if (!isExploded)
+        {
+            rocketExplosionParticleSystem.transform.SetParent(null);
+            rocketExplosionParticleSystem.Play();
+            if (explodeSound != null)
+            {
+                explodeSound.transform.SetParent(null);
+                explodeSound.pitch += Random.Range(-explodeSoundPitchRange, explodeSoundPitchRange);
+                explodeSound.PlayOneShot(explodeSound.clip);
+            }
+            explosionProjectileDestroyer.DestroyProjectileSystem();
+            List<Health> healthsToDamage = GetHealthsToDamage();
+            if (canDamage)
+                DealDamage(healthsToDamage);
+            isExploded = true;
+            Destroy(this.gameObject);
+        }
     }
     protected List<Health> GetHealthsToDamage(Collision collision)
     {
@@ -46,16 +75,20 @@ public class Grenade : ExplosiveRocket
         }
         return healthsToDamage;
     }
+    protected List<Health> GetHealthsToDamage()
+    {
+        return healthsToDamage;
+    }
     protected override void ProgressSelfDestructTimer()
     {
         selfDestructTimer += Time.deltaTime;
         if (selfDestructTimer >= timeToSelfDestruct)
         {
-            Explode(new Collision());
+            Explode();
             return;
         }
     }
-    public void OnCollision(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         // Производится проверка на нахождения тега объекта в списках на взрыв и игнорирование
         bool explode = false;

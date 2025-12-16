@@ -148,7 +148,7 @@ public class Rocket : Projectile
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         selfDestructTimer = 0;
         canDamage = true;
