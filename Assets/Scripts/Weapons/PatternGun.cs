@@ -35,8 +35,8 @@ public class PatternGun : Gun
 
             finishedShooting = false;
             ammoCountInMag--;
-            patternCounter = (patternCounter+1)%patternOrder.Count;
             cooldownTimer = patternDelays[patternCounter];
+            patternCounter = (patternCounter+1)%patternOrder.Count;
             return true;
         }
         return false;

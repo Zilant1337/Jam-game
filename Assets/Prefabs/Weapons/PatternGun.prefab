@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 5324673187346839945}
   - component: {fileID: 7176681459916801899}
   m_Layer: 0
-  m_Name: ShotgunBolter
+  m_Name: PatternGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

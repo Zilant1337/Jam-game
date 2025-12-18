@@ -205,6 +205,7 @@ MonoBehaviour:
   enemyType: 0
   attackDistance: 2
   attackCooldown: 2
+  trackingSpeed: 90
 --- !u!114 &4976157982397748758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b976c5bc301af4eaef311a69b179e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionAngle: 60
+  detectionAngle: 180
   detectionRadius: 20
   guaranteedDetectionRadius: 5
   detectionCooldown: 1

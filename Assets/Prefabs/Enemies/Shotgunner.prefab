@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 3327943578205088325}
   - component: {fileID: 2705525665094692158}
   m_Layer: 6
-  m_Name: Shooter
+  m_Name: Shotgunner
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -355,7 +355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6212277235020253041}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.28, y: 1, z: -3.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -408,8 +408,10 @@ MonoBehaviour:
   navMeshAgent: {fileID: 3327943578205088325}
   playerDetector: {fileID: 4957985907015049825}
   enemyType: 0
-  attackDistance: 10
+  attackDistance: 20
   attackCooldown: 5
+  shootAngle: 30
+  trackingSpeed: 180
 --- !u!114 &5183512479145862735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05b976c5bc301af4eaef311a69b179e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionAngle: 60
+  detectionAngle: 180
   detectionRadius: 20
   guaranteedDetectionRadius: 5
   detectionCooldown: 1
@@ -745,15 +747,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: patternOrder.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: patternDelays.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: bulletPatterns.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5713664684377070719, guid: 0b94ac02ec99037419a2063d2c631d27, type: 3}
       propertyPath: 'patternDelays.Array.data[0]'
