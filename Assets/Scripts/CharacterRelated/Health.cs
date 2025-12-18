@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
     protected HealthBar healthBarScript;
     protected bool isDead = false;
 
+    public bool IsFull { get => hp == MAX_HP; }
+
     void Start()
     {
         hp = MAX_HP;

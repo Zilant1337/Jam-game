@@ -14,6 +14,10 @@ public class DoorOpener : PaidInteractable
     {
         paidInteractableUI.UpdatePaidInteractableText("Open the door", price.ToString());
     }
+    protected override bool CheckReadiness()
+    {
+        return !door.IsMoving;
+    }
 
     // Update is called once per frame
     void Update()

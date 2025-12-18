@@ -25,7 +25,10 @@ public class WeaponRack : PaidInteractable
         if (price == 0)
             price = weapon.Price;
     }
-
+    protected override bool CheckReadiness()
+    {
+        return weaponSpawned;
+    }
     // Update is called once per frame
     void Update()
     {

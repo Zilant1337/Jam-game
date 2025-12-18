@@ -431,7 +431,7 @@ MonoBehaviour:
   weaponManager: {fileID: 6648884860061786429}
   navMeshAgent: {fileID: 5950272005582949599}
   playerDetector: {fileID: 8743831767943902669}
-  enemyType: 0
+  enemyType: 3
   attackDistance: 10
   attackCooldown: 5
   shootAngle: 10

@@ -10,21 +10,31 @@ public class PaidInteractable : Interactable
 
     public override void InteractAction(Collider other)
     {
-        if (MoneyAndPurchasing.instance.RemoveMoney(Price))
+        if(CheckReadiness())
         {
-            Debug.Log($"Removed {Price}");
-            PaidAction();
+            if (MoneyAndPurchasing.instance.RemoveMoney(Price))
+            {
+                Debug.Log($"Removed {Price}");
+                PaidAction();
+            }
+            else
+            {
+                Debug.Log("Not enough money!");
+            }
         }
         else
         {
-            Debug.Log($"Not enough money!");
+            Debug.Log($"Not ready!");
         }
     }
     protected virtual void PaidAction()
     {
 
     }
-
+    protected virtual bool CheckReadiness()
+    {
+        return false;
+    }
     void Start()
     {
         

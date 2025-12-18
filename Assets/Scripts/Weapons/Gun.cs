@@ -47,8 +47,6 @@ public abstract class Gun : MonoBehaviour
     [SerializeField]
     protected bool hasInfiniteAmmo;
 
-
-
     [SerializeField]
     protected AudioSource reloadAudioSource;
     [SerializeField]

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,7 +8,10 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager instance;
     public enum EnemyType
     {
-        Dummy
+        Dummy,
+        Chaser,
+        Shotgunner,
+        Rifleman
     }
 
     [SerializeField]
@@ -18,6 +22,18 @@ public class EnemyManager : MonoBehaviour
     [SerializeField]
     private int maxEnemiesOnField;
     private int enemiesOnField;
+
+    [SerializeField]
+    private float healSpawnChance;
+    [SerializeField]
+    private float ammoSpawnChance;
+
+    [SerializeField]
+    private Transform healthPackPrefabTransform;
+    [SerializeField]
+    private Transform ammoPackPrefabTransform;
+
+    System.Random rand;
 
     private Dictionary<EnemyType, int> enemyMonetaryValues;
     public UnityEvent <EnemyType,Transform> onEnemyDeath;
@@ -37,7 +53,7 @@ public class EnemyManager : MonoBehaviour
 
         enemyMonetaryValues = new Dictionary<EnemyType, int>
         {
-            { EnemyType.Dummy,100}
+            { EnemyType.Dummy,100},{ EnemyType.Chaser,100},{ EnemyType.Shotgunner,200},{ EnemyType.Rifleman,150}
 
         };
         enemiesOnField = 0;
@@ -45,7 +61,8 @@ public class EnemyManager : MonoBehaviour
     }
     private void Start()
     {
-        foreach(Transform child in enemySpawnersTransform)
+        rand = new System.Random();
+        foreach (Transform child in enemySpawnersTransform)
         {
             if (child.GetComponent<EnemySpawner>() != null)
                 enemySpawners.Add(child.GetComponent<EnemySpawner>());
@@ -71,6 +88,25 @@ public class EnemyManager : MonoBehaviour
         if(enemiesOnField!=0)
             enemiesOnField--;
         Debug.Log($"Killed {transform.gameObject.name}, enemy count: {enemiesOnField}");
+        int ammoOrHealth = rand.Next(0,2);
+        switch (ammoOrHealth)
+        {
+            case 0:
+                float healthRand = Random.Range(0,100);
+                if (healthRand < 1 / healSpawnChance)
+                {
+                    Instantiate(healthPackPrefabTransform,transform.position,Quaternion.identity);
+                }
+            break;
+            case 1:
+                float ammoRand = Random.Range(0, 100);
+                if (ammoRand < 1 / ammoSpawnChance)
+                {
+                    Instantiate(ammoPackPrefabTransform, transform.position, Quaternion.identity);
+                }
+                break;
+        }
+
         MoneyAndPurchasing.instance.AddMoney(enemyMonetaryValues[enemyType]);
     } 
 }

@@ -14,6 +14,7 @@ public class Door : MonoBehaviour
     bool isOpen;
     bool isMoving = false;
     public bool IsOpen { get => isOpen; }
+    public bool IsMoving { get => isMoving; }
 
     public bool Open()
     {
