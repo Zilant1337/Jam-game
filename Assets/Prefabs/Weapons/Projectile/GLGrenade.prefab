@@ -249,8 +249,8 @@ MonoBehaviour:
   projectileRigidbody: {fileID: 1979712556203046016}
   damage: 150
   timeToSelfDestruct: 2
-  maxProjectileSpeed: 25
-  startingSpeed: 25
+  maxProjectileSpeed: 10
+  startingSpeed: 20
   acceleration: 0
   rocketParticleSystem: {fileID: 0}
   rocketExplosionParticleSystem: {fileID: 7977761199192338691}
@@ -311,7 +311,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 4
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0.025}
 --- !u!136 &4722146611691512923
 CapsuleCollider:

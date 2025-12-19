@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class CursorManager : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class CursorManager : MonoBehaviour
     [SerializeField]
     PlayerInput playerInput;
     [SerializeField]
-    Texture2D cursorSprite;
+    Texture2D gameCursorSprite;
+    [SerializeField] 
+    Texture2D menuCursorSprite;
     [SerializeField]
     Transform middleOfCanvasTransform;
     [SerializeField]
@@ -44,56 +47,76 @@ public class CursorManager : MonoBehaviour
         {
             Application.targetFrameRate = 120;
         }
-        virtualCursorTransform.gameObject.SetActive(false);
+        if (SceneManager.GetActiveScene().name != "MainMenu")
+            virtualCursorTransform.gameObject.SetActive(false);
     }
     private void Update()
     {
-        if (touchInputTimer > 0)
+        if (SceneManager.GetActiveScene().name != "MainMenu")
         {
-            touchInputTimer -= Time.deltaTime;
-            if (touchInputTimer <= 0)
+            if (touchInputTimer > 0)
             {
-                touchActive = false;
-                mobileInput.SetActive(false);
+                touchInputTimer -= Time.deltaTime;
+                if (touchInputTimer <= 0)
+                {
+                    touchActive = false;
+                    mobileInput.SetActive(false);
+                }
             }
-        }
-        if (!keyboardActive)
-        {
-            Vector2 lookDirection = CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>().normalized;
-            if (lookDirection != Vector2.zero)
+            if (!keyboardActive)
             {
-                if(virtualCursorTransform.gameObject.activeSelf==false)
-                    virtualCursorTransform.gameObject.SetActive(true);
-                Vector2 aimPoint = new Vector2(middleOfCanvasTransform.position.x + lookDirection.x * cursorDistance, middleOfCanvasTransform.position.y+lookDirection.y*cursorDistance);
-                
-                virtualCursorTransform.position = aimPoint;
+                Vector2 lookDirection = CharacterScript.inputSystem.Player.Look.ReadValue<Vector2>().normalized;
+                if (lookDirection != Vector2.zero)
+                {
+                    if (virtualCursorTransform.gameObject.activeSelf == false)
+                        virtualCursorTransform.gameObject.SetActive(true);
+                    Vector2 aimPoint = new Vector2(middleOfCanvasTransform.position.x + lookDirection.x * cursorDistance, middleOfCanvasTransform.position.y + lookDirection.y * cursorDistance);
+
+                    virtualCursorTransform.position = aimPoint;
+                }
+                // Отключение курсора при отсутствии ввода для взгляда
+                if (lookDirection == Vector2.zero)
+                {
+                    virtualCursorTransform.gameObject.SetActive(false);
+                }
             }
-            // Отключение курсора при отсутствии ввода для взгляда
-            if (lookDirection == Vector2.zero)
+            // Включение экранного управления если был ввод на тачскрин
+            if (Touchscreen.current != null && Touchscreen.current.wasUpdatedThisFrame)
             {
-                virtualCursorTransform.gameObject.SetActive(false);
+                touchInputTimer = touchInputDisableTime;
+                touchActive = true;
+                mobileInput.SetActive(true);
             }
-        }
-        // Включение экранного управления если был ввод на тачскрин
-        if (Touchscreen.current != null && Touchscreen.current.wasUpdatedThisFrame)
-        {
-            touchInputTimer = touchInputDisableTime;
-            touchActive = true;
-            mobileInput.SetActive(true);
         }
     }
     void Start()
     {
-        Vector2 cursorHotspot = new Vector2(cursorSprite.width / 2, cursorSprite.width / 2);
-        Cursor.SetCursor(cursorSprite,cursorHotspot,CursorMode.Auto);
-        keyboardActive = true;
-        if (Touchscreen.current != null && Touchscreen.current.wasUpdatedThisFrame)
+        if (SceneManager.GetActiveScene().name != "MainMenu")
         {
-            touchActive = true;
-            keyboardActive = false;
-            mobileInput.SetActive(true);
+            SetGameCursor();
+            keyboardActive = true;
+            if (Touchscreen.current != null && Touchscreen.current.wasUpdatedThisFrame)
+            {
+                touchActive = true;
+                keyboardActive = false;
+                mobileInput.SetActive(true);
+            }
+            OnControlSchemeChange();
+            CharacterScript.inputSystem.Player.Look.Reset();
         }
-        OnControlSchemeChange();
+        else
+        {
+            SetMenuCursor();
+        }
+    }
+    public void SetGameCursor()
+    {
+        Vector2 cursorHotspot = new Vector2(gameCursorSprite.width / 2, gameCursorSprite.width / 2);
+        Cursor.SetCursor(gameCursorSprite, cursorHotspot, CursorMode.Auto);
+    }
+    public void SetMenuCursor()
+    {
+        Cursor.SetCursor(menuCursorSprite,Vector2.zero,CursorMode.Auto);
     }
     public void OnControlSchemeChange()
     {

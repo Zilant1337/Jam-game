@@ -448,6 +448,17 @@
                 },
                 {
                     "name": "",
+                    "id": "08452ddb-e69a-4c31-9c58-a36fd0fae706",
+                    "path": "<Touchscreen>/{Back}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;Keyboard&Mouse;Touch",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e46906cb-1fd2-461c-b013-09f367778426",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
