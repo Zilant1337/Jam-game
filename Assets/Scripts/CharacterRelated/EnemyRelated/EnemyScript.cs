@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyScript : MonoBehaviour  
 {
     [SerializeField]
+    protected Renderer renderer1;
+    [SerializeField]
     protected EnemyWeaponManager weaponManager;
     [SerializeField]
     protected NavMeshAgent navMeshAgent;
@@ -28,12 +30,15 @@ public class EnemyScript : MonoBehaviour
     ITrackingStrategy trackingStrategy;
     float attackTimer;
     StateMachine stateMachine;
+    EnemySpawnerArea enemySpawnerArea;
     
     public float AttackCooldown { get => attackCooldown; }
     public float AttackTimer { get => attackTimer; set => attackTimer = value; }
     public EnemyManager.EnemyType EnemyType { get => enemyType; }
     public ITrackingStrategy TrackingStrategy { get => trackingStrategy;}
     public NavMeshAgent NavMeshAgent { get => navMeshAgent; }
+    public EnemySpawnerArea EnemySpawnerArea { get => enemySpawnerArea; set => SetSpawnerArea(value); }
+    public Renderer Renderer { get => renderer1; }
 
     private void Awake()
     {
@@ -72,6 +77,17 @@ public class EnemyScript : MonoBehaviour
         }
         stateMachine.Update();
         trackingStrategy.Update();
+    }
+    void SetSpawnerArea(EnemySpawnerArea enemySpawnerArea)
+    {
+        if (!this.enemySpawnerArea)
+        {
+            this.enemySpawnerArea = enemySpawnerArea;
+        }
+        else
+        {
+            Debug.LogError($"Tried to assign a different spawner area to {gameObject.name}");
+        }
     }
     private void FixedUpdate()
     {

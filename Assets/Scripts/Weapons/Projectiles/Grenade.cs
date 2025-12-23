@@ -38,7 +38,7 @@ public class Grenade : ExplosiveRocket
                 explodeSound.pitch += Random.Range(-explodeSoundPitchRange, explodeSoundPitchRange);
                 explodeSound.PlayOneShot(explodeSound.clip);
             }
-            explosionProjectileDestroyer.DestroyProjectileSystem();
+            explosionProjectileDestroyer.DestroyObject();
             List<Health> healthsToDamage = GetHealthsToDamage(collision);
             if (canDamage)
                 DealDamage(healthsToDamage);
@@ -54,11 +54,10 @@ public class Grenade : ExplosiveRocket
             rocketExplosionParticleSystem.Play();
             if (explodeSound != null)
             {
-                explodeSound.transform.SetParent(null);
                 explodeSound.pitch += Random.Range(-explodeSoundPitchRange, explodeSoundPitchRange);
                 explodeSound.PlayOneShot(explodeSound.clip);
             }
-            explosionProjectileDestroyer.DestroyProjectileSystem();
+            explosionProjectileDestroyer.DestroyObject();
             List<Health> healthsToDamage = GetHealthsToDamage();
             if (canDamage)
                 DealDamage(healthsToDamage);

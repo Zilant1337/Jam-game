@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -26,7 +27,7 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField]
     private int maxEnemiesOnField;
-    private int enemiesOnField;
+    private int enemyCount;
 
     [SerializeField]
     private float healSpawnChance;
@@ -43,7 +44,7 @@ public class EnemyManager : MonoBehaviour
     private Dictionary<EnemyType, int> enemyMonetaryValues;
     public UnityEvent <EnemyType,Transform> onEnemyDeath;
 
-    public EnemySpawnerArea CurrentSpawnerArea { get => currentSpawnerArea; set => currentSpawnerArea = value; }
+    public EnemySpawnerArea CurrentSpawnerArea { get => currentSpawnerArea; set => OnSpawnerAreaChange(value); }
 
     private void Awake()
     {
@@ -64,7 +65,7 @@ public class EnemyManager : MonoBehaviour
             { EnemyType.Dummy,100},{ EnemyType.Chaser,100},{ EnemyType.Shotgunner,200},{ EnemyType.Rifleman,150}
 
         };
-        enemiesOnField = 0;
+        enemyCount = 0;
         enemySpawnerAreas = new List<EnemySpawnerArea>();
     }
     private void Start()
@@ -79,21 +80,42 @@ public class EnemyManager : MonoBehaviour
     }
     private void Update()
     {
-        if(enemiesOnField<maxEnemiesOnField)
+        if(enemyCount<maxEnemiesOnField)
         {
             if (currentSpawnerArea.Spawn())
             {
-                enemiesOnField++;
-                Debug.Log($"Spawned a new enemy, new enemy count: {enemiesOnField}");
+                enemyCount++;
+                Debug.Log($"Spawned a new enemy, new enemy count: {enemyCount}");
             }
         }
     }
-
+    private void OnSpawnerAreaChange(EnemySpawnerArea newEnemySpawnerArea)
+    {
+        currentSpawnerArea = newEnemySpawnerArea;
+        Debug.Log($"Player walked into {currentSpawnerArea}");
+        List<GameObject> enemyObjects = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        List<EnemyScript> enemiesToDestroy = new List<EnemyScript>();
+        foreach (GameObject gameObject in enemyObjects)
+        {
+            EnemyScript enemyScript = gameObject.GetComponent<EnemyScript>();
+            if (enemyScript)
+            {
+                if (!CameraManager.Instance.CheckObjectVisibility(enemyScript.gameObject) && enemyScript.EnemySpawnerArea != currentSpawnerArea)
+                    enemiesToDestroy.Add(enemyScript);
+            }
+        }
+        Debug.Log($"Destroying {enemiesToDestroy.Count()} enemies out of view");
+        for(int i = enemiesToDestroy.Count() - 1; i >= 0; i--)
+        {
+            Destroy(enemiesToDestroy[i].gameObject);
+            enemyCount--;
+        }
+    }
     private void OnEnemyDeath(EnemyType enemyType, Transform transform)
     {
-        if(enemiesOnField!=0)
-            enemiesOnField--;
-        Debug.Log($"Killed {transform.gameObject.name}, enemy count: {enemiesOnField}");
+        if(enemyCount!=0)
+            enemyCount--;
+        Debug.Log($"Killed {transform.gameObject.name}, enemy count: {enemyCount}");
         int ammoOrHealth = rand.Next(0,2);
         switch (ammoOrHealth)
         {

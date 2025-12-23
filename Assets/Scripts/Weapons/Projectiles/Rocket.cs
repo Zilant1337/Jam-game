@@ -15,7 +15,7 @@ public class Rocket : Projectile
     [SerializeField] 
     protected ParticleSystem rocketExplosionParticleSystem;
     [SerializeField]
-    protected ProjectileSystemDestroyer explosionProjectileDestroyer;
+    protected TimedObjectDestroyer explosionProjectileDestroyer;
     [SerializeField]
     protected List<string> tagsToHit;
     [SerializeField]
@@ -96,11 +96,10 @@ public class Rocket : Projectile
         rocketExplosionParticleSystem.Play();
         if(explodeSound!=null)
         {
-            explodeSound.transform.SetParent(null);
             explodeSound.pitch += Random.Range(-explodeSoundPitchRange,explodeSoundPitchRange);
             explodeSound.PlayOneShot(explodeSound.clip);
         }
-        explosionProjectileDestroyer.DestroyProjectileSystem();
+        explosionProjectileDestroyer.DestroyObject();
         List<Health> healthsToDamage = GetHealthsToDamage(collision);
         if(canDamage)
             DealDamage(healthsToDamage);

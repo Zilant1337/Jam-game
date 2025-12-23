@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileSystemDestroyer : MonoBehaviour
+public class TimedObjectDestroyer : MonoBehaviour
 {
     [SerializeField]
     protected float timeToLive;
@@ -14,7 +14,7 @@ public class ProjectileSystemDestroyer : MonoBehaviour
     {
         
     }
-    public void DestroyProjectileSystem()
+    public void DestroyObject()
     {
         Destroy(gameObject,timeToLive);
     }

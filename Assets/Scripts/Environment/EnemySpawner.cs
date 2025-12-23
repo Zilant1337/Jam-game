@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
         readyToSpawn = true;
         spawnTimer = 0;
     }
-    public bool Spawn()
+    public EnemyScript Spawn()
     {
         if (readyToSpawn)
         {
@@ -44,8 +44,8 @@ public class EnemySpawner : MonoBehaviour
             var newEnemy = Instantiate(enemyPrefabs[spawnId], spawnPos, Quaternion.identity,enemyWorldParent);
             spawnId = (spawnId+1)%enemyPrefabs.Count;
             readyToSpawn=false;
-            return true;
+            return newEnemy.GetComponent<EnemyScript>();
         }
-        return false;
+        return null;
     }
 }

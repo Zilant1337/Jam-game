@@ -200,12 +200,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1a063036b7c94daf65e960651659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderer1: {fileID: 8301416889044725526}
   weaponManager: {fileID: 8515863201241701027}
   navMeshAgent: {fileID: 5387905407767283888}
   playerDetector: {fileID: 4052044763457906348}
   enemyType: 0
   attackDistance: 10
   attackCooldown: 5
+  shootAngle: 0
   trackingSpeed: 90
 --- !u!114 &4976157982397748758
 MonoBehaviour:

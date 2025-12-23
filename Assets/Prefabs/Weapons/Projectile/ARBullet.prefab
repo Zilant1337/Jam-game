@@ -236,14 +236,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 560014183069458990, guid: 621e45f610d611746802ad828f66b094, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6690677661421039536}
+      addedObject: {fileID: 8972248407945033955}
   m_SourcePrefab: {fileID: 100100000, guid: 621e45f610d611746802ad828f66b094, type: 3}
 --- !u!1 &2954392231082682645 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 560014183069458990, guid: 621e45f610d611746802ad828f66b094, type: 3}
   m_PrefabInstance: {fileID: 3370256003048295227}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6690677661421039536
+--- !u!114 &8972248407945033955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2954392231082682645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eead8ee23668cc4bb43ba870bc7bcb3, type: 3}
+  m_Script: {fileID: 11500000, guid: 646579e753a8ebe4d9c7a311ec7ebbe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeToLive: 0.5
@@ -441,7 +441,7 @@ MonoBehaviour:
   acceleration: 0
   rocketParticleSystem: {fileID: 0}
   rocketExplosionParticleSystem: {fileID: 2954392231082682859}
-  explosionProjectileDestroyer: {fileID: 6690677661421039536}
+  explosionProjectileDestroyer: {fileID: 8972248407945033955}
   tagsToHit:
   - Enemy
   - Environment

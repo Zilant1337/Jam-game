@@ -9,8 +9,10 @@ public class EnemySpawnerArea : MonoBehaviour
     {
         foreach (EnemySpawner enemySpawner in enemySpawners)
         {
-            if (enemySpawner.Spawn())
+            EnemyScript enemy = enemySpawner.Spawn();
+            if (enemy)
             {
+                enemy.EnemySpawnerArea = this;
                 return true;
             }
         }

@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1a063036b7c94daf65e960651659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderer1: {fileID: 1402852606542118768}
   weaponManager: {fileID: 6648884860061786429}
   navMeshAgent: {fileID: 5950272005582949599}
   playerDetector: {fileID: 8743831767943902669}

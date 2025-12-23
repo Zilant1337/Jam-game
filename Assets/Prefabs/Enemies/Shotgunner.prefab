@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1a063036b7c94daf65e960651659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderer1: {fileID: 2426150985843286861}
   weaponManager: {fileID: 3496989046286286264}
   navMeshAgent: {fileID: 3327943578205088325}
   playerDetector: {fileID: 4957985907015049825}

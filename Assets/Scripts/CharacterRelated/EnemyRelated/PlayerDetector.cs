@@ -9,8 +9,6 @@ public class PlayerDetector : MonoBehaviour
     [SerializeField]
     float guaranteedDetectionRadius = 5;
     [SerializeField]
-    float detectionCooldown = 1;
-    [SerializeField]
     protected LayerMask obstructionsLayerMask;
 
     float timer;
@@ -45,7 +43,7 @@ public class PlayerDetector : MonoBehaviour
     }
     public bool CanDetectPlayer()
     {
-        return timer == 0 && detectionStrategy.Execute(Player,transform, obstructionsLayerMask);
+        return timer == 0 && detectionStrategy.Execute(Player, transform, obstructionsLayerMask);
     }
     public void SetDetectionStrategy(IDetectionStrategy detectionStrategy) => this.detectionStrategy = detectionStrategy;
 
