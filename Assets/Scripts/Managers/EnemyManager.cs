@@ -13,12 +13,17 @@ public class EnemyManager : MonoBehaviour
         Shotgunner,
         Rifleman
     }
-
+    
     [SerializeField]
     private Transform enemyParentTransform;
     [SerializeField]
-    private Transform enemySpawnersTransform;
-    private List<EnemySpawner> enemySpawners;
+    private Transform enemySpawnerAreasTransform;
+    private List<EnemySpawnerArea> enemySpawnerAreas;
+    [SerializeField]
+    private EnemySpawnerArea initialSpawnerArea;
+    private EnemySpawnerArea currentSpawnerArea;
+
+
     [SerializeField]
     private int maxEnemiesOnField;
     private int enemiesOnField;
@@ -37,6 +42,9 @@ public class EnemyManager : MonoBehaviour
 
     private Dictionary<EnemyType, int> enemyMonetaryValues;
     public UnityEvent <EnemyType,Transform> onEnemyDeath;
+
+    public EnemySpawnerArea CurrentSpawnerArea { get => currentSpawnerArea; set => currentSpawnerArea = value; }
+
     private void Awake()
     {
         
@@ -57,28 +65,26 @@ public class EnemyManager : MonoBehaviour
 
         };
         enemiesOnField = 0;
-        enemySpawners = new List<EnemySpawner>();
+        enemySpawnerAreas = new List<EnemySpawnerArea>();
     }
     private void Start()
     {
         rand = new System.Random();
-        foreach (Transform child in enemySpawnersTransform)
+        foreach (Transform child in enemySpawnerAreasTransform)
         {
             if (child.GetComponent<EnemySpawner>() != null)
-                enemySpawners.Add(child.GetComponent<EnemySpawner>());
+                enemySpawnerAreas.Add(child.GetComponent<EnemySpawnerArea>());
         }
+        currentSpawnerArea = initialSpawnerArea;
     }
     private void Update()
     {
-        foreach(EnemySpawner enemySpawner in enemySpawners)
+        if(enemiesOnField<maxEnemiesOnField)
         {
-            if(enemiesOnField<maxEnemiesOnField){
-                
-                if (enemySpawner.Spawn())
-                {
-                    enemiesOnField++;
-                    Debug.Log($"Spawned a new enemy, new enemy count: {enemiesOnField}");
-                }
+            if (currentSpawnerArea.Spawn())
+            {
+                enemiesOnField++;
+                Debug.Log($"Spawned a new enemy, new enemy count: {enemiesOnField}");
             }
         }
     }

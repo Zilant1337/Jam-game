@@ -54,7 +54,7 @@ public class EnemyScript : MonoBehaviour
         &&Vector3.Distance(transform.position,playerDetector.Player.transform.position)<=attackDistance));
         stateMachine.AddTransition(attackState, guardState, new FunctionPredicate(() => !playerDetector.CanDetectPlayer()));
         stateMachine.AddTransition(attackState, chaseState, new FunctionPredicate(() => playerDetector.CanDetectPlayer()&& Vector3.Distance(transform.position, playerDetector.Player.transform.position) > attackDistance));
-
+        stateMachine.AddAnyTransition(guardState,new FunctionPredicate(() => !playerDetector.Player));
         stateMachine.SetState(guardState);
     }
 

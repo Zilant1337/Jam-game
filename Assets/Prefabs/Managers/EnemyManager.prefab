@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5420134573182227552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5789522692702116147}
+  - component: {fileID: 8637205255778237156}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5789522692702116147
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420134573182227552}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8637205255778237156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420134573182227552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fec491269807a1e45b77954c7ff086f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyParentTransform: {fileID: 0}
+  enemySpawnerAreasTransform: {fileID: 0}
+  initialSpawnerArea: {fileID: 0}
+  maxEnemiesOnField: 50
+  healSpawnChance: 0.2
+  ammoSpawnChance: 0.3
+  healthPackPrefabTransform: {fileID: 4241320113791887838, guid: f829e02576ce80c438d48c12341fa012, type: 3}
+  ammoPackPrefabTransform: {fileID: 8942669702843695378, guid: 0495031f65210f746bd028ca73a8ffa2, type: 3}
+  onEnemyDeath:
+    m_PersistentCalls:
+      m_Calls: []

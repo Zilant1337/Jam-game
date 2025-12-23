@@ -12,6 +12,7 @@ public class CameraManager : MonoBehaviour
     }
     void LateUpdate()
     {
-        sceneCamera.transform.position = new Vector3(objectToFollow.transform.position.x, sceneCamera.transform.position.y, objectToFollow.transform.position.z);
+        if(objectToFollow)
+            sceneCamera.transform.position = new Vector3(objectToFollow.transform.position.x, sceneCamera.transform.position.y, objectToFollow.transform.position.z);
     }
 }
