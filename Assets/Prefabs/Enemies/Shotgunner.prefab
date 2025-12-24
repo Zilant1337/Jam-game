@@ -409,7 +409,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 3327943578205088325}
   playerDetector: {fileID: 4957985907015049825}
   enemyType: 2
-  attackDistance: 20
+  attackDistance: 15
   attackCooldown: 5
   shootAngle: 30
   trackingSpeed: 180
@@ -457,7 +457,6 @@ MonoBehaviour:
   detectionAngle: 180
   detectionRadius: 20
   guaranteedDetectionRadius: 5
-  detectionCooldown: 1
   obstructionsLayerMask:
     serializedVersion: 2
     m_Bits: 128

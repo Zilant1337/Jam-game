@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
 
     public bool IsFull { get => hp == MAX_HP; }
 
-    void Start()
+    protected virtual void Start()
     {
         hp = MAX_HP;
         if (healthBarScript != null)
@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
     }

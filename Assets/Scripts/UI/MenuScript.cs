@@ -4,10 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
+    public static MenuScript Instance;
     [SerializeField]
     private PlayerInput playerInput;
     [SerializeField]
     GameObject pauseMenuObject;
+    [SerializeField]
+    GameObject gameOverMenuObject;
+    [SerializeField]
+    GameObject victoryMenuObject;
     public void ReloadScene()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
@@ -28,6 +33,28 @@ public class MenuScript : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName);
+    }
+    public void GameOver()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName != "MainMenu")
+        {
+            Time.timeScale = 0;
+            playerInput.SwitchCurrentActionMap("UI");
+            CursorManager.instance.SetMenuCursor();
+            gameOverMenuObject.SetActive(true);
+        }
+    }
+    public void Victory()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName != "MainMenu")
+        {
+            Time.timeScale = 0;
+            playerInput.SwitchCurrentActionMap("UI");
+            CursorManager.instance.SetMenuCursor();
+            victoryMenuObject.SetActive(true);
+        }
     }
     public void Pause()
     {
@@ -54,15 +81,14 @@ public class MenuScript : MonoBehaviour
     }
     private void Start()
     {
-        Time.timeScale = 1;
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        /*if (currentSceneName == "MainMenu")
+        if (!Instance)
         {
-            playerInput.SwitchCurrentActionMap("UI");
+            Instance = this;
         }
         else
         {
-            playerInput.SwitchCurrentActionMap("Player");
-        }*/
+            Debug.LogError("Can't have more than one MenuScript");
+        }
+        Time.timeScale = 1;
     }
 }
