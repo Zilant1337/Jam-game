@@ -11,7 +11,7 @@ public class Stamina : MonoBehaviour
     protected bool regenStamina;
 
     [SerializeField]
-    protected StaminaBar staminaBarScript;
+    protected ProgressBar staminaBarScript;
 
     public UnityEvent regenPause;
     public UnityEvent regenResume;
@@ -43,7 +43,7 @@ public class Stamina : MonoBehaviour
         {
             AddStamina(Time.deltaTime*staminaRegenRate);
         }
-        staminaBarScript.UpdateStaminaBar(currentStamina / MAX_STAMINA);
+        staminaBarScript.UpdateProgressBar(currentStamina / MAX_STAMINA);
     }
     private void RemoveStamina(float staminaToRemove)
     {

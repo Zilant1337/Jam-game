@@ -197,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2841712844953588581}
-  - component: {fileID: 5764390404885650296}
+  - component: {fileID: 7530515380128339929}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -226,7 +226,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0.5, y: 2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5764390404885650296
+--- !u!114 &7530515380128339929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,10 +235,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4176652788262902859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05289e6d2a861974fabe0d036a437741, type: 3}
+  m_Script: {fileID: 11500000, guid: 24e25a6d4ec757c40876f15402c17755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 756893886788990629}
+  progressBarFill: {fileID: 756893886788990629}
 --- !u!1 &7059351254643060905
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAX_HP: 100
   hp: 0
-  healthBarScript: {fileID: 5764390404885650296}
+  healthBarScript: {fileID: 7530515380128339929}
 --- !u!114 &6648884860061786429
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class PlayerHealth:Health
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        healthBarScript.UpdateHealthBar(hp / MAX_HP);
+        healthBarScript.UpdateProgressBar(hp / MAX_HP);
     }
     protected override void OnDeath()
     {

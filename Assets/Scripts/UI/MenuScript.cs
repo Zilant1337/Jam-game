@@ -13,11 +13,13 @@ public class MenuScript : MonoBehaviour
     GameObject gameOverMenuObject;
     [SerializeField]
     GameObject victoryMenuObject;
+    // Перезапуск сцены
     public void ReloadScene()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
     }
+    // Запуск игры из главного меню
     public void StartGame()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
@@ -30,10 +32,12 @@ public class MenuScript : MonoBehaviour
             Debug.LogError("Can't start the game from outside of main menu");
         }
     }
+    // Переключение на указанную сцену
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName);
     }
+    // Открытие меню, предлагающего перезапустить игру при смерти игрока
     public void GameOver()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
@@ -45,6 +49,7 @@ public class MenuScript : MonoBehaviour
             gameOverMenuObject.SetActive(true);
         }
     }
+    // Включение меню, завершающего уровень
     public void Victory()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
@@ -56,17 +61,20 @@ public class MenuScript : MonoBehaviour
             victoryMenuObject.SetActive(true);
         }
     }
+    // Постановка игры на паузу
     public void Pause()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (currentSceneName != "MainMenu")
         {
+            // Время не движется во время паузы
             Time.timeScale = 0;
             playerInput.SwitchCurrentActionMap("UI");
             CursorManager.instance.SetMenuCursor();
             pauseMenuObject.SetActive(true);
         }
     }
+    // Снятие с паузы
     public void Unpause()
     {
         pauseMenuObject.SetActive(false);
@@ -75,6 +83,7 @@ public class MenuScript : MonoBehaviour
         Time.timeScale = 1;
 
     }
+    // Выход из игры
     public void ExitGame()
     {
         Application.Quit();

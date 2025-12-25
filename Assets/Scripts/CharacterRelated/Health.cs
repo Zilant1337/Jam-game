@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField]
     protected float hp;
     [SerializeField]
-    protected HealthBar healthBarScript;
+    protected ProgressBar healthBarScript;
     protected bool isDead = false;
 
     public bool IsFull { get => hp == MAX_HP; }
@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
     {
         hp = MAX_HP;
         if (healthBarScript != null)
-            healthBarScript.UpdateHealthBar(hp / MAX_HP);
+            healthBarScript.UpdateProgressBar(hp / MAX_HP);
     }
 
     // Update is called once per frame
@@ -33,13 +33,13 @@ public class Health : MonoBehaviour
         {
             hp -= damage;
             if (healthBarScript != null)
-                healthBarScript.UpdateHealthBar(hp / MAX_HP);
+                healthBarScript.UpdateProgressBar(hp / MAX_HP);
         }
         else
         {
             hp = 0;
             if (healthBarScript != null)
-                healthBarScript.UpdateHealthBar(hp / MAX_HP);
+                healthBarScript.UpdateProgressBar(hp / MAX_HP);
             OnDeath();
         }
     }
@@ -49,13 +49,13 @@ public class Health : MonoBehaviour
         {
             hp += health;
             if (healthBarScript != null)
-                healthBarScript.UpdateHealthBar(hp / MAX_HP);
+                healthBarScript.UpdateProgressBar(hp / MAX_HP);
         }
         else
         {
             hp = MAX_HP;
             if (healthBarScript != null)
-                healthBarScript.UpdateHealthBar(hp / MAX_HP);
+                healthBarScript.UpdateProgressBar(hp / MAX_HP);
         }
     }
     protected virtual void OnDeath()

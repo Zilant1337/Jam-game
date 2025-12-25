@@ -8,7 +8,7 @@ public abstract class Interactable : MonoBehaviour
 
     public bool ActivateOnTrigger { get => activateOnTrigger; }
 
-    public void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (activateOnTrigger)
         {
@@ -19,7 +19,7 @@ public abstract class Interactable : MonoBehaviour
             isInteractable = true;
         }
     }
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         isInteractable = false;
     }
