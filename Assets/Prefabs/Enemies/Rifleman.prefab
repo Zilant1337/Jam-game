@@ -628,10 +628,11 @@ MonoBehaviour:
   - 0
   volleyDelay:
   - 0
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  projectileRangeIndicatorPrefabTransform: {fileID: 0}
   projectilePrefabTransform: {fileID: 4110984721843814333, guid: 8cb1734adf22e334d9fcf2a545d43d81, type: 3}
   projectileSpawnDistance: 0
 --- !u!1 &9198136032712703673
