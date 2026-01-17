@@ -135,8 +135,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5251994866579318550}
-  - component: {fileID: 1329323598925847000}
   - component: {fileID: 8616599622155750471}
+  - component: {fileID: 8700508886228156391}
   m_Layer: 0
   m_Name: DoorOpener
   m_TagString: WorldTrigger
@@ -160,23 +160,6 @@ Transform:
   - {fileID: 9183354381363582586}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1329323598925847000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281389950370720497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35f732c518530c341abef0ce3bfc2354, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activateOnTrigger: 0
-  interaction: 0
-  price: 2000
-  paidInteractableUI: {fileID: 6485964220873337237}
-  door: {fileID: 0}
 --- !u!135 &8616599622155750471
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -198,6 +181,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8700508886228156391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281389950370720497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644452a1e057f4947af934373eae7401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateOnTrigger: 0
+  price: 10000
+  paidInteractableUI: {fileID: 6485964220873337237}
+  door: {fileID: 0}
 --- !u!1 &1336185738456810983
 GameObject:
   m_ObjectHideFlags: 0
