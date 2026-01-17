@@ -21,8 +21,9 @@ public class ProjectileGun : Gun
             Vector3 shotDirection = GetShotDirection();
 
             var projectile = Instantiate(projectilePrefabTransform,tracerEmmiterPoint.position,Quaternion.LookRotation(shotDirection,Vector3.up));
-
-            float explosionRadius = projectilePrefabTransform.GetComponent<ExplosiveRocket>().ExplosionRadius;
+            float explosionRadius = 0;
+            if (projectilePrefabTransform.GetComponent<ExplosiveRocket>())
+                explosionRadius= projectilePrefabTransform.GetComponent<ExplosiveRocket>().ExplosionRadius;
 
             if (projectileRangeIndicatorPrefabTransform)
             {

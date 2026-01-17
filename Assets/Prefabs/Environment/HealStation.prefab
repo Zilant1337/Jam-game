@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 5924272693475509645}
   - component: {fileID: 9114161730900260964}
   - component: {fileID: 4678397248378109951}
+  - component: {fileID: 1758929480774725009}
   m_Layer: 0
   m_Name: HealStation
   m_TagString: Environment
@@ -252,6 +253,22 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: -0.4}
+--- !u!208 &1758929480774725009
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3518757086281530350}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.8, y: 2, z: 0.8}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -0.4}
+  m_TimeToStationary: 0.5
 --- !u!1 &4561388540133256909
 GameObject:
   m_ObjectHideFlags: 0
