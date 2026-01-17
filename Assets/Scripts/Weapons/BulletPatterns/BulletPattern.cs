@@ -47,12 +47,14 @@ public abstract class BulletPattern : MonoBehaviour
                 // Пока не закончился отстрел паттерна, производим выстрелы
                 if (volleyCounter < volleyAngles.Count)
                 {
+                    Debug.Log("Shooting next volley");
                     ShootNextVolley();
                     if(volleyCounter<volleyAngles.Count)
                         timer = volleyDelay[volleyCounter];
                 }
                 else
                 {
+                    Debug.Log("Volley ended");
                     volleyCounter = 0;
                     timer = volleyDelay[volleyCounter];
                     isShooting = false;

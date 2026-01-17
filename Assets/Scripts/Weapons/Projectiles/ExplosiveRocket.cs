@@ -5,8 +5,13 @@ using UnityEngine;
 public class ExplosiveRocket : Rocket
 {
     [SerializeField]
+    protected SphereCollider explosionTrigger;
+    [SerializeField]
     protected bool dealDamageOnImpact;
     protected List<Health> healthsToDamage;
+
+    public float ExplosionRadius { get => explosionTrigger.radius; }
+
     protected override void OnTriggerEnter(Collider other)
     {
         Health health = other.GetComponent<Health>();

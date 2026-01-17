@@ -84,15 +84,13 @@ public class EnemyManager : MonoBehaviour
         {
             if (currentSpawnerArea.Spawn())
             {
-                enemyCount++;
-                Debug.Log($"Spawned a new enemy, new enemy count: {enemyCount}");
+                enemyCount++;                
             }
         }
     }
     private void OnSpawnerAreaChange(EnemySpawnerArea newEnemySpawnerArea)
     {
         currentSpawnerArea = newEnemySpawnerArea;
-        Debug.Log($"Player walked into {currentSpawnerArea}");
         List<GameObject> enemyObjects = GameObject.FindGameObjectsWithTag("Enemy").ToList();
         List<EnemyScript> enemiesToDestroy = new List<EnemyScript>();
         foreach (GameObject gameObject in enemyObjects)
@@ -104,7 +102,6 @@ public class EnemyManager : MonoBehaviour
                     enemiesToDestroy.Add(enemyScript);
             }
         }
-        Debug.Log($"Destroying {enemiesToDestroy.Count()} enemies out of view");
         for(int i = enemiesToDestroy.Count() - 1; i >= 0; i--)
         {
             Destroy(enemiesToDestroy[i].gameObject);
@@ -115,7 +112,6 @@ public class EnemyManager : MonoBehaviour
     {
         if(enemyCount!=0)
             enemyCount--;
-        Debug.Log($"Killed {transform.gameObject.name}, enemy count: {enemyCount}");
         int ammoOrHealth = rand.Next(0,2);
         switch (ammoOrHealth)
         {

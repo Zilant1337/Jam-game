@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
       propertyPath: m_Name
-      value: GLGrenade
+      value: BossGrenade
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
       propertyPath: m_TagString
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileRigidbody: {fileID: 1979712556203046016}
-  damage: 150
+  damage: 50
   timeToSelfDestruct: 2
   maxProjectileSpeed: 10
   startingSpeed: 20
@@ -256,7 +256,7 @@ MonoBehaviour:
   rocketExplosionParticleSystem: {fileID: 7977761199192338691}
   explosionProjectileDestroyer: {fileID: 9027366020295180679}
   tagsToHit:
-  - Enemy
+  - Player
   tagsToIgnore:
   - EnemyProjectile
   - PlayerProjectile
@@ -265,7 +265,7 @@ MonoBehaviour:
   explodeSoundPitchRange: 0.5
   explosionTrigger: {fileID: 7204955468328016255}
   dealDamageOnImpact: 0
-  explodeOnImpact: 1
+  explodeOnImpact: 0
   launchDirection: {x: 0, y: 0, z: 1}
 --- !u!54 &1979712556203046016
 Rigidbody:
@@ -313,7 +313,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 6
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0.025}
 --- !u!136 &4722146611691512923
 CapsuleCollider:
@@ -322,7 +322,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568932417218557873}
-  m_Material: {fileID: 13400000, guid: 3f9f07f59f350b242ac4a9a1dd932853, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -432,6 +432,10 @@ PrefabInstance:
     - target: {fileID: 560014183069458990, guid: 621e45f610d611746802ad828f66b094, type: 3}
       propertyPath: m_Name
       value: Explosion 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 560014183069458990, guid: 621e45f610d611746802ad828f66b094, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 560014183069459152, guid: 621e45f610d611746802ad828f66b094, type: 3}
       propertyPath: playOnAwake

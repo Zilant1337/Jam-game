@@ -493,6 +493,7 @@ MonoBehaviour:
   moveSound: {fileID: 0}
   explodeSound: {fileID: 8964894834573628879}
   explodeSoundPitchRange: 0.5
+  explosionTrigger: {fileID: 1254578073387588360}
   dealDamageOnImpact: 1
 --- !u!54 &123280581199162379
 Rigidbody:

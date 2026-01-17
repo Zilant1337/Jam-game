@@ -4,8 +4,11 @@ using UnityEngine;
 public class Grenade : ExplosiveRocket
 {
     [SerializeField]
+    protected bool explodeOnImpact;
+    [SerializeField]
     protected Vector3 launchDirection;
     protected bool isExploded;
+
     protected override void Start()
     {
         base.Start();
@@ -110,7 +113,7 @@ public class Grenade : ExplosiveRocket
                 }
             }
         }
-        if (explode)
+        if (explode && explodeOnImpact)
         {
             Debug.Log($"Collided with {collision.gameObject.name}");
             isMoving = false;

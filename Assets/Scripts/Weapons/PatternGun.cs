@@ -50,6 +50,7 @@ public class PatternGun : Gun
     }
     public void FinishPattern()
     {
+        Debug.Log("Finished pattern");
         finishedShooting = true;
     }
 }

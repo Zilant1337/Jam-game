@@ -9,8 +9,6 @@ public class CharacterScript : MonoBehaviour
     [SerializeField]
     private Movement movementScript;
     [SerializeField]
-    private Melee meleeScript;
-    [SerializeField]
     private LookAndShoot lookAndShootScript;
     [SerializeField]
     private MoneyAndPurchasing moneyAndPurchasing;
@@ -21,7 +19,6 @@ public class CharacterScript : MonoBehaviour
 
     protected Health HealthScript { get => healthScript; }
     protected Movement MovementScript { get => movementScript; }
-    protected Melee MeleeScript { get => meleeScript; }
     protected LookAndShoot LookAndShootScript { get => lookAndShootScript; }
     protected MoneyAndPurchasing MoneyAndPurchasing { get => moneyAndPurchasing; }
     protected Interact Interact { get => interact; }
