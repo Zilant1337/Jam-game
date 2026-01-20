@@ -15,22 +15,22 @@ public class EnemyScript : MonoBehaviour
     protected PlayerDetector playerDetector;
     
     [SerializeField]
-    private EnemyManager.EnemyType enemyType;
+    protected EnemyManager.EnemyType enemyType;
 
     [SerializeField]
-    float attackDistance;
+    protected float attackDistance;
     [SerializeField]
-    float attackCooldown;
+    protected float attackCooldown;
     [SerializeField]
-    float shootAngle;
+    protected float shootAngle;
     [SerializeField]
-    float trackingSpeed;
+    protected float trackingSpeed;
 
 
-    ITrackingStrategy trackingStrategy;
-    float attackTimer;
-    StateMachine stateMachine;
-    EnemySpawnerArea enemySpawnerArea;
+    protected ITrackingStrategy trackingStrategy;
+    protected float attackTimer;
+    protected StateMachine stateMachine;
+    protected EnemySpawnerArea enemySpawnerArea;
     
     public float AttackCooldown { get => attackCooldown; }
     public float AttackTimer { get => attackTimer; set => attackTimer = value; }
@@ -40,11 +40,11 @@ public class EnemyScript : MonoBehaviour
     public EnemySpawnerArea EnemySpawnerArea { get => enemySpawnerArea; set => SetSpawnerArea(value); }
     public bool TookDamageRecently { get; set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
             
     }
-    void Start()
+    protected virtual void Start()
     {
         TookDamageRecently = false;
         attackTimer = 0;
@@ -55,20 +55,24 @@ public class EnemyScript : MonoBehaviour
         AttackState attackState = new AttackState(this, navMeshAgent, weaponManager, playerDetector.Player,shootAngle);
 
         stateMachine.AddTransition(guardState, chaseState, new FunctionPredicate(() => playerDetector.CanDetectPlayer()));
+        stateMachine.AddTransition(guardState, chaseState, new FunctionPredicate(() => TookDamageRecently));
         stateMachine.AddTransition(chaseState, guardState, new FunctionPredicate(() => !playerDetector.CanDetectPlayer()&&!TookDamageRecently));
         stateMachine.AddTransition(chaseState,attackState,new FunctionPredicate(() => playerDetector.CanDetectPlayer()
         &&Vector3.Distance(transform.position,playerDetector.Player.transform.position)<=attackDistance));
         stateMachine.AddTransition(attackState, guardState, new FunctionPredicate(() => !playerDetector.CanDetectPlayer()));
         stateMachine.AddTransition(attackState, chaseState, new FunctionPredicate(() => playerDetector.CanDetectPlayer()&& Vector3.Distance(transform.position, playerDetector.Player.transform.position) > attackDistance));
         stateMachine.AddAnyTransition(guardState,new FunctionPredicate(() => !playerDetector.Player));
-        stateMachine.AddAnyTransition(chaseState, new FunctionPredicate(() => TookDamageRecently));
         stateMachine.SetState(guardState);
         healthBarFollower.TransformToFollow = transform;
         healthBarFollower.transform.SetParent(null);
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void OnDeath()
+    {
+
+    }
+    protected virtual void Update()
     {
         if (attackTimer > 0)
         {
@@ -82,7 +86,7 @@ public class EnemyScript : MonoBehaviour
         stateMachine.Update();
         trackingStrategy.Update();
     }
-    void SetSpawnerArea(EnemySpawnerArea enemySpawnerArea)
+    protected virtual void SetSpawnerArea(EnemySpawnerArea enemySpawnerArea)
     {
         if (!this.enemySpawnerArea)
         {
@@ -93,7 +97,7 @@ public class EnemyScript : MonoBehaviour
             Debug.LogError($"Tried to assign a different spawner area to {gameObject.name}");
         }
     }
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         stateMachine.FixedUpdate();
     }

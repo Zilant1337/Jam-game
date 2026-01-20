@@ -313,7 +313,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6731ae40d617e074babca1e7d2faf4b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -416,7 +416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1a063036b7c94daf65e960651659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer1: {fileID: 2426150985843286861}
   weaponManager: {fileID: 3496989046286286264}
   healthBarFollower: {fileID: 8296369104208359207}
   navMeshAgent: {fileID: 3327943578205088325}

@@ -12,7 +12,8 @@ public class EnemyManager : MonoBehaviour
         Dummy,
         Chaser,
         Shotgunner,
-        Rifleman
+        Rifleman,
+        Boss
     }
     
     [SerializeField]
@@ -62,7 +63,7 @@ public class EnemyManager : MonoBehaviour
 
         enemyMonetaryValues = new Dictionary<EnemyType, int>
         {
-            { EnemyType.Dummy,100},{ EnemyType.Chaser,100},{ EnemyType.Shotgunner,200},{ EnemyType.Rifleman,150}
+            { EnemyType.Dummy,100},{ EnemyType.Chaser,100},{ EnemyType.Shotgunner,200},{ EnemyType.Rifleman,150}, { EnemyType.Boss,2000}
 
         };
         enemyCount = 0;

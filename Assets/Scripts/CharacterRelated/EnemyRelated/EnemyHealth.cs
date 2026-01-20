@@ -18,6 +18,7 @@ public class EnemyHealth : Health
         if(!isDead)
         {
             isDead = true;
+            GetComponent<EnemyScript>().OnDeath();
             Destroy(this.gameObject);
             EnemyManager.instance.onEnemyDeath.Invoke(this.GetComponent<EnemyScript>().EnemyType, this.transform);
         }
