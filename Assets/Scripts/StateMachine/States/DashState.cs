@@ -40,6 +40,8 @@ public class DashState : BaseState
     {
         agent.speed = normalSpeed;
         agent.acceleration = normalAccelleration;
+        agent.isStopped = true;
+        agent.isStopped = false;
         dashedDistance = 0;
     }
 
@@ -53,6 +55,7 @@ public class DashState : BaseState
         lastPosition = enemyScript.transform.position;
         if (!agent.hasPath||dashedDistance>=maxDashDistance)
         {
+
             enemyScript.DashTimer = enemyScript.DashCooldown;
         }
     }

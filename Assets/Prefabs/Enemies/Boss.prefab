@@ -424,9 +424,9 @@ MonoBehaviour:
   enemyType: 4
   attackDistance: 30
   attackCooldown: 1
-  dashSpeed: 30
+  dashSpeed: 50
   dashAccelleration: 25
-  dashDistance: 50
+  dashDistance: 10
   dashCooldown: 5
   shootAngle: 30
   trackingSpeed: 270
