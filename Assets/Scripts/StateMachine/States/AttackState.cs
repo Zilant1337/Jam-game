@@ -9,19 +9,24 @@ public class AttackState : BaseState
     protected bool attacked;
     protected float attackCooldown;
     protected float shootAngle;
-    public AttackState(EnemyScript enemyScript, NavMeshAgent agent, EnemyWeaponManager shootingScript, Transform player, float shootAngle):base(enemyScript)
+    protected bool stopWhileAttacking;
+    public AttackState(EnemyScript enemyScript, NavMeshAgent agent, EnemyWeaponManager shootingScript, Transform player, float shootAngle,bool stopWhileAttacking):base(enemyScript)
     {
         this.agent = agent;
         this.shootingScript = shootingScript;
         this.player = player;
         this.shootAngle = shootAngle;
+        this.stopWhileAttacking = stopWhileAttacking;
         attacked = false;
     }
     public override void OnEnter()
     {
         Debug.Log("Entered Attack state");
+        if(stopWhileAttacking)
+        { 
+            enemyScript.NavMeshAgent.isStopped = true;
+        }
         enemyScript.NavMeshAgent.updateRotation = false;
-        enemyScript.NavMeshAgent.isStopped = true;
         enemyScript.TrackingStrategy.StartTracking();
         enemyScript.TookDamageRecently = false;
     }

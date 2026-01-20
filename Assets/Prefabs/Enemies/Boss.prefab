@@ -422,8 +422,12 @@ MonoBehaviour:
   navMeshAgent: {fileID: 3327943578205088325}
   playerDetector: {fileID: 4957985907015049825}
   enemyType: 4
-  attackDistance: 15
+  attackDistance: 30
   attackCooldown: 1
+  dashSpeed: 30
+  dashAccelleration: 25
+  dashDistance: 50
+  dashCooldown: 5
   shootAngle: 30
   trackingSpeed: 270
   bossDoorOpenerHelper: {fileID: 0}
@@ -469,8 +473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionAngle: 180
-  detectionRadius: 20
-  guaranteedDetectionRadius: 5
+  detectionRadius: 30
+  guaranteedDetectionRadius: 15
   obstructionsLayerMask:
     serializedVersion: 2
     m_Bits: 128

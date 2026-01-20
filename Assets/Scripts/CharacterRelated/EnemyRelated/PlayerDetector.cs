@@ -11,7 +11,7 @@ public class PlayerDetector : MonoBehaviour
     [SerializeField]
     protected LayerMask obstructionsLayerMask;
 
-    float timer;
+
 
     public Transform Player { get; private set; }
     
@@ -22,20 +22,12 @@ public class PlayerDetector : MonoBehaviour
     }
     private void Start()
     {
-        timer = 0;
         FindPlayer();
         detectionStrategy = new ConeDetectionStrategy(detectionAngle,detectionRadius,guaranteedDetectionRadius);
     }
     private void Update()
     {
-        if(timer > 0)
-        {
-            timer -= Time.deltaTime;
-            if (timer<=0)
-            {
-                timer = 0;
-            }
-        }
+
     }
     public void FindPlayer()
     {
@@ -43,7 +35,7 @@ public class PlayerDetector : MonoBehaviour
     }
     public bool CanDetectPlayer()
     {
-        return timer == 0 && detectionStrategy.Execute(Player, transform, obstructionsLayerMask);
+        return detectionStrategy.Execute(Player, transform, obstructionsLayerMask);
     }
     public void SetDetectionStrategy(IDetectionStrategy detectionStrategy) => this.detectionStrategy = detectionStrategy;
 

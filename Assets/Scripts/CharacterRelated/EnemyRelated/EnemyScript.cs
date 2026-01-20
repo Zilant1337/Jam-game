@@ -21,6 +21,14 @@ public class EnemyScript : MonoBehaviour
     protected float attackDistance;
     [SerializeField]
     protected float attackCooldown;
+    [SerializeField] 
+    protected float dashSpeed;
+    [SerializeField]
+    protected float dashAccelleration;
+    [SerializeField]
+    protected float dashDistance;
+    [SerializeField]
+    protected float dashCooldown;
     [SerializeField]
     protected float shootAngle;
     [SerializeField]
@@ -29,11 +37,16 @@ public class EnemyScript : MonoBehaviour
 
     protected ITrackingStrategy trackingStrategy;
     protected float attackTimer;
+    protected float dashTimer;
     protected StateMachine stateMachine;
     protected EnemySpawnerArea enemySpawnerArea;
     
     public float AttackCooldown { get => attackCooldown; }
     public float AttackTimer { get => attackTimer; set => attackTimer = value; }
+    public float DashSpeed { get => dashSpeed; }
+    public float DashAccelleration { get => dashAccelleration; }
+    public float DashCooldown { get => dashCooldown; }
+    public float DashTimer { get => dashTimer; set => dashTimer = value; }
     public EnemyManager.EnemyType EnemyType { get => enemyType; }
     public ITrackingStrategy TrackingStrategy { get => trackingStrategy;}
     public NavMeshAgent NavMeshAgent { get => navMeshAgent; }
@@ -48,11 +61,12 @@ public class EnemyScript : MonoBehaviour
     {
         TookDamageRecently = false;
         attackTimer = 0;
+        dashTimer = 0;
         trackingStrategy = new BaseTrackingStrategy(transform, playerDetector.Player,trackingSpeed);
         stateMachine = new StateMachine();
         GuardState guardState = new GuardState(this, navMeshAgent, 10);
         ChaseState chaseState = new ChaseState(this, navMeshAgent, playerDetector.Player);
-        AttackState attackState = new AttackState(this, navMeshAgent, weaponManager, playerDetector.Player,shootAngle);
+        AttackState attackState = new AttackState(this, navMeshAgent, weaponManager, playerDetector.Player,shootAngle,true);
 
         stateMachine.AddTransition(guardState, chaseState, new FunctionPredicate(() => playerDetector.CanDetectPlayer()));
         stateMachine.AddTransition(guardState, chaseState, new FunctionPredicate(() => TookDamageRecently));
@@ -81,6 +95,15 @@ public class EnemyScript : MonoBehaviour
             {
                 attackTimer = 0;
                 Debug.Log($"{this.name} is ready to shoot again");
+            }
+        }
+        if (dashTimer > 0)
+        {
+            dashTimer -= Time.deltaTime;
+            if (dashTimer <= 0)
+            {
+                dashTimer = 0;
+                Debug.Log($"{this.name} is ready to dash again");
             }
         }
         stateMachine.Update();
