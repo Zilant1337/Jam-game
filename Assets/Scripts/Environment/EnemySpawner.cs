@@ -40,7 +40,11 @@ public class EnemySpawner : MonoBehaviour
     {
         if (readyToSpawn)
         {
-            Vector3 spawnPos = transform.position+ new Vector3(Random.Range(0, spawnOffset), 0, Random.Range(0, spawnOffset));
+            Vector3 spawnPos = transform.position + new Vector3(Random.Range(0, spawnOffset), 0, Random.Range(0, spawnOffset));
+            if (CameraManager.Instance.CheckObjectVisibility(spawnPos))
+            {
+                return null;
+            }
             var newEnemy = Instantiate(enemyPrefabs[spawnId], spawnPos, Quaternion.identity,enemyWorldParent);
             spawnId = (spawnId+1)%enemyPrefabs.Count;
             readyToSpawn=false;

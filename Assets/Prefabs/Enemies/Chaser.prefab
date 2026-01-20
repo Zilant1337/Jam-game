@@ -95,6 +95,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2380791830138191359}
+  - component: {fileID: 2841268623386193782}
   m_Layer: 6
   m_Name: WorldUI
   m_TagString: Untagged
@@ -118,6 +119,18 @@ Transform:
   - {fileID: 449898124872263880}
   m_Father: {fileID: 6508689458838671227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2841268623386193782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624777542806539145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27de6a127cfd2fe4da1ef11a326d5a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3391271638416811662
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer1: {fileID: 8301416889044725526}
   weaponManager: {fileID: 2683046525894853576}
+  healthBarFollower: {fileID: 2841268623386193782}
   navMeshAgent: {fileID: 8877496759045878321}
   playerDetector: {fileID: 2209305232383542983}
   enemyType: 1

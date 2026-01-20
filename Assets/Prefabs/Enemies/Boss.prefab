@@ -111,6 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3908585871235413733}
+  - component: {fileID: 1824688564792769898}
   m_Layer: 6
   m_Name: WorldUI
   m_TagString: Untagged
@@ -134,6 +135,18 @@ Transform:
   - {fileID: 7322782397992981059}
   m_Father: {fileID: 6731282023698305595}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1824688564792769898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166917429425875990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27de6a127cfd2fe4da1ef11a326d5a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5687839503664157363
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +350,6 @@ GameObject:
   - component: {fileID: 3496989046286286264}
   - component: {fileID: 4957985907015049825}
   - component: {fileID: 8892161882693911159}
-  - component: {fileID: 3002482016390848322}
   - component: {fileID: 3327943578205088325}
   - component: {fileID: 2705525665094692158}
   m_Layer: 6
@@ -406,6 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer1: {fileID: 2426150985843286861}
   weaponManager: {fileID: 3496989046286286264}
+  healthBarFollower: {fileID: 1824688564792769898}
   navMeshAgent: {fileID: 3327943578205088325}
   playerDetector: {fileID: 4957985907015049825}
   enemyType: 2
@@ -479,33 +492,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
-  m_Height: 2
+  m_Radius: 1.6
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &3002482016390848322
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6212277235020253041}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &3327943578205088325
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -515,7 +505,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6212277235020253041}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 1
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -524,7 +514,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 4
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -547,10 +537,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 1
+  m_Height: 4
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8377948744485037128
 GameObject:
   m_ObjectHideFlags: 0

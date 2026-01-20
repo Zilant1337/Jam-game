@@ -38,10 +38,19 @@ public class HealingStation: PaidInteractable
     {
         return healActive;
     }
-    protected override void PaidAction()
+    protected override bool PaidAction()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().AddHealth(healAmount);
-        Destroy(healthPackTransform.gameObject);
-        healActive=false;
+        Health playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        if(!playerHealth.IsFull)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().AddHealth(healAmount);
+            Destroy(healthPackTransform.gameObject);
+            healActive = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

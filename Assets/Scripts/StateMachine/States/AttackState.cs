@@ -23,6 +23,7 @@ public class AttackState : BaseState
         enemyScript.NavMeshAgent.updateRotation = false;
         enemyScript.NavMeshAgent.isStopped = true;
         enemyScript.TrackingStrategy.StartTracking();
+        enemyScript.TookDamageRecently = false;
     }
     public override void OnExit()
     {

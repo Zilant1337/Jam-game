@@ -15,7 +15,10 @@ public class PaidInteractable : Interactable
             if (MoneyAndPurchasing.instance.RemoveMoney(Price))
             {
                 Debug.Log($"Removed {Price}");
-                PaidAction();
+                if (!PaidAction())
+                {
+                    Refund();
+                }
             }
             else
             {
@@ -27,13 +30,17 @@ public class PaidInteractable : Interactable
             Debug.Log($"Not ready!");
         }
     }
-    protected virtual void PaidAction()
+    protected virtual bool PaidAction()
     {
-
+        return false;
     }
     protected virtual bool CheckReadiness()
     {
         return false;
+    }
+    protected virtual void Refund()
+    {
+        MoneyAndPurchasing.instance.AddMoney(Price);
     }
     void Start()
     {

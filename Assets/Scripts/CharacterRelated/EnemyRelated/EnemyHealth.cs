@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 public class EnemyHealth : Health
 {
     public override void TakeDamage(float damage)
-    {
+    { 
         base.TakeDamage(damage);
         healthBarScript.UpdateProgressBar(hp / MAX_HP);
+        GetComponent<EnemyScript>().TookDamageRecently = true;
     }
     protected override void OnDeath()
     {

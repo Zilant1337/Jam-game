@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1898240041511476359}
+  - component: {fileID: 3375327709853996038}
   m_Layer: 6
   m_Name: WorldUI
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   - {fileID: 5532453605003466438}
   m_Father: {fileID: 1857583727345969234}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3375327709853996038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120010803879610744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27de6a127cfd2fe4da1ef11a326d5a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1254108858029786203
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +376,6 @@ GameObject:
   - component: {fileID: 8686160275476274138}
   - component: {fileID: 7681373290798912716}
   - component: {fileID: 5950272005582949599}
-  - component: {fileID: 6792985592668647191}
   m_Layer: 6
   m_Name: Rifleman
   m_TagString: Enemy
@@ -430,6 +442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderer1: {fileID: 1402852606542118768}
   weaponManager: {fileID: 6648884860061786429}
+  healthBarFollower: {fileID: 3375327709853996038}
   navMeshAgent: {fileID: 5950272005582949599}
   playerDetector: {fileID: 8743831767943902669}
   enemyType: 3
@@ -552,29 +565,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &6792985592668647191
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7502143271809956362}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8678824940285903580
 GameObject:
   m_ObjectHideFlags: 0

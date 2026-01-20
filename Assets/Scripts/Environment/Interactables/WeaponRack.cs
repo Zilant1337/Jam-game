@@ -12,10 +12,10 @@ public class WeaponRack : PaidInteractable
     float weaponRespawnTimer;
     bool weaponSpawned;
 
-    protected override void PaidAction()
+    protected override bool PaidAction()
     {
-        LookAndShoot.instance.GetNewWeapon(weapon);
         weaponSpawned = false;
+        return LookAndShoot.instance.GetNewWeapon(weapon);
     }
 
     void Start()

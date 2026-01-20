@@ -27,6 +27,11 @@ public class CameraManager : MonoBehaviour
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(sceneCamera);
         return planes.All(plane => plane.GetDistanceToPoint(gameObject.transform.position) >= 0);
     }
+    public bool CheckObjectVisibility(Vector3 objectPosition)
+    {
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(sceneCamera);
+        return planes.All(plane => plane.GetDistanceToPoint(objectPosition) >= 0);
+    }
     void LateUpdate()
     {
         if(objectToFollow)

@@ -100,26 +100,42 @@ public class LookAndShoot : MonoBehaviour
             currentGun.Reload();
         }
     }
-    public void GetNewWeapon(Gun newWeapon)
+    public bool GetNewWeapon(Gun newWeapon)
     {
         Debug.Log($"Getting {newWeapon.GunName}");
         if (currentGun.GunName == newWeapon.GunName && !currentGun.HasInfiniteAmmo)
         {
             Debug.Log($"Already got {newWeapon.GunName} as current weapon, refilling");
-            currentGun.AmmoCount = currentGun.MAX_AMMO;
-            currentGun.AmmoCountInMag = currentGun.MagSize;
-            Debug.Log($"Refilled ammo in mag to {currentGun.AmmoCountInMag} and total ammo to {currentGun.AmmoCount}");
-            AmmoCounter.ammoCountChanged.Invoke(currentGun.AmmoCountInMag,currentGun.AmmoCount);
-            return;
+            if(!(currentGun.AmmoCount==currentGun.MAX_AMMO) || !(currentGun.AmmoCountInMag == currentGun.MagSize)){
+                currentGun.AmmoCount = currentGun.MAX_AMMO;
+                currentGun.AmmoCountInMag = currentGun.MagSize;
+                Debug.Log($"Refilled ammo in mag to {currentGun.AmmoCountInMag} and total ammo to {currentGun.AmmoCount}");
+                AmmoCounter.ammoCountChanged.Invoke(currentGun.AmmoCountInMag,currentGun.AmmoCount);
+                return true;
+            }
+            else
+            {
+                Debug.Log($"{newWeapon.GunName}'s ammo is full");
+                return false;
+            }
         }
         
         if(secondaryGun!=null){
             if (secondaryGun.GunName == newWeapon.GunName && !secondaryGun.HasInfiniteAmmo)
             {
                 Debug.Log($"Already got {newWeapon.GunName} as secondary weapon, refilling");
-                secondaryGun.AmmoCount = secondaryGun.MAX_AMMO;
-                secondaryGun.AmmoCountInMag = secondaryGun.MagSize;
-                return;
+                if (!(secondaryGun.AmmoCount == secondaryGun.MAX_AMMO) || !(secondaryGun.AmmoCountInMag == secondaryGun.MagSize))
+                {
+                    secondaryGun.AmmoCount = secondaryGun.MAX_AMMO;
+                    secondaryGun.AmmoCountInMag = secondaryGun.MagSize;
+                    Debug.Log($"Refilled ammo in mag to {secondaryGun.AmmoCountInMag} and total ammo to {secondaryGun.AmmoCount}");
+                    return true;
+                }
+                else
+                {
+                    Debug.Log($"{secondaryGun.GunName}'s ammo is full");
+                    return false;
+                }                
             }
             Debug.Log($"Replacing current weapon with {newWeapon.GunName}");
             newWeapon.transform.parent = gunsParent.transform;
@@ -131,6 +147,7 @@ public class LookAndShoot : MonoBehaviour
                 AmmoCounter.weaponChanged.Invoke("\u221E", "\u221E", currentGun.GunName, currentGun.PreviewImage);
             else
                 AmmoCounter.weaponChanged.Invoke(currentGun.AmmoCountInMag.ToString(), currentGun.AmmoCount.ToString(), currentGun.GunName, currentGun.PreviewImage);
+            return true;
         }
         else
         {
@@ -139,6 +156,7 @@ public class LookAndShoot : MonoBehaviour
             newWeapon.transform.position = secondaryGunLocation.position;
             newWeapon.transform.rotation = secondaryGunLocation.rotation;
             secondaryGun = newWeapon;
+            return true;
         }
     }
     public void AddAmmo(float ammoAmount)

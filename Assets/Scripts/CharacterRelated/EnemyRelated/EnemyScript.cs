@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public class EnemyScript : MonoBehaviour  
 {
     [SerializeField]
-    protected Renderer renderer1;
-    [SerializeField]
     protected EnemyWeaponManager weaponManager;
+    [SerializeField]
+    protected FollowerScript healthBarFollower;
     [SerializeField]
     protected NavMeshAgent navMeshAgent;
     [SerializeField]
@@ -38,7 +38,7 @@ public class EnemyScript : MonoBehaviour
     public ITrackingStrategy TrackingStrategy { get => trackingStrategy;}
     public NavMeshAgent NavMeshAgent { get => navMeshAgent; }
     public EnemySpawnerArea EnemySpawnerArea { get => enemySpawnerArea; set => SetSpawnerArea(value); }
-    public Renderer Renderer { get => renderer1; }
+    public bool TookDamageRecently { get; set; }
 
     private void Awake()
     {
@@ -46,6 +46,7 @@ public class EnemyScript : MonoBehaviour
     }
     void Start()
     {
+        TookDamageRecently = false;
         attackTimer = 0;
         trackingStrategy = new BaseTrackingStrategy(transform, playerDetector.Player,trackingSpeed);
         stateMachine = new StateMachine();
@@ -54,13 +55,16 @@ public class EnemyScript : MonoBehaviour
         AttackState attackState = new AttackState(this, navMeshAgent, weaponManager, playerDetector.Player,shootAngle);
 
         stateMachine.AddTransition(guardState, chaseState, new FunctionPredicate(() => playerDetector.CanDetectPlayer()));
-        stateMachine.AddTransition(chaseState, guardState, new FunctionPredicate(() => !playerDetector.CanDetectPlayer()));
+        stateMachine.AddTransition(chaseState, guardState, new FunctionPredicate(() => !playerDetector.CanDetectPlayer()&&!TookDamageRecently));
         stateMachine.AddTransition(chaseState,attackState,new FunctionPredicate(() => playerDetector.CanDetectPlayer()
         &&Vector3.Distance(transform.position,playerDetector.Player.transform.position)<=attackDistance));
         stateMachine.AddTransition(attackState, guardState, new FunctionPredicate(() => !playerDetector.CanDetectPlayer()));
         stateMachine.AddTransition(attackState, chaseState, new FunctionPredicate(() => playerDetector.CanDetectPlayer()&& Vector3.Distance(transform.position, playerDetector.Player.transform.position) > attackDistance));
         stateMachine.AddAnyTransition(guardState,new FunctionPredicate(() => !playerDetector.Player));
+        stateMachine.AddAnyTransition(chaseState, new FunctionPredicate(() => TookDamageRecently));
         stateMachine.SetState(guardState);
+        healthBarFollower.TransformToFollow = transform;
+        healthBarFollower.transform.SetParent(null);
     }
 
     // Update is called once per frame

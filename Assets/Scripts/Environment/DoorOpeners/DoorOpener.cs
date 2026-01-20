@@ -6,9 +6,9 @@ public class DoorOpener : PaidInteractable
 {
     [SerializeField]
     Door door;
-    protected override void PaidAction()
+    protected override bool PaidAction()
     {
-        door.Open();
+        return door.Open();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
