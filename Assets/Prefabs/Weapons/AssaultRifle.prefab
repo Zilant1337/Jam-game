@@ -59,7 +59,7 @@ MonoBehaviour:
   tracerEmmiterPoint: {fileID: 5066071484082420385}
   price: 400
   m_MAX_AMMO: 90
-  magSize: 31
+  magSize: 30
   damagePerBullet: 0
   timeBetweenShots: 0.1
   reloadTime: 4
@@ -72,6 +72,7 @@ MonoBehaviour:
   reloadAudioSource: {fileID: 3660803756493005730}
   shootAudioSource: {fileID: 5804543373647723081}
   shootSoundPitchRange: 0.5
+  projectileRangeIndicatorPrefabTransform: {fileID: 0}
   projectilePrefabTransform: {fileID: 6029059439039337058, guid: 9e186cadd428e7146b85361a5e17990c, type: 3}
 --- !u!82 &3660803756493005730
 AudioSource:

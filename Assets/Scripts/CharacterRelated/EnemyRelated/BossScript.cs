@@ -4,7 +4,10 @@ using UnityEngine;
 public class BossScript : EnemyScript
 {
     [SerializeField]
-    SwitchDoorOpenerHelper bossDoorOpenerHelper;
+    protected SwitchDoorOpenerHelper bossDoorOpenerHelper;
+
+    public SwitchDoorOpenerHelper BossDoorOpenerHelper { get => bossDoorOpenerHelper; set => bossDoorOpenerHelper = value; }
+
     protected override void Start()
     {
         TookDamageRecently = false;
@@ -32,5 +35,10 @@ public class BossScript : EnemyScript
         stateMachine.SetState(wanderState);
         healthBarFollower.TransformToFollow = transform;
         healthBarFollower.transform.SetParent(null);
+    }
+    public override void OnDeath()
+    {
+        if(bossDoorOpenerHelper)
+            bossDoorOpenerHelper.InteractAction(GetComponent <CapsuleCollider>());
     }
 }

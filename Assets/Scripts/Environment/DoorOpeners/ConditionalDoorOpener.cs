@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class ConditionalDoorOpener : MonoBehaviour
@@ -13,6 +14,11 @@ public class ConditionalDoorOpener : MonoBehaviour
     {
         // Создание флагов для проверки активации переключателей
         openingProgress = new bool[openerHelpers.Length];
+    }
+    public void AddHelper(DoorOpenerHelper newHelper)
+    {
+        openerHelpers.Append(newHelper);
+        openingProgress.Append(false);
     }
     public void ProgressOpening(DoorOpenerHelper openerHelper)
     {

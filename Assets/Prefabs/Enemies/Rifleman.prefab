@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27de6a127cfd2fe4da1ef11a326d5a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyDelay: 1
 --- !u!1 &1254108858029786203
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +448,10 @@ MonoBehaviour:
   enemyType: 3
   attackDistance: 20
   attackCooldown: 5
+  dashSpeed: 0
+  dashAccelleration: 0
+  dashDistance: 0
+  dashCooldown: 0
   shootAngle: 10
   trackingSpeed: 180
 --- !u!114 &8444281343308029401

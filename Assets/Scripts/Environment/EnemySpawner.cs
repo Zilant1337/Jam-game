@@ -5,20 +5,20 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    Transform enemyWorldParent;
+    protected Transform enemyWorldParent;
     [SerializeField]
-    List<Transform> enemyPrefabs;
+    protected List<Transform> enemyPrefabs;
     [SerializeField]
-    float spawnOffset;
+    protected float spawnOffset;
     [SerializeField]
-    float spawnCooldown;
-    float spawnTimer;
-    bool readyToSpawn;
+    protected float spawnCooldown;
+    protected float spawnTimer;
+    protected bool readyToSpawn;
     [SerializeField]
-    List<int> spawnPattern;
-    int spawnId;
+    protected List<int> spawnPattern;
+    protected int spawnId;
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!readyToSpawn)
         {
@@ -30,13 +30,13 @@ public class EnemySpawner : MonoBehaviour
             spawnTimer = 0;
         }
     }
-    private void Awake()
+    protected virtual void Awake()
     {
         spawnId = 0;
         readyToSpawn = true;
         spawnTimer = 0;
     }
-    public EnemyScript Spawn()
+    public virtual EnemyScript Spawn()
     {
         if (readyToSpawn)
         {

@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27de6a127cfd2fe4da1ef11a326d5a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyDelay: 1
 --- !u!1 &3391271638416811662
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab1a063036b7c94daf65e960651659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer1: {fileID: 8301416889044725526}
   weaponManager: {fileID: 8515863201241701027}
   healthBarFollower: {fileID: 4716445680630571616}
   navMeshAgent: {fileID: 5387905407767283888}
@@ -221,6 +221,10 @@ MonoBehaviour:
   enemyType: 0
   attackDistance: 10
   attackCooldown: 5
+  dashSpeed: 0
+  dashAccelleration: 0
+  dashDistance: 0
+  dashCooldown: 0
   shootAngle: 0
   trackingSpeed: 90
 --- !u!114 &4976157982397748758

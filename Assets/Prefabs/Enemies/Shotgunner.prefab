@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27de6a127cfd2fe4da1ef11a326d5a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyDelay: 1
 --- !u!1 &5687839503664157363
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +424,10 @@ MonoBehaviour:
   enemyType: 2
   attackDistance: 15
   attackCooldown: 5
+  dashSpeed: 0
+  dashAccelleration: 0
+  dashDistance: 0
+  dashCooldown: 0
   shootAngle: 30
   trackingSpeed: 180
 --- !u!114 &5183512479145862735
@@ -437,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3831b101145e4684caf78dc69273bfe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MAX_HP: 100
+  MAX_HP: 150
   hp: 0
   healthBarScript: {fileID: 8582984309051396836}
 --- !u!114 &3496989046286286264

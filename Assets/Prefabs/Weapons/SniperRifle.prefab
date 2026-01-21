@@ -91,7 +91,7 @@ MonoBehaviour:
   price: 500
   m_MAX_AMMO: 25
   magSize: 5
-  damagePerBullet: 100
+  damagePerBullet: 200
   timeBetweenShots: 2
   reloadTime: 3
   shotSpread: 0

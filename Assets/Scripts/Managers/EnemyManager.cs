@@ -97,7 +97,7 @@ public class EnemyManager : MonoBehaviour
         foreach (GameObject gameObject in enemyObjects)
         {
             EnemyScript enemyScript = gameObject.GetComponent<EnemyScript>();
-            if (enemyScript)
+            if (enemyScript && !gameObject.GetComponent<BossScript>())
             {
                 if (!CameraManager.Instance.CheckObjectVisibility(enemyScript.gameObject) && enemyScript.EnemySpawnerArea != currentSpawnerArea)
                     enemiesToDestroy.Add(enemyScript);
