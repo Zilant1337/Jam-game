@@ -502,7 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRigidBody: {fileID: 5085882879174127878}
   characterController: {fileID: 7022738750027272528}
-  MAX_MOVE_SPEED: 30
+  MAX_MOVE_SPEED: 20
   acceleration: 1
   dodgeSpeed: 70
   dodgeDistance: 10
@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyUI: {fileID: 0}
-  money: 5000
+  money: 0
   MAX_MONEY: 999999
 --- !u!114 &5762084512163205984
 MonoBehaviour:

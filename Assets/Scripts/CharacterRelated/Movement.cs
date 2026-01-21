@@ -95,7 +95,7 @@ public class Movement : MonoBehaviour
 
         if (isDodging)
         {
-            dodgedDistance += Vector3.Distance(this.transform.position, previousPosition);
+            dodgedDistance += dodgeSpeed*Time.deltaTime;
             if (dodgedDistance >= dodgeDistance)
             {
                 isDodging = false;
