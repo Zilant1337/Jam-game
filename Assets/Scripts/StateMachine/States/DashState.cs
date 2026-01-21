@@ -51,7 +51,7 @@ public class DashState : BaseState
         {
             agent.SetDestination(player.position);
         }
-        dashedDistance += Vector3.Distance(enemyScript.transform.position, lastPosition);
+        dashedDistance += enemyScript.DashSpeed*Time.deltaTime;
         lastPosition = enemyScript.transform.position;
         if (!agent.hasPath||dashedDistance>=maxDashDistance)
         {
