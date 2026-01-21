@@ -30,8 +30,8 @@ public class BossSpawner : SingleUseEnemySpawner
                 }
                 if(bossDoorOpener)
                 {
-                    bossDoorOpener.AddHelper(bossScript.BossDoorOpenerHelper);
                     bossScript.BossDoorOpenerHelper.ReplaceDoorOpener(bossDoorOpener);
+                    bossDoorOpener.AddHelper(bossScript.BossDoorOpenerHelper);
                 }
                 spawnId++;
                 return bossScript;

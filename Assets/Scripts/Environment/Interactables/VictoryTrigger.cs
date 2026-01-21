@@ -4,6 +4,7 @@ public class VictoryTrigger : Interactable
 {
     public override void InteractAction(Collider other)
     {
-        MenuScript.Instance.Victory();
+        if(other.gameObject.CompareTag("Player"))
+            MenuScript.Instance.Victory();
     }
 }

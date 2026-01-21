@@ -120,7 +120,7 @@ MonoBehaviour:
     m_Bits: 192
   worldWeaponParent: {fileID: 0}
   tracerEmmiterPoint: {fileID: 1965755434719848487}
-  price: 200
+  price: 3000
   m_MAX_AMMO: 30
   magSize: 5
   damagePerBullet: 20

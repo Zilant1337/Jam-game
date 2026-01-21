@@ -24,6 +24,7 @@ public class Shotgun : Gun
                 if (Physics.Raycast(tracerEmmiterPoint.position, shotDirection, out hit, float.MaxValue, hitLayerMask))
                 {
                     StartCoroutine(SpawnBulletTrail(trailRenderer, hit));
+                    if(hit.transform.GetComponent<Health>())
                     hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
                 }
                 else
