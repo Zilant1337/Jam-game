@@ -61,7 +61,7 @@ MonoBehaviour:
   m_MAX_AMMO: 105
   magSize: 15
   damagePerBullet: 25
-  timeBetweenShots: 0.05
+  timeBetweenShots: 0.2
   reloadTime: 0.5
   shotSpread: 2
   bulletTracerRenderer: {fileID: 4022733744170998590, guid: 828639cd52849f84cb88c3c8c10f0ee3, type: 3}

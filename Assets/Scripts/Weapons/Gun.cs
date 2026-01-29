@@ -110,7 +110,7 @@ public abstract class Gun : MonoBehaviour
     // Запускаем таймер для перезарядки
     public void Reload()
     {
-        if (ammoCountInMag != magSize && ammoCount!=0&&!hasInfiniteAmmo)
+        if (ammoCountInMag != magSize && ammoCount!=0&&!hasInfiniteAmmo && reloadTimer == 0)
         {
             ReloadBar.onReloadStart.Invoke();
             reloadTimer = reloadTime;
