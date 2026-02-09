@@ -1,0 +1,1 @@
+C:\Users\grigo\Unity\Jam-game\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\24f4o4n2\obj\arm64-v8a

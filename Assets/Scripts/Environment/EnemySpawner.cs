@@ -17,6 +17,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     protected List<int> spawnPattern;
     protected int spawnId;
+    [SerializeField]
+    protected bool spawnWhenOnScreen;
 
     protected virtual void Update()
     {
@@ -41,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
         if (readyToSpawn)
         {
             Vector3 spawnPos = transform.position + new Vector3(Random.Range(0, spawnOffset), 0, Random.Range(0, spawnOffset));
-            if (CameraManager.Instance.CheckObjectVisibility(spawnPos))
+            if (CameraManager.Instance.CheckObjectVisibility(spawnPos)&&!spawnWhenOnScreen)
             {
                 return null;
             }
