@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 5515072681051262904}
   - component: {fileID: 5385130085285045556}
   - component: {fileID: 7861261562692466030}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WeaponRack
   m_TagString: Environment
   m_Icon: {fileID: 0}

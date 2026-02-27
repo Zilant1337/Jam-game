@@ -30,7 +30,7 @@ public class HitscanGun : Gun
                 bool shouldFlyThrough = true;
                 List<RaycastHit> hits = new List<RaycastHit>();
                 // Сортируем попадания пробивающего рейкаста по расстоянию
-                var hitsArray = Physics.RaycastAll(transform.position, shotDirection, float.MaxValue, hitLayerMask);
+                var hitsArray = Physics.RaycastAll(transform.position, shotDirection, float.MaxValue, hitLayerMask, QueryTriggerInteraction.Collide);
                 Array.Sort(hitsArray, (x, y) => x.distance.CompareTo(y.distance));
                 
                 hits = hitsArray?.ToList();
@@ -63,7 +63,7 @@ public class HitscanGun : Gun
             else
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, shotDirection, out hit, float.MaxValue, hitLayerMask))
+                if (Physics.Raycast(transform.position, shotDirection, out hit, float.MaxValue, hitLayerMask, QueryTriggerInteraction.Collide))
                 {
                     // Пуск трейсера до того, в кого попали
                     StartCoroutine(SpawnBulletTrail(trailRenderer, hit));
