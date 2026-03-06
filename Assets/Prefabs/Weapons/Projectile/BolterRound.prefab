@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileRigidbody: {fileID: 123280581199162379}
-  damage: 50
+  damage: 75
   timeToSelfDestruct: 5
   maxProjectileSpeed: 50
   startingSpeed: 25
