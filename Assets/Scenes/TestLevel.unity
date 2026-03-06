@@ -11093,6 +11093,10 @@ PrefabInstance:
       value: SelectivelyImpassableArea
       objectReference: {fileID: 0}
     - target: {fileID: 5502504489714838033, guid: 847bb4a62d42b9e4888303724d943339, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 28.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502504489714838033, guid: 847bb4a62d42b9e4888303724d943339, type: 3}
       propertyPath: m_LocalPosition.x
       value: -55.1
       objectReference: {fileID: 0}

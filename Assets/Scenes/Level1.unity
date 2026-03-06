@@ -158064,7 +158064,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4934975124916406353, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: money
-      value: 1000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4934975124916406353, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: moneyUI
