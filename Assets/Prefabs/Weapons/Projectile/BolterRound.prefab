@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5058720070957357758}
   - component: {fileID: 4346929400557124723}
   - component: {fileID: 6359936357072036215}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BolterMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 13949271725216481}
   - component: {fileID: 6288255352149161055}
   - component: {fileID: 4611214306857932233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ExplosiveRocketAOEManager
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4365149856500103177}
   - component: {fileID: 8964894834573628879}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: SoundSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,6 +346,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PistolTracerTrailRenderer
       objectReference: {fileID: 0}
+    - target: {fileID: 4645453555368559369, guid: 828639cd52849f84cb88c3c8c10f0ee3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -423,6 +427,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
       propertyPath: m_Name
       value: BolterRound
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
       propertyPath: m_TagString
@@ -560,6 +568,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion 3
       objectReference: {fileID: 0}
+    - target: {fileID: 560014183069458990, guid: 621e45f610d611746802ad828f66b094, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 560014183069459152, guid: 621e45f610d611746802ad828f66b094, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -623,6 +635,10 @@ PrefabInstance:
     - target: {fileID: 560014183069459153, guid: 621e45f610d611746802ad828f66b094, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560014183848149754, guid: 621e45f610d611746802ad828f66b094, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 560014183848149755, guid: 621e45f610d611746802ad828f66b094, type: 3}
       propertyPath: playOnAwake

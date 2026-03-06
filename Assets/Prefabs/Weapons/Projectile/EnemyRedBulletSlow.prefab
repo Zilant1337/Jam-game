@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8039152615362468973}
   - component: {fileID: 5100908720971949664}
   - component: {fileID: 5815610107839802011}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,6 +98,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion 3
       objectReference: {fileID: 0}
+    - target: {fileID: 560014183069458990, guid: 621e45f610d611746802ad828f66b094, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 560014183069459152, guid: 621e45f610d611746802ad828f66b094, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -161,6 +165,10 @@ PrefabInstance:
     - target: {fileID: 560014183069459153, guid: 621e45f610d611746802ad828f66b094, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560014183848149754, guid: 621e45f610d611746802ad828f66b094, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 560014183848149755, guid: 621e45f610d611746802ad828f66b094, type: 3}
       propertyPath: playOnAwake
@@ -271,6 +279,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
       propertyPath: m_Name
       value: EnemyRedBulletSlow
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f307ec4a02357b54ba2340c072b1bdbc, type: 3}
       propertyPath: m_TagString
