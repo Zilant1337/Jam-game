@@ -6,12 +6,12 @@ using UnityEngine;
 public class ConditionalDoorOpener : MonoBehaviour
 {
     [SerializeField]
-    Door door;
+    protected Door door;
     [SerializeField]
-    List<DoorOpenerHelper> openerHelpers;
+    protected List<DoorOpenerHelper> openerHelpers;
     [SerializeField]
-    List<bool> openingProgress;
-    private void Start()
+    protected List<bool> openingProgress;
+    protected void Start()
     {
         // Создание флагов для проверки активации переключателей
         openingProgress = new List<bool>(new bool[openerHelpers.Count]);
@@ -21,7 +21,7 @@ public class ConditionalDoorOpener : MonoBehaviour
         openerHelpers.Add(newHelper);
         openingProgress.Add(false);
     }
-    public void ProgressOpening(DoorOpenerHelper openerHelper)
+    public void ProgressOpening(DoorOpenerHelper openerHelper, bool isSuccessful)
     {
         // Если открыватель, который открывает дверь, есть в списке - ставим или снимаем флаг
         int openerIndex = openerHelpers.IndexOf(openerHelper);
