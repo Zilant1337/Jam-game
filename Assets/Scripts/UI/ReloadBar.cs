@@ -12,7 +12,7 @@ public class ReloadBar : MonoBehaviour
     public static UnityEvent <float> onReload;
     public static UnityEvent onReloadEnd;
     public static UnityEvent onReloadStart;
-    private void Start()
+    protected void Start()
     {
         onReload = new UnityEvent <float> ();
         onReload.AddListener(UpdateReloadBar);
@@ -22,25 +22,25 @@ public class ReloadBar : MonoBehaviour
         onReloadStart.AddListener(ShowReloadBar);
         HideReloadBar();
     }
-    private void Update()
+    protected void Update()
     {
 
     }
-    private void HideReloadBar()
+    protected void HideReloadBar()
     {
         foreach(GameObject uiElement in uiElementsToHide)
         {
             uiElement.SetActive(false);
         }
     }
-    private void ShowReloadBar()
+    protected void ShowReloadBar()
     {
         foreach (GameObject uiElement in uiElementsToHide)
         {
             uiElement.SetActive(true);
         }
     }
-    private void UpdateReloadBar(float fraction)
+    protected void UpdateReloadBar(float fraction)
     {
         reloadBar.fillAmount = fraction;
     }
