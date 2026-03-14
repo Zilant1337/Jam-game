@@ -11,7 +11,7 @@ public class ConditionalDoorOpener : MonoBehaviour
     protected List<DoorOpenerHelper> openerHelpers;
     [SerializeField]
     protected List<bool> openingProgress;
-    protected void Start()
+    protected virtual void Start()
     {
         // Создание флагов для проверки активации переключателей
         openingProgress = new List<bool>(new bool[openerHelpers.Count]);

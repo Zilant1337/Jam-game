@@ -15,13 +15,13 @@ public class CaptureDoorOpenerHelper : DoorOpenerHelper
     // Включил ли игрок объект
     bool isActive;
     // Простоял ли игрок нужное время
-    bool isActivated;
+    bool isCaptured;
 
     private void Start()
     {
         isActive = false;
         isProgressing = false;
-        isActivated = false;
+        isCaptured = false;
         activationTimer = 0;
         progressBar.gameObject.SetActive(false);
     }
@@ -29,7 +29,7 @@ public class CaptureDoorOpenerHelper : DoorOpenerHelper
     protected override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-        if (!isActivated && other.gameObject.CompareTag("Player"))
+        if (!isCaptured && other.gameObject.CompareTag("Player"))
         {
             isProgressing = true;
         }
@@ -38,7 +38,7 @@ public class CaptureDoorOpenerHelper : DoorOpenerHelper
     protected override void OnTriggerExit(Collider other)
     {
         base.OnTriggerExit(other);
-        if (!isActivated && other.gameObject.CompareTag("Player"))
+        if (!isCaptured && other.gameObject.CompareTag("Player"))
         {
             isProgressing = false;
         }
@@ -46,24 +46,24 @@ public class CaptureDoorOpenerHelper : DoorOpenerHelper
     private void Update()
     {
         // Если игрок активировал переключатель, стоит в области и зона ещё не закончила прогресс, считаем время
-        if (isProgressing && isActive && !isActivated)
+        if (isProgressing && isActive && !isCaptured)
         {
             activationTimer += Time.deltaTime;
             // Если игрок простоял нужное количество времени в зоне, говорим открывателю двери о том, что мы закончили и делаем объект неактивным
             if (activationTimer >= timeToActivate)
             {
                 activationTimer = timeToActivate;
-                isActivated = true;
+                isCaptured = true;
                 isProgressing = false;
                 isActive = false;
                 progressBar.gameObject.SetActive(false);
                 ProgressDoorOpener();
             }
-            if(!isActivated)
+            if(!isCaptured)
                 progressBar.UpdateProgressBar(activationTimer/timeToActivate);
         }
         // Если объект активирован, но игрок вышел за пределы области, начинаем отсчитывать назад с указанным модификатором и выключаем объект если таймер достиг 0
-        if(!isProgressing && isActive && !isActivated && activationTimer>0)
+        if(!isProgressing && isActive && !isCaptured && activationTimer>0)
         {
             activationTimer -= Time.deltaTime * deactivationMultiplier;
             if (activationTimer <= 0)

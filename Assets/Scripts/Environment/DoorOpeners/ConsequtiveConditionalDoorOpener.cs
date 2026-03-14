@@ -4,6 +4,11 @@ using UnityEngine;
 public class ConsequtiveConditionalDoorOpener : ConditionalDoorOpener
 {
     protected int currentId;
+    protected override void Start()
+    {
+        base.Start();
+        currentId = 0;
+    }
     public void ResetProgress()
     {
         currentId = 0;
@@ -27,9 +32,19 @@ public class ConsequtiveConditionalDoorOpener : ConditionalDoorOpener
         }
         int openerIndex = openerHelpers.IndexOf(helper);
         if (isSuccessful && openerIndex!=-1 && openerHelpers.IndexOf(helper)==currentId)
-        { 
+        {
+            if (openerIndex != currentId)
+            {
+                ResetProgress();
+                return;
+            }
             openingProgress[openerIndex] = !openingProgress[openerIndex];
             currentId++;
+            if (currentId < openerHelpers.Count)
+            {
+                UniversalProgressBar.onFinish.Invoke();
+                openerHelpers[currentId].IsActivated = true;
+            }
             if (!openingProgress.Contains(false))
             { 
                 door.Open();
