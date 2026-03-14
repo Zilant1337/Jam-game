@@ -21,7 +21,7 @@ public class ConditionalDoorOpener : MonoBehaviour
         openerHelpers.Add(newHelper);
         openingProgress.Add(false);
     }
-    public void ProgressOpening(DoorOpenerHelper openerHelper, bool isSuccessful)
+    public virtual void ProgressOpening(DoorOpenerHelper openerHelper, bool isSuccessful)
     {
         // ≈сли открыватель, который открывает дверь, есть в списке - ставим или снимаем флаг
         int openerIndex = openerHelpers.IndexOf(openerHelper);
