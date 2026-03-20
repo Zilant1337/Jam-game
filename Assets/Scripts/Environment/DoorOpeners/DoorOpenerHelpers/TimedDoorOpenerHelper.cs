@@ -22,13 +22,14 @@ public abstract class TimedDoorOpenerHelper : DoorOpenerHelper
             OnStart();
             
         }
-        if (timer >= 0 && !isActivated)
+        if (timer > 0 && !isActivated)
         {
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                OnTimeOut();
+                UniversalProgressBar.onProgress.Invoke(timer / expirationTime);
                 timer = 0;
+                OnTimeOut();
                 return;
             }
             UniversalProgressBar.onProgress.Invoke(timer/expirationTime);

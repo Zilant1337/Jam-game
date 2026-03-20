@@ -25,32 +25,32 @@ public class ConsequtiveConditionalDoorOpener : ConditionalDoorOpener
     
     public override void ProgressOpening(DoorOpenerHelper helper, bool isSuccessful)
     {
-        if (!isSuccessful)
-        {
-            ResetProgress();
-            return;
-        }
+        Debug.Log($"Helper {helper.name} is trying to progress door opening");
         int openerIndex = openerHelpers.IndexOf(helper);
-        if (isSuccessful && openerIndex!=-1 && openerHelpers.IndexOf(helper)==currentId)
+        if (isSuccessful && openerIndex != -1 && openerIndex == currentId)
         {
-            if (openerIndex != currentId)
-            {
-                ResetProgress();
-                return;
-            }
-            openingProgress[openerIndex] = !openingProgress[openerIndex];
+            Debug.Log($"Door opening progress successful!");
+            openingProgress[openerIndex] = true;
             currentId++;
             if (currentId < openerHelpers.Count)
             {
+                Debug.Log($"Activating {openerHelpers[currentId].name}");
                 UniversalProgressBar.onFinish.Invoke();
                 openerHelpers[currentId].IsActivated = true;
             }
             if (!openingProgress.Contains(false))
-            { 
+            {
                 door.Open();
                 ResetProgress();
             }
             return;
+        }
+        else
+        {
+            Debug.Log($"Door opening progress failed!");
+            ResetProgress();
+            return;
+            
         }
         
     }
