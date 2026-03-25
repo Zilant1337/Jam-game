@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 
 public abstract class TimedDoorOpenerHelper : DoorOpenerHelper
 {
@@ -8,7 +10,7 @@ public abstract class TimedDoorOpenerHelper : DoorOpenerHelper
     protected float expirationTime;
     protected float timer;
     
-    public void OnStart()
+    public virtual void OnActivation()
     {
         timer = expirationTime;
         UniversalProgressBar.onStart.Invoke(timerText);
@@ -19,7 +21,7 @@ public abstract class TimedDoorOpenerHelper : DoorOpenerHelper
     {
         if (timer == 0 && isActivated)
         {
-            OnStart();
+            OnActivation();
             
         }
         if (timer > 0 && !isActivated)

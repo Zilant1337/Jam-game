@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    protected int MAX_HP = 100;
+    protected int m_MAX_HP = 100;
     [SerializeField]
     protected float hp;
     [SerializeField]
@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
     protected bool isDead = false;
 
     public bool IsFull { get => hp == MAX_HP; }
+    public int MAX_HP { get => m_MAX_HP;}
 
     protected virtual void Start()
     {
@@ -65,5 +66,16 @@ public class Health : MonoBehaviour
             isDead = true;
             Destroy(this.gameObject);
         }
+    }
+}
+
+public class TargetHealth : Health
+{
+    [SerializeField]
+    Target target;
+    protected override void OnDeath()
+    {
+        hp = MAX_HP;
+        target.OnDeath();
     }
 }
