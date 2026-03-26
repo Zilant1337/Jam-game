@@ -10,16 +10,22 @@ public class TimedTargetDoorOpenerHelper : TimedDoorOpenerHelper
     protected override void Start()
     {
         base.Start();
-        targetProgress = new List<bool>(targets.Count);
+        targetProgress = new List<bool>(new bool[targets.Count]);
         for (int i =0; i < targetProgress.Count; i++)
         {
             targetProgress[i] = false;
         }
     }
+    public override void OnActivation()
+    {
+        base.OnActivation();
+        ActivateTargets();
+    }
     protected void ActivateTargets()
     {
         foreach (var target in targets)
         {
+            Debug.Log($"Activating {target.name}");
             target.Activate();
         }
     }
@@ -32,23 +38,26 @@ public class TimedTargetDoorOpenerHelper : TimedDoorOpenerHelper
     }
     protected override void Update()
     {
-        DeactivateTargets();
         base.Update();
-
     }
     public virtual void ProgressOpening(Target target)
     {
         // Если открыватель, который открывает дверь, есть в списке - ставим или снимаем флаг
-        int targetndex = targets.IndexOf(target);
-        if (targetndex != -1)
+        int targetIndex = targets.IndexOf(target);
+        Debug.Log($"Target index: {targetIndex}");
+        if (targetIndex != -1)
         {
-            targetProgress[targetndex] = true;
+            targetProgress[targetIndex] = true;
         }
         // Если все флаги активированы, открываем дверь
         if (!targetProgress.Contains(false))
         {
             doorOpener.ProgressOpening(this, true);
-            DeactivateTargets();    
+            DeactivateTargets();
+            for (int i = 0; i < targetProgress.Count; i++)
+            {
+                targetProgress[i] = false;
+            }
         }
     }
     public override void InteractAction(Collider other)
@@ -56,25 +65,4 @@ public class TimedTargetDoorOpenerHelper : TimedDoorOpenerHelper
         return;
     }
 
-}
-
-public class Target : MonoBehaviour
-{
-    [SerializeField]
-    TargetHealth health;
-    [SerializeField]
-    TimedTargetDoorOpenerHelper openerHelper;
-    public void OnDeath()
-    {
-        openerHelper.ProgressOpening(this);
-    }
-    public void Activate()
-    {
-
-    }
-
-    public void Deactivate()
-    {
-
-    }
 }
