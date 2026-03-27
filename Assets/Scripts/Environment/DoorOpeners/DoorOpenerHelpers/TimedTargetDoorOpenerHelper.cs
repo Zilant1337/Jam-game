@@ -15,6 +15,10 @@ public class TimedTargetDoorOpenerHelper : TimedDoorOpenerHelper
         {
             targetProgress[i] = false;
         }
+        foreach (Target target in targets)
+        {
+            target.OpenerHelper = this;
+        }
     }
     public override void OnActivation()
     {

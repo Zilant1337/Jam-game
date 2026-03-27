@@ -8,20 +8,24 @@ public class ConditionalDoorOpener : MonoBehaviour
     [SerializeField]
     protected Door door;
     [SerializeField]
-    protected List<DoorOpenerHelper> openerHelpers;
+    protected List<ConditionalDoorOpenerHelper> openerHelpers;
     [SerializeField]
     protected List<bool> openingProgress;
     protected virtual void Start()
     {
         // Создание флагов для проверки активации переключателей
         openingProgress = new List<bool>(new bool[openerHelpers.Count]);
+        foreach(ConditionalDoorOpenerHelper helper in openerHelpers)
+        {
+            helper.DoorOpener = this;
+        }
     }
-    public void AddHelper(DoorOpenerHelper newHelper)
+    public void AddHelper(ConditionalDoorOpenerHelper newHelper)
     {
         openerHelpers.Add(newHelper);
         openingProgress.Add(false);
     }
-    public virtual void ProgressOpening(DoorOpenerHelper openerHelper, bool isSuccessful)
+    public virtual void ProgressOpening(ConditionalDoorOpenerHelper openerHelper, bool isSuccessful)
     {
         // Если открыватель, который открывает дверь, есть в списке - ставим или снимаем флаг
         int openerIndex = openerHelpers.IndexOf(openerHelper);

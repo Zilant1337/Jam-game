@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CaptureDoorOpenerHelper : DoorOpenerHelper
+public class CaptureDoorOpenerHelper : ConditionalDoorOpenerHelper
 {
     [SerializeField]
     float timeToActivate;

@@ -12,7 +12,7 @@ public class ConsequtiveConditionalDoorOpener : ConditionalDoorOpener
     public void ResetProgress()
     {
         currentId = 0;
-        foreach(DoorOpenerHelper helper in openerHelpers)
+        foreach(ConditionalDoorOpenerHelper helper in openerHelpers)
         {
             helper.IsActivated = false;
         }
@@ -23,7 +23,7 @@ public class ConsequtiveConditionalDoorOpener : ConditionalDoorOpener
         UniversalProgressBar.onFinish.Invoke();
     }
     
-    public override void ProgressOpening(DoorOpenerHelper helper, bool isSuccessful)
+    public override void ProgressOpening(ConditionalDoorOpenerHelper helper, bool isSuccessful)
     {
         Debug.Log($"Helper {helper.name} is trying to progress door opening");
         int openerIndex = openerHelpers.IndexOf(helper);

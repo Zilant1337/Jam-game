@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SwitchDoorOpenerHelper : DoorOpenerHelper
+public class SwitchDoorOpenerHelper : ConditionalDoorOpenerHelper
 {
     public override void InteractAction(Collider other)
     {

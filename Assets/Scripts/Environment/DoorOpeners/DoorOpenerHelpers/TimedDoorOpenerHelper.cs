@@ -2,7 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 
-public abstract class TimedDoorOpenerHelper : DoorOpenerHelper
+public abstract class TimedDoorOpenerHelper : ConditionalDoorOpenerHelper
 {
     [SerializeField]
     protected string timerText;
