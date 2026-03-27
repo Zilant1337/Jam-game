@@ -8,14 +8,30 @@ public abstract class TimedDoorOpenerHelper : ConditionalDoorOpenerHelper
     protected string timerText;
     [SerializeField]
     protected float expirationTime;
+    [SerializeField]
+    protected bool hideWhenInactive = false;
+    [SerializeField]
+    protected MeshRenderer meshRenderer;
     protected float timer;
     
     public virtual void OnActivation()
     {
+        if (hideWhenInactive)
+        {
+            meshRenderer.enabled = true;
+        }
         timer = expirationTime;
         UniversalProgressBar.onStart.Invoke(timerText);
         UniversalProgressBar.onProgress.Invoke(timer / expirationTime);
         isActivated = false;
+    }
+    protected override void Start()
+    {
+        base.Start();
+        if (hideWhenInactive)
+        {
+            meshRenderer.enabled = false;
+        }
     }
     protected virtual void Update()
     {
@@ -39,6 +55,10 @@ public abstract class TimedDoorOpenerHelper : ConditionalDoorOpenerHelper
     }
     protected virtual void OnTimeOut()
     {
+        if (hideWhenInactive)
+        {
+            meshRenderer.enabled = false;
+        }
         doorOpener.ProgressOpening(this, false);
     }
 }

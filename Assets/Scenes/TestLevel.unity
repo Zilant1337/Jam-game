@@ -1051,7 +1051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7631aa67cde62a4eb4c027a7926a2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openerHelper: {fileID: 459677570}
+  openerHelper: {fileID: 0}
 --- !u!54 &384096822
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3199,7 +3199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7631aa67cde62a4eb4c027a7926a2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openerHelper: {fileID: 459677570}
+  openerHelper: {fileID: 0}
 --- !u!54 &1199839664
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3491,7 +3491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7631aa67cde62a4eb4c027a7926a2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openerHelper: {fileID: 459677570}
+  openerHelper: {fileID: 0}
 --- !u!54 &1254417502
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6357,7 +6357,7 @@ PrefabInstance:
     - target: {fileID: 7514490159632982923, guid: 44e8e5fe6c1f4fd41b13955406f5cefd, type: 3}
       propertyPath: openerHelper
       value: 
-      objectReference: {fileID: 459677570}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -7,7 +7,10 @@ public class TimedSwitchDoorOpenerHelper : TimedDoorOpenerHelper
         if (timer != 0)
         {
             timer = 0;
-
+            if (hideWhenInactive)
+            {
+                meshRenderer.enabled = false;
+            }
             ProgressDoorOpener();
         }
     }
