@@ -12,6 +12,11 @@ public class WeaponRack : PaidInteractable
     float weaponRespawnTimer;
     bool weaponSpawned;
 
+    public override string ButtonPromptText()
+    {
+        return $"Buy {weaponPrefabTransform.GetComponent<Gun>().GunName} for {price}";
+    }
+
     protected override bool PaidAction()
     {
         weaponSpawned = false;
@@ -51,6 +56,6 @@ public class WeaponRack : PaidInteractable
     }
     public override string ToString()
     {
-        return $"Buy {weapon}: {weapon.Price}";
+        return $"{weapon}: {weapon.Price}";
     }
 }

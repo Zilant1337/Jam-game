@@ -3,53 +3,44 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UniversalProgressBar : MonoBehaviour
+public class UniversalButtonPrompt : MonoBehaviour
 {
     [SerializeField]
-    SlicedFilledImage progressBar;
-    [SerializeField]
-    TMP_Text progressBarText;
+    TMP_Text buttonPromptText;
     [SerializeField]
     List<GameObject> uiElements;
-    public static UnityEvent<float> onProgress;
     public static UnityEvent onFinish;
     public static UnityEvent<string> onStart;
     protected bool isActive;
     protected void Start()
     {
-        onProgress = new UnityEvent<float>();
-        onProgress.AddListener(UpdateProgressBar);
         onFinish = new UnityEvent();
-        onFinish.AddListener(HideProgressBar);
+        onFinish.AddListener(HideButtonPrompt);
         onStart = new UnityEvent<string>();
-        onStart.AddListener(ShowProgressBar);
-        HideProgressBar();
+        onStart.AddListener(ShowButtonPrompt);
+        HideButtonPrompt();
     }
     protected void Update()
     {
 
     }
-    protected void HideProgressBar()
+    protected void HideButtonPrompt()
     {
-        this.progressBarText.text = "";
+        this.buttonPromptText.text = "";
         foreach (GameObject uiElement in uiElements)
         {
             uiElement.SetActive(false);
         }
     }
-    protected void ShowProgressBar(string progressBarText)
+    protected void ShowButtonPrompt(string buttonPromptText)
     {
-        if(!isActive)
+        if (!isActive)
         {
-            this.progressBarText.text = progressBarText;
+            this.buttonPromptText.text = buttonPromptText;
             foreach (GameObject uiElement in uiElements)
             {
                 uiElement.SetActive(true);
             }
         }
-    }
-    protected void UpdateProgressBar(float fraction)
-    {
-        progressBar.fillAmount = fraction;
     }
 }

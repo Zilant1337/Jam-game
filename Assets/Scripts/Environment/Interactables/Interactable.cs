@@ -6,6 +6,7 @@ public abstract class Interactable : MonoBehaviour
     protected bool activateOnTrigger;
     protected bool isInteractable = false;
 
+    
     public bool ActivateOnTrigger { get => activateOnTrigger; }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -24,4 +25,5 @@ public abstract class Interactable : MonoBehaviour
         isInteractable = false;
     }
     public abstract void InteractAction(Collider other);
+    public abstract string ButtonPromptText();
 }

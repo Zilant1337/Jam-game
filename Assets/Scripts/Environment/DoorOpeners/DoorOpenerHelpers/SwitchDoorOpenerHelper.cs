@@ -6,4 +6,8 @@ public class SwitchDoorOpenerHelper : ConditionalDoorOpenerHelper
     {
         ProgressDoorOpener();
     }
+    public override string ButtonPromptText()
+    {
+        return $"Press the switch";
+    }
 }

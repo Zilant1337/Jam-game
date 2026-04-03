@@ -42,5 +42,8 @@ public class AmmoPack : Interactable
     {
         canGiveAmmo = true;
     }
-
+    public override string ButtonPromptText()
+    {
+        return "";
+    }
 }

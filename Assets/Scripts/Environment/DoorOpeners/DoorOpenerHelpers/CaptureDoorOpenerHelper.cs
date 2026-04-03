@@ -84,4 +84,15 @@ public class CaptureDoorOpenerHelper : ConditionalDoorOpenerHelper
             progressBar.UpdateProgressBar(activationTimer / timeToActivate);
         }
     }
+    public override string ButtonPromptText()
+    {
+        if (isActive == false)
+        {
+            return "Start capturing the area";
+        }
+        else
+        {
+            return "";
+        }
+    }
 }

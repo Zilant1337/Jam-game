@@ -1017,6 +1017,8 @@ MonoBehaviour:
   doorOpener: {fileID: 6367702034026660117}
   timerText: Activate the next switch
   expirationTime: 5
+  hideWhenInactive: 0
+  meshRenderer: {fileID: 752666245}
 --- !u!1 &384096820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1219,8 @@ MonoBehaviour:
   doorOpener: {fileID: 6367702034026660117}
   timerText: Activate the next switch
   expirationTime: 5
+  hideWhenInactive: 0
+  meshRenderer: {fileID: 1840683245}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,6 +1992,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   paidInteractableText: {fileID: 610310690}
+--- !u!23 &665677606 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4838331441259022560, guid: ce7b66129d0c9c84c88b851bf28d6a13, type: 3}
+  m_PrefabInstance: {fileID: 826225339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &694416361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2075,6 +2084,13 @@ MonoBehaviour:
   doorOpener: {fileID: 6367702034026660117}
   timerText: Activate the next switch
   expirationTime: 5
+  hideWhenInactive: 0
+  meshRenderer: {fileID: 665677606}
+--- !u!23 &752666245 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4838331441259022560, guid: ce7b66129d0c9c84c88b851bf28d6a13, type: 3}
+  m_PrefabInstance: {fileID: 3596260498889275651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &779450168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4659,6 +4675,11 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0.303, z: 0}
   m_TimeToStationary: 0.5
+--- !u!23 &1840683245 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4838331441259022560, guid: ce7b66129d0c9c84c88b851bf28d6a13, type: 3}
+  m_PrefabInstance: {fileID: 1042644082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1845194555
 GameObject:
   m_ObjectHideFlags: 0

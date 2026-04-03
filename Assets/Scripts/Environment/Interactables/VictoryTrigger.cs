@@ -7,4 +7,8 @@ public class VictoryTrigger : Interactable
         if(other.gameObject.CompareTag("Player"))
             MenuScript.Instance.Victory();
     }
+    public override string ButtonPromptText()
+    {
+        return "";
+    }
 }

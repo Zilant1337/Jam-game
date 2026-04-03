@@ -39,4 +39,8 @@ public abstract class ConditionalDoorOpenerHelper : Interactable
     {
         doorOpener.ProgressOpening(this, true);
     }
+    public override string ButtonPromptText()
+    {
+        return "";
+    }
 }

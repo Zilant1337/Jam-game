@@ -46,7 +46,7 @@ public class TimedTargetDoorOpenerHelper : TimedDoorOpenerHelper
     }
     public virtual void ProgressOpening(Target target)
     {
-        // Если открыватель, который открывает дверь, есть в списке - ставим или снимаем флаг
+        // Если цель, которая открывает дверь, есть в списке - ставим или снимаем флаг
         int targetIndex = targets.IndexOf(target);
         Debug.Log($"Target index: {targetIndex}");
         if (targetIndex != -1)
@@ -68,5 +68,8 @@ public class TimedTargetDoorOpenerHelper : TimedDoorOpenerHelper
     {
         return;
     }
-
+    public override string ButtonPromptText()
+    {
+        return "";
+    }
 }

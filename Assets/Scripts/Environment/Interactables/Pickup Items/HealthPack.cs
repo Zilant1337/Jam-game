@@ -40,10 +40,8 @@ public class HealthPack : Interactable
     {
         canHeal = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    public override string ButtonPromptText()
     {
-        
+        return "";
     }
 }

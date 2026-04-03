@@ -14,4 +14,11 @@ public class TimedSwitchDoorOpenerHelper : TimedDoorOpenerHelper
             ProgressDoorOpener();
         }
     }
+    public override string ButtonPromptText()
+    {
+        if (timer!=0)
+            return $"Press the switch!";
+        else 
+            return "";
+    }
 }

@@ -23,8 +23,15 @@ public class Interact : MonoBehaviour
         Interactable touchedInteractable = other.GetComponent<Interactable>();
         if (touchedInteractable != null)
         {
-            if(!touchedInteractable.ActivateOnTrigger || interactable ==null || Vector3.Distance(this.transform.position,touchedInteractable.transform.position)< Vector3.Distance(this.transform.position, interactable.transform.position))
+            if (!touchedInteractable.ActivateOnTrigger || interactable == null || Vector3.Distance(this.transform.position, touchedInteractable.transform.position) < Vector3.Distance(this.transform.position, interactable.transform.position))
+            {
                 interactable = touchedInteractable;
+                string buttonPromptText = interactable.ButtonPromptText();
+                if(buttonPromptText != "")
+                {
+                    UniversalButtonPrompt.onStart.Invoke($"Interact to {buttonPromptText}");
+                }
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -34,8 +41,17 @@ public class Interact : MonoBehaviour
         {
             if(interactable == touchedInteractable)
             {
+                UniversalButtonPrompt.onFinish.Invoke();
                 interactable = null;
             }
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        string buttonPromptText = interactable.ButtonPromptText();
+        if (buttonPromptText=="")
+        {
+            UniversalButtonPrompt.onFinish.Invoke();
         }
     }
     public void ActivateInteractable(InputAction.CallbackContext context)

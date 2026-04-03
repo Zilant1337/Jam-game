@@ -173622,10 +173622,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1379031785}
-    - target: {fileID: 959074792455836402, guid: 40fd4b5c81e16404098d6dfbf5239fdb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1151216432946035200, guid: 40fd4b5c81e16404098d6dfbf5239fdb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -173642,10 +173638,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1379031785}
-    - target: {fileID: 3806513844379196900, guid: 40fd4b5c81e16404098d6dfbf5239fdb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4652005500161590316, guid: 40fd4b5c81e16404098d6dfbf5239fdb, type: 3}
       propertyPath: m_Name
       value: UI
@@ -173698,14 +173690,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1379031785}
-    - target: {fileID: 5871939592997548917, guid: 40fd4b5c81e16404098d6dfbf5239fdb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7010622008121836080, guid: 40fd4b5c81e16404098d6dfbf5239fdb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -173813,7 +173797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4934975124916406353, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: money
-      value: 10000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4934975124916406353, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: moneyUI
@@ -173821,7 +173805,7 @@ PrefabInstance:
       objectReference: {fileID: 1214847149}
     - target: {fileID: 5988458122181841068, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 103.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5988458122181841068, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -173829,7 +173813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988458122181841068, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -74.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5988458122181841068, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: m_LocalRotation.w

@@ -161,14 +161,13 @@ public class LookAndShoot : MonoBehaviour
     }
     public void AddAmmo(float ammoAmount)
     {
-        // Если у нас есть что пополнять в оружии в руках, пополняем
+        // Пополняем оба оружия
         if (currentGun.AmmoCount != currentGun.MAX_AMMO)
         {
             currentGun.AmmoCount += (int)(currentGun.MAX_AMMO * ammoAmount);
             AmmoCounter.ammoCountChanged.Invoke(currentGun.AmmoCountInMag, currentGun.AmmoCount);
         }
-        // Если нет, пополняем оружие на спине
-        else
+        if(secondaryGun.AmmoCount!=secondaryGun.MAX_AMMO)
         {
             secondaryGun.AmmoCount += (int)(secondaryGun.MAX_AMMO * ammoAmount);
         }

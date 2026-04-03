@@ -52,4 +52,9 @@ public class PaidInteractable : Interactable
     {
         
     }
+
+    public override string ButtonPromptText()
+    {
+        return $"Buy for {price}";
+    }
 }

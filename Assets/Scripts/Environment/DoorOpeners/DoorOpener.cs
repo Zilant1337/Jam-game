@@ -26,4 +26,8 @@ public class DoorOpener : PaidInteractable
     {
         
     }
+    public override string ButtonPromptText()
+    {
+        return $"Open the door for {price}";
+    }
 }

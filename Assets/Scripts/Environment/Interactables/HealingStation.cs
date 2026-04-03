@@ -53,4 +53,8 @@ public class HealingStation: PaidInteractable
             return false;
         }
     }
+    public override string ButtonPromptText()
+    {
+        return $"Heal {healAmount} for {price}";
+    }
 }
