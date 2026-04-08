@@ -77,7 +77,7 @@ public class CaptureDoorOpenerHelper : ConditionalDoorOpenerHelper
     }
     public override void InteractAction(Collider other)
     {
-        if (!isActive)
+        if (!isActive && !isCaptured)
         {
             isActive = true;
             progressBar.gameObject.SetActive(true);
@@ -86,7 +86,7 @@ public class CaptureDoorOpenerHelper : ConditionalDoorOpenerHelper
     }
     public override string ButtonPromptText()
     {
-        if (isActive == false)
+        if (!isActive && !isCaptured)
         {
             return "Start capturing the area";
         }
