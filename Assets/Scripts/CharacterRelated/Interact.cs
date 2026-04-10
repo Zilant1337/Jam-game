@@ -29,7 +29,12 @@ public class Interact : MonoBehaviour
                 string buttonPromptText = interactable.ButtonPromptText();
                 if(buttonPromptText != "")
                 {
-                    UniversalButtonPrompt.onStart.Invoke($"Interact to {buttonPromptText}");
+                    if(CursorManager.TouchActive)
+                        UniversalButtonPrompt.onStart.Invoke($"Interact to {buttonPromptText}");
+                    if (CursorManager.KeyboardActive)
+                        UniversalButtonPrompt.onStart.Invoke($"{CharacterScript.inputSystem.FindAction("Interact").GetBindingDisplayString(group: "Keyboard&Mouse")} to {buttonPromptText}");
+                    if(!CursorManager.TouchActive && !CursorManager.KeyboardActive)
+                        UniversalButtonPrompt.onStart.Invoke($"{CharacterScript.inputSystem.FindAction("Interact").GetBindingDisplayString(group: "Gamepad")} to {buttonPromptText}");
                 }
             }
         }
