@@ -3,12 +3,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UniversalButtonPrompt : MonoBehaviour
+public class    UniversalButtonPrompt : MonoBehaviour
 {
     [SerializeField]
     TMP_Text buttonPromptText;
     [SerializeField]
     List<GameObject> uiElements;
+    [SerializeField]
+    InputSystemActionPrompts.PromptText promptText;
     public static UnityEvent onFinish;
     public static UnityEvent<string> onStart;
     protected bool isActive;
@@ -41,6 +43,7 @@ public class UniversalButtonPrompt : MonoBehaviour
             {
                 uiElement.SetActive(true);
             }
+            promptText.RefreshText();
         }
     }
 }

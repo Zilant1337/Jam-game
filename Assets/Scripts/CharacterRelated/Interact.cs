@@ -29,12 +29,11 @@ public class Interact : MonoBehaviour
                 string buttonPromptText = interactable.ButtonPromptText();
                 if(buttonPromptText != "")
                 {
-                    if(CursorManager.TouchActive)
+                    if (CursorManager.TouchActive)
                         UniversalButtonPrompt.onStart.Invoke($"Interact to {buttonPromptText}");
-                    if (CursorManager.KeyboardActive)
-                        UniversalButtonPrompt.onStart.Invoke($"{CharacterScript.inputSystem.FindAction("Interact").GetBindingDisplayString(group: "Keyboard&Mouse")} to {buttonPromptText}");
-                    if(!CursorManager.TouchActive && !CursorManager.KeyboardActive)
-                        UniversalButtonPrompt.onStart.Invoke($"{CharacterScript.inputSystem.FindAction("Interact").GetBindingDisplayString(group: "Gamepad")} to {buttonPromptText}");
+                    else
+                        UniversalButtonPrompt.onStart.Invoke($"[Player/Interact] to {buttonPromptText}");
+
                 }
             }
         }
@@ -53,11 +52,11 @@ public class Interact : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        string buttonPromptText = interactable.ButtonPromptText();
+        /*string buttonPromptText = interactable.ButtonPromptText();
         if (buttonPromptText=="")
         {
             UniversalButtonPrompt.onFinish.Invoke();
-        }
+        }*/
     }
     public void ActivateInteractable(InputAction.CallbackContext context)
     {
