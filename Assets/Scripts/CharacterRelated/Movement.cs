@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class Movement : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     protected Stamina staminaScript;
+
+    [SerializeField]
+    protected Transform lowerHalfTransform;
 
     protected float gravity;
     protected float verticalSpeed;
@@ -58,7 +62,7 @@ public class Movement : MonoBehaviour
         {
             transform.LookAt(new Vector3(transform.position.x + movementDirection.x, transform.position.y, transform.position.z + movementDirection.y));
         }
-        
+
         // Если игрок нажал на кнопку рывка, то он перемещается в одно направление пока не закончится рывок
         if (isDodging)
         {
@@ -66,7 +70,7 @@ public class Movement : MonoBehaviour
             moveVector.x = previousDirection.x * dodgeSpeed;
             moveVector.z = previousDirection.y * dodgeSpeed;
         }
-        
+
         // Ускоряем персонажа и начинаем перемещать его в направлении движения
         else
         {
@@ -80,17 +84,21 @@ public class Movement : MonoBehaviour
             {
                 if (moveSpeed > 0)
                 {
-                    moveSpeed-=acceleration;
+                    moveSpeed -= acceleration;
                     if (moveSpeed < 0)
                     {
                         moveSpeed = 0;
                     }
                 }
             }
-                // Перемещение с помощью Character Controller
-                moveVector.x = movementDirection.x * moveSpeed;
+            // Перемещение с помощью Character Controller
+            moveVector.x = movementDirection.x * moveSpeed;
             moveVector.z = movementDirection.y * moveSpeed;
         }
+        if (movementDirection != Vector2.zero)
+            lowerHalfTransform.rotation = Quaternion.LookRotation(moveVector);
+        else
+            lowerHalfTransform.rotation = Quaternion.LookRotation(new Vector3(previousDirection.x,0,previousDirection.y));
         characterController.Move(moveVector * Time.deltaTime);
 
         if (isDodging)

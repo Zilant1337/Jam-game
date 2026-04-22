@@ -19,6 +19,8 @@ public class LookAndShoot : MonoBehaviour
     protected Gun currentGun;
     [SerializeField]
     protected Gun secondaryGun;
+    [SerializeField]
+    protected Transform upperHalfTransform;
 
     private bool keepShooting;
     private void Awake()
