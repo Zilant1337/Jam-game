@@ -2018,7 +2018,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -350, y: -145}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2016719915373505449
 GameObject:
@@ -3024,7 +3024,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -350, y: 140}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3156132351153253030
 GameObject:
@@ -4862,6 +4862,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 891206570966906509}
+  - component: {fileID: 6990533668741936379}
   m_Layer: 5
   m_Name: HintNote
   m_TagString: Untagged
@@ -4876,7 +4877,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5585886962373741501}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4890,6 +4891,21 @@ RectTransform:
   m_AnchoredPosition: {x: -350, y: 140}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6990533668741936379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5585886962373741501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18716c6f945608d4a99365560e71cf69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HintNote
+  noteText: {fileID: 5036147071882097255}
+  noteOOSPosition: {fileID: 5007644974909349008}
+  noteOnScreenPosition: {fileID: 5157158811933668771}
 --- !u!1 &5787104813499615665
 GameObject:
   m_ObjectHideFlags: 0
@@ -6081,15 +6097,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3a11ae8c014137f49a0b51f44cf06411, type: 2}
+  m_sharedMaterial: {fileID: 9084704011907077440, guid: 3a11ae8c014137f49a0b51f44cf06411, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
