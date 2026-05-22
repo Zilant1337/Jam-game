@@ -10,8 +10,57 @@ public class HintNote : MonoBehaviour
     private Transform noteOOSPosition;
     [SerializeField]
     private Transform noteOnScreenPosition;
+    [SerializeField]
+    private AnimationCurve toScreenMovementCurve;
+    [SerializeField]
+    private AnimationCurve offScreenMovementCurve;
+    [SerializeField]
+    private float appearanceTime;
+    [SerializeField]
+    private float disappearanceTime;
+
+    private float timer;
+    
+    private bool isMoving;
+    private bool isOnScreen;
 
     public static HintNote Instance;
+
+    private void Awake()
+    {
+        isMoving = false;
+        isOnScreen = false;
+        timer = 0;
+    }
+
+    private void Update()
+    {
+        if (isMoving)
+        {
+            if (isOnScreen&& timer > 0)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    timer = 0;
+                }
+                float curveValue = offScreenMovementCurve.Evaluate(1-timer/disappearanceTime);
+                transform.position = Vector3.Lerp(noteOnScreenPosition.position,noteOOSPosition.position,curveValue);
+                isOnScreen = false;
+            }
+            if (!isOnScreen && timer > 0)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    timer = 0;
+                }
+                float curveValue = offScreenMovementCurve.Evaluate(1 - timer / appearanceTime);
+                transform.position = Vector3.Lerp(noteOOSPosition.position, noteOnScreenPosition.position, curveValue);
+                isOnScreen = true;
+            }
+        }
+    }
 
     private void Start()
     {
