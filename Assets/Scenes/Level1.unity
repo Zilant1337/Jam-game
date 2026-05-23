@@ -73913,6 +73913,17 @@ CapsuleCollider:
   m_Height: 1.8491999
   m_Direction: 1
   m_Center: {x: 0, y: 0.92459995, z: 0}
+--- !u!114 &957560043 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5381853942385299512, guid: 40fd4b5c81e16404098d6dfbf5239fdb, type: 3}
+  m_PrefabInstance: {fileID: 6448871602902442089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &958076091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95835,6 +95846,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fe0185b6f81319a4dbd2098852324742, type: 3}
   m_PrefabInstance: {fileID: 1239232268}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1239703830 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3031458098652345209, guid: 40fd4b5c81e16404098d6dfbf5239fdb, type: 3}
+  m_PrefabInstance: {fileID: 6448871602902442089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e25a6d4ec757c40876f15402c17755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1242723832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127125,6 +127147,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1901da08217e8ce47a4f797669791942, type: 3}
   m_PrefabInstance: {fileID: 1560418056}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1562580906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8768283952049948476, guid: 40fd4b5c81e16404098d6dfbf5239fdb, type: 3}
+  m_PrefabInstance: {fileID: 6448871602902442089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e25a6d4ec757c40876f15402c17755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1563928830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150262,6 +150295,17 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.65500003, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1861358156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4085548454610359673, guid: 7862a6c6d0ace7341aa67256687fd191, type: 3}
+  m_PrefabInstance: {fileID: 441693336925077321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e07786a1f676cd498a49801f9585787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1861537771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -173979,6 +174023,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 251305316}
     m_Modifications:
+    - target: {fileID: 4934975124916406353, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+      propertyPath: moneyUI
+      value: 
+      objectReference: {fileID: 957560043}
     - target: {fileID: 5988458122181841068, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -174019,10 +174067,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6046179015439525039, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1861358156}
+    - target: {fileID: 6046179015439525039, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+      propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnControlSchemeChange
+      objectReference: {fileID: 0}
     - target: {fileID: 6634780731092526265, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: m_Name
       value: DefaultGuy
       objectReference: {fileID: 0}
+    - target: {fileID: 7857207703295010185, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+      propertyPath: staminaBarScript
+      value: 
+      objectReference: {fileID: 1239703830}
+    - target: {fileID: 9146888006052723444, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+      propertyPath: healthBarScript
+      value: 
+      objectReference: {fileID: 1562580906}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -43,7 +43,7 @@ public class    UniversalButtonPrompt : MonoBehaviour
             {
                 uiElement.SetActive(true);
             }
-            promptText.RefreshText();
+            promptText.ChangeText();
         }
     }
 }

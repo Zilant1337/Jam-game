@@ -54,6 +54,7 @@ public class LookAndShoot : MonoBehaviour
         }
         else
         {
+
             lookDirection = lookDirection.normalized;
         }
         aimPoint = new Vector3(transform.position.x + lookDirection.x * cursorDistance, transform.position.y, transform.position.z + lookDirection.y * cursorDistance);

@@ -26,6 +26,7 @@ public class CursorManager : MonoBehaviour
     static bool keyboardActive;
     static bool touchActive;
 
+
     protected float touchInputTimer = 0;
 
     public static bool KeyboardActive { get => keyboardActive; }
@@ -119,14 +120,15 @@ public class CursorManager : MonoBehaviour
         Cursor.SetCursor(menuCursorSprite,Vector2.zero,CursorMode.Auto);
     }
     public void OnControlSchemeChange()
-    {
-        if(playerInput.currentControlScheme == "Keyboard&Mouse")
+    { 
+        if (playerInput.currentControlScheme == "Keyboard&Mouse")
         {
             touchActive = false;
             mobileInput.SetActive(false);
             Cursor.visible = true;
             virtualCursorTransform.gameObject.SetActive(false);
             keyboardActive = true;
+            Debug.Log($"Keyboard active: {keyboardActive}");
         }
         else
         {
@@ -141,5 +143,9 @@ public class CursorManager : MonoBehaviour
             CharacterScript.inputSystem.Player.Look.Reset();
         }
         Debug.Log($"Keyboard active: {keyboardActive}");
-    } 
+    }
+    public void ResetCharacterLook()
+    {
+        CharacterScript.inputSystem.Player.Look.Reset();
+    }
 }
