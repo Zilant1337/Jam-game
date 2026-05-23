@@ -43,10 +43,11 @@ public class HintNote : MonoBehaviour
                 if (timer <= 0)
                 {
                     timer = 0;
+                    isOnScreen = false;
                 }
                 float curveValue = offScreenMovementCurve.Evaluate(1-timer/disappearanceTime);
                 transform.position = Vector3.Lerp(noteOnScreenPosition.position,noteOOSPosition.position,curveValue);
-                isOnScreen = false;
+                
             }
             if (!isOnScreen && timer > 0)
             {
@@ -54,10 +55,10 @@ public class HintNote : MonoBehaviour
                 if (timer <= 0)
                 {
                     timer = 0;
+                    isOnScreen = true;
                 }
                 float curveValue = offScreenMovementCurve.Evaluate(1 - timer / appearanceTime);
                 transform.position = Vector3.Lerp(noteOOSPosition.position, noteOnScreenPosition.position, curveValue);
-                isOnScreen = true;
             }
         }
     }
