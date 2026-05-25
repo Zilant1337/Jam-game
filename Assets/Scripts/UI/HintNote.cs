@@ -23,6 +23,8 @@ public class HintNote : MonoBehaviour
     
     private bool isMoving;
     private bool isOnScreen;
+    private bool isChanging;
+    private string replacementText;
 
     public static HintNote Instance;
 
@@ -78,5 +80,29 @@ public class HintNote : MonoBehaviour
     public void ChangeText(string newText)
     {
         noteText.text = newText;
+    }
+    // Returns if replacement was successfully initiated
+    public bool ReplaceNote(string newText)
+    {
+        if (newText != noteText.text && timer == 0)
+        {
+            if (isOnScreen)
+            {
+                timer = disappearanceTime;
+                replacementText = newText;
+                isChanging = true;
+            }
+            else
+            {
+                ChangeText(newText);
+                timer = appearanceTime; 
+            }
+            
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
