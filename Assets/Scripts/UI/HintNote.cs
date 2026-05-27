@@ -21,7 +21,6 @@ public class HintNote : MonoBehaviour
 
     private float timer;
     
-    private bool isMoving;
     private bool isOnScreen;
     private bool isChanging;
     private string replacementText;
@@ -30,38 +29,43 @@ public class HintNote : MonoBehaviour
 
     private void Awake()
     {
-        isMoving = false;
         isOnScreen = false;
+        isChanging = false;
         timer = 0;
     }
 
     private void Update()
     {
-        if (isMoving)
+
+        if (isOnScreen&& timer > 0)
         {
-            if (isOnScreen&& timer > 0)
+            timer -= Time.deltaTime;
+            if (timer <= 0)
             {
-                timer -= Time.deltaTime;
-                if (timer <= 0)
+                timer = 0;
+                isOnScreen = false;
+                if (isChanging&& replacementText!=null)
                 {
-                    timer = 0;
-                    isOnScreen = false;
+                    ChangeText(replacementText);
+                    replacementText = null;
+                    isChanging = false;
+                    timer = appearanceTime;
                 }
-                float curveValue = offScreenMovementCurve.Evaluate(1-timer/disappearanceTime);
-                transform.position = Vector3.Lerp(noteOnScreenPosition.position,noteOOSPosition.position,curveValue);
+            }
+            float curveValue = offScreenMovementCurve.Evaluate(1-timer/disappearanceTime);
+            transform.position = Vector3.Lerp(noteOnScreenPosition.position,noteOOSPosition.position,curveValue);
                 
-            }
-            if (!isOnScreen && timer > 0)
+        }
+        if (!isOnScreen && timer > 0)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
             {
-                timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    timer = 0;
-                    isOnScreen = true;
-                }
-                float curveValue = offScreenMovementCurve.Evaluate(1 - timer / appearanceTime);
-                transform.position = Vector3.Lerp(noteOOSPosition.position, noteOnScreenPosition.position, curveValue);
+                timer = 0;
+                isOnScreen = true;
             }
+            float curveValue = offScreenMovementCurve.Evaluate(1 - timer / appearanceTime);
+            transform.position = Vector3.Lerp(noteOOSPosition.position, noteOnScreenPosition.position, curveValue);
         }
     }
 
@@ -97,12 +101,23 @@ public class HintNote : MonoBehaviour
                 ChangeText(newText);
                 timer = appearanceTime; 
             }
-            
             return true;
         }
         else
         {
             return false;
         }
+    }
+    public bool RemoveNote()
+    {
+        if (isOnScreen)
+        {
+            if(timer == 0)
+                timer = disappearanceTime;
+            replacementText = null;
+            isChanging = false;
+            return true;
+        }
+        return false;
     }
 }
