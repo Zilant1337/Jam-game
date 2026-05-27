@@ -20,6 +20,14 @@ public class HintNoteActivator : MonoBehaviour
             timer = noteDelay;
         }
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == GameObject.Find("DefaultGuy"))
+        {
+            timer = 0;
+            HintNote.Instance.RemoveNote();
+        }
+    }
     private void Update()
     {
         if (timer > 0)
@@ -27,8 +35,11 @@ public class HintNoteActivator : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                HintNote.Instance.ChangeText(noteText);
+                timer = 0;
+                fired = true;
+                HintNote.Instance.ReplaceNote(noteText);
             }
         }
     }
+
 }
