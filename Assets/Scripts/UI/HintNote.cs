@@ -7,6 +7,8 @@ public class HintNote : MonoBehaviour
     [SerializeField]
     TMP_Text noteText;
     [SerializeField]
+    InputSystemActionPrompts.PromptText promptText;
+    [SerializeField]
     private Transform noteOOSPosition;
     [SerializeField]
     private Transform noteOnScreenPosition;
@@ -84,6 +86,7 @@ public class HintNote : MonoBehaviour
     public void ChangeText(string newText)
     {
         noteText.text = newText;
+        promptText.ChangeText();
     }
     // Returns if replacement was successfully initiated
     public bool ReplaceNote(string newText)
