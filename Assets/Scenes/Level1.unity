@@ -5508,7 +5508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1197041737816752611, guid: dbe73e24c4c02cb498a687f261b3cb74, type: 3}
       propertyPath: noteDelay
-      value: 300
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1625612022190437827, guid: dbe73e24c4c02cb498a687f261b3cb74, type: 3}
       propertyPath: m_LocalPosition.x
@@ -146808,7 +146808,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1197041737816752611, guid: dbe73e24c4c02cb498a687f261b3cb74, type: 3}
       propertyPath: noteText
-      value: ... The hero faces foes and rearms themselves, as well as finding the
+      value: ... The hero faces foes and rearms themself, as well as finding the
         path forward... for a price.
       objectReference: {fileID: 0}
     - target: {fileID: 1197041737816752611, guid: dbe73e24c4c02cb498a687f261b3cb74, type: 3}
