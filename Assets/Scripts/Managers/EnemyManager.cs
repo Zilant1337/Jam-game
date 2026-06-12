@@ -13,6 +13,7 @@ public class EnemyManager : MonoBehaviour
         Chaser,
         Shotgunner,
         Rifleman,
+        Sniper,
         Boss
     }
     
@@ -63,7 +64,7 @@ public class EnemyManager : MonoBehaviour
 
         enemyMonetaryValues = new Dictionary<EnemyType, int>
         {
-            { EnemyType.Dummy,100},{ EnemyType.Chaser,100},{ EnemyType.Shotgunner,200},{ EnemyType.Rifleman,150}, { EnemyType.Boss,2000}
+            { EnemyType.Dummy,100},{ EnemyType.Chaser,100},{ EnemyType.Shotgunner,200},{ EnemyType.Rifleman,150}, { EnemyType.Boss,2000}, { EnemyType.Sniper,300}
 
         };
         enemyCount = 0;
