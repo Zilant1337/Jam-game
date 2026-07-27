@@ -20,7 +20,7 @@ public class LookAndShoot : MonoBehaviour
     [SerializeField]
     protected Gun secondaryGun;
     [SerializeField]
-    protected Transform upperHalfTransform;
+    protected Gun melee;
 
     private bool keepShooting;
     private void Awake()
@@ -87,6 +87,13 @@ public class LookAndShoot : MonoBehaviour
         if (context.canceled)
         {
             keepShooting=false;
+        }
+    }
+    public void Melee(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            melee.Shoot();
         }
     }
     private void Fire()

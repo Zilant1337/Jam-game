@@ -6798,14 +6798,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 251305316}
     m_Modifications:
-    - target: {fileID: 4934975124916406353, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
-      propertyPath: money
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934975124916406353, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
-      propertyPath: moneyUI
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5988458122181841068, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6858,10 +6850,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefaultGuy
       objectReference: {fileID: 0}
-    - target: {fileID: 6634780731092526265, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 7857207703295010185, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: staminaBarScript
       value: 
@@ -6871,8 +6859,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1994766249}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4379934082740782479, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
