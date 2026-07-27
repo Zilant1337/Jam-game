@@ -9,8 +9,6 @@ public class InstaDamageGun : Gun
     [SerializeField]
     protected List<string> tagsToIgnore;
 
-
-
     protected List<Health> healthsToDamage = new List<Health>();
     private void OnTriggerEnter(Collider other)
     {
@@ -33,7 +31,11 @@ public class InstaDamageGun : Gun
         foreach (Health health in healthList)
         {
             if (health != null && ToDamage(health))
+            {
+                if (pushForce != 0 && health.gameObject.CompareTag("Enemy"))
+                    health.gameObject.GetComponent<Rigidbody>().AddForce((health.transform.position - this.transform.position) * pushForce);
                 health.TakeDamage(damagePerBullet);
+            }
         }
     }
     protected bool ToDamage(Health other)

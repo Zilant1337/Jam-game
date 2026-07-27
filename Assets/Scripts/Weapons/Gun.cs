@@ -29,6 +29,8 @@ public abstract class Gun : MonoBehaviour
     [SerializeField]
     protected float damagePerBullet;
     [SerializeField]
+    protected float pushForce;
+    [SerializeField]
     protected float timeBetweenShots;
     protected float cooldownTimer;
     [SerializeField]

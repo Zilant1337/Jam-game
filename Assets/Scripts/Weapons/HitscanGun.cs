@@ -45,7 +45,11 @@ public class HitscanGun : Gun
                     {
                         // Если у объекта есть здоровье, он должен получить урон
                         if (hit.transform.GetComponent<Health>())
+                        {
+                            if (pushForce != 0 && hit.transform.gameObject.CompareTag("Enemy"))
+                                hit.rigidbody.AddForce(shotDirection * pushForce);
                             hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
+                        }
                         // Если объект - припятствие, то дальнейшие объекты не должны проверяться
                         if (hit.transform.gameObject.layer == 7)
                         {
@@ -53,6 +57,7 @@ public class HitscanGun : Gun
                             StartCoroutine(SpawnBulletTrail(trailRenderer, hit));
                             break;
                         }
+                        
                         hitObjects.Add(hit.transform.gameObject);
                     }
                 }
@@ -69,7 +74,12 @@ public class HitscanGun : Gun
                     StartCoroutine(SpawnBulletTrail(trailRenderer, hit));
                     // Получение урона тем, в кого попала пуля
                     if (hit.transform.GetComponent<Health>())
+                    {
+                        if (pushForce != 0 && hit.transform.gameObject.CompareTag("Enemy"))
+                            hit.rigidbody.AddForce(shotDirection * pushForce);
                         hit.transform.GetComponent<Health>().TakeDamage(damagePerBullet);
+                    }
+
                 }
                 else
                 {

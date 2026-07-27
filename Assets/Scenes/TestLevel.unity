@@ -6798,6 +6798,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 251305316}
     m_Modifications:
+    - target: {fileID: 5724026379456422125, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+      propertyPath: pushForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724026379456422125, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
+      propertyPath: damagePerBullet
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5988458122181841068, guid: 7f60d01e7b07884418dbcef56ce2afe4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
