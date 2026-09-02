@@ -67,6 +67,7 @@ public class InstaDamageGun : Gun
     {
         if((ammoCountInMag > 0 || hasInfiniteAmmo) && cooldownTimer == 0 && reloadTimer == 0)
         {
+            muzzleFlashParticleSystem.Play();
             shootAudioSource.PlayOneShot(shootAudioSource.clip);
             foreach (Health health in healthsToDamage)
             {
